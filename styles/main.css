@@ -1,0 +1,39 @@
+@import url(card_button.css);
+@import url(card.css);
+@import url(mobile.css);
+@import url(tablet.css);
+
+:root {
+    --white:rgb(255,255,255);
+    --almost_white:rgb(231, 231, 231);
+    --green_blue:rgb(1, 139, 116);
+    --semi_dark:rgb(43, 43, 43);
+    --almost_dark:rgb(27, 27, 26);
+    --transp_dark:rgba(22, 22, 22, 0.705);
+    --red: rgb(255, 82, 51);
+    --orange: darkorange;
+    --pastel_blue:rgb(97, 191, 235);
+}
+
+*{
+    background-color:var(--almost_dark);
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100vw;
+    height: 100vh;
+}
+
+.movies_list{
+    background-color:var(--semi_dark);
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+}

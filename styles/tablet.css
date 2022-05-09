@@ -1,0 +1,16 @@
+@media only screen and (max-width:1050px) and (min-width:450px) {
+
+.movie_card{
+    width: 23%;
+    height: 45%;
+    margin: 1%;
+}
+
+.card_text h1{
+    font-size: small;
+}
+
+.card_text h2{
+    font-size: x-small;
+}
+}
