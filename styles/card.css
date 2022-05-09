@@ -2,7 +2,6 @@
 
 .movie_card{
     width: 16%;
-    height: 75%;
     margin: 1% 2%;
     filter:drop-shadow(.2rem .2rem .5rem #181818);
 }
@@ -16,13 +15,11 @@
 .movie_img{
     background-color: var(--almost_dark);
     width: 100%;
-    height: 80%;
     position: relative;
 }
 
 .movie_img img{
     width: 100%;
-    height: 100%;
 }
 
 .img_year{
