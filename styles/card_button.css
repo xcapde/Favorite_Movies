@@ -5,7 +5,7 @@
     border: none;
     border-radius: 1rem;
     background-color: var(--green_blue);
-    color: rgb(27, 185, 159);
+    color: var(--light_green_blue);
     width: 1.9rem;
     height: 1.9rem;
     position: absolute;
@@ -17,13 +17,13 @@
 }
 
 .card_button:hover{
-    background-color: darkorange;
+    background-color: var(--orange);
     color: var(--white);
 }
 
 .card_button:active{
-    background-color:rgb(255, 167, 60);
-    color: rgba(255, 255, 255, 0.774);
+    background-color:var(--darker_orange);
+    color: var(--white);
 }
 
 .card_button i{
