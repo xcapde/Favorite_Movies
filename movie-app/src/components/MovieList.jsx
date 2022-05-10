@@ -1,9 +1,9 @@
 import { Component } from "react";
 
-class MovieList extends Component{
-
+export class MovieList extends Component{
+    name="Xevi"
     render() {
 
-        return <h1>HELLOOOO it's meeeee</h1>;
+        return <h1>HELLOOOO it's meeeee, {this.name+" maco"}</h1>;
     }
 }
