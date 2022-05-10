@@ -1,0 +1,54 @@
+/* BUTTONS */
+.card_buttons{
+    background-color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    width: 25%;
+}
+
+.favorite_button, .delete_button{
+    z-index: 1;
+    border: none;
+    border-radius: 1rem;
+    background-color: var(--green_blue);
+    color: var(--light_green_blue);
+    width: 1.9rem;
+    height: 1.9rem;
+    right: 2%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorite_button:hover{
+    color: var(--white);
+}
+
+.favorite_button:active{
+    background-color:var(--dark_green_blue);
+    color: var(--orange);
+}
+
+.favorite_button i{
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+
+.delete_button:hover{
+    color: var(--semi_dark);
+}
+
+.delete_button:active{
+    background-color:var(--dark_green_blue);
+    color: var(--red);
+}
+
+.delete_button i{
+    background: none;
+    margin: 0;
+    padding: 0;
+}

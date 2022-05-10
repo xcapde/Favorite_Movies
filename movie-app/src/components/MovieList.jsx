@@ -7,7 +7,7 @@ export class MovieList extends Component{
         super();    
 
         this.state = {
-            titol: "Porjecte movies",
+            titol: "Porject movies",
             movies:[
                 {
                     id: 1,
@@ -80,7 +80,8 @@ export class MovieList extends Component{
         return (<div className="movies_list">
                 {this.state.movies.map((movie,key) => (
                     
-                    <div key={key} className="movie_card">
+                    <div className="movie_card" key={key}>
+                        {/* {console.log(key)} */}
                         <div className="movie_img">
                             <img src={movie.imgURL} alt="movie cover"/>
                             <p className="img_year">{movie.year}</p>
@@ -90,9 +91,12 @@ export class MovieList extends Component{
                                 <h1>{movie.title}</h1>
                                 <h2>{movie.genres}</h2>
                             </div>
-                                <button className="card_button"><i className="fa-solid fa-star"></i></button>
+                            <div className="card_buttons">
+                                <button className="favorite_button"><i className="fa-solid fa-star"></i></button>
+                                <button className="delete_button"><i className="fa-solid fa-trash-can"></i></button>
+                            </div>
                         </div>
-                    </div>                
+                    </div>                    
                     ))}
 
             </div>)
