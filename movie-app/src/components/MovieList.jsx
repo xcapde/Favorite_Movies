@@ -1,7 +1,5 @@
 import { Component } from "react";
 
-// FALTA FORMULARI PER CREAR CARDS
-
 export class MovieList extends Component{
     constructor(){ 
         super();    
@@ -75,10 +73,6 @@ export class MovieList extends Component{
             ],
         }
     }
-
-    createMovie =(id) => {
-        
-    }
     
     deleteMovie = (id) => {
 
@@ -91,7 +85,8 @@ export class MovieList extends Component{
     }
 
     render() {
-        return (<div className="movies_list">
+        return (<div className="movies_list">               
+                
                 {this.state.movies.map((movie,key) => (
                     
                     <div className="movie_card" key={key}>
