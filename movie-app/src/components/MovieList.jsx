@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-// FALTA POSAR BOTÓ PER ELIMINAR CARD i FORMULARI PER CREAR CARDS
+// FALTA FORMULARI PER CREAR CARDS
 
 export class MovieList extends Component{
     constructor(){ 
@@ -48,7 +48,7 @@ export class MovieList extends Component{
                     id: 6,
                     title: "The Avengers",
                     year: 2012,
-                    imgURL: "https://i.pinimg.com/originals/04/e8/21/04e8210c2048e31d2049a7876613f54d.jpg",
+                    imgURL: "https://wannagotothemovies.files.wordpress.com/2012/04/1-poster8.jpg",
                     genres: "Action, Adventure, Sci-Fi"
                 },
                 {
@@ -76,6 +76,16 @@ export class MovieList extends Component{
         }
     }
 
+    deleteMovie = (id) => {
+
+        // let deleteConfirmation =
+
+        let selectedMovies = this.state.movies.filter(movie => movie.id !== id);
+        // console.log(selectedMovies)
+
+        this.setState({movies: selectedMovies});
+    }
+
     render() {
         return (<div className="movies_list">
                 {this.state.movies.map((movie,key) => (
@@ -93,7 +103,7 @@ export class MovieList extends Component{
                             </div>
                             <div className="card_buttons">
                                 <button className="favorite_button"><i className="fa-solid fa-star"></i></button>
-                                <button className="delete_button"><i className="fa-solid fa-trash-can"></i></button>
+                                <button onClick={()=>this.deleteMovie(movie.id)} className="delete_button"><i className="fa-solid fa-trash-can"></i></button>
                             </div>
                         </div>
                     </div>                    
