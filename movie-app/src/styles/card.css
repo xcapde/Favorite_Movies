@@ -7,8 +7,13 @@
 }
 
 .movie_card:hover{
-    filter:drop-shadow(var(--semi_orange));
+    /* filter:drop-shadow(var(--semi_orange)); */
+    filter:drop-shadow(.0rem .0rem .2rem var(--green_blue));
 }
+
+/* .movie_card:active{
+    filter:drop-shadow(0rem 0rem .3rem var(--orange));
+} */
 
 /* MOVIE IMAGE */
 
