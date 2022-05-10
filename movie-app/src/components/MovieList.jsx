@@ -77,12 +77,10 @@ export class MovieList extends Component{
     }
 
     render() {
-        return <section>
-                        
-            <div className="movies_list">
+        return (<div className="movies_list">
                 {this.state.movies.map((movie,key) => (
                     
-                    <div className="movie_card">
+                    <div key={key} className="movie_card">
                         <div className="movie_img">
                             <img src={movie.imgURL} alt="movie cover"/>
                             <p className="img_year">{movie.year}</p>
@@ -97,8 +95,6 @@ export class MovieList extends Component{
                     </div>                
                     ))}
 
-            </div>
-            
-        </section>
+            </div>)
     }
 }
