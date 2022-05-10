@@ -76,6 +76,10 @@ export class MovieList extends Component{
         }
     }
 
+    createMovie =(id) => {
+        
+    }
+    
     deleteMovie = (id) => {
 
         // let deleteConfirmation =
@@ -94,12 +98,13 @@ export class MovieList extends Component{
                         {/* {console.log(key)} */}
                         <div className="movie_img">
                             <img src={movie.imgURL} alt="movie cover"/>
-                            <p className="img_year">{movie.year}</p>
+                            {/* <p className="img_year">{movie.year}</p> */}
                         </div>
                         <div className="movie_info">
                             <div className="card_text">
                                 <h1>{movie.title}</h1>
                                 <h2>{movie.genres}</h2>
+                                <h2>{movie.year}</h2>
                             </div>
                             <div className="card_buttons">
                                 <button className="favorite_button"><i className="fa-solid fa-star"></i></button>
