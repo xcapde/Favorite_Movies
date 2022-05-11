@@ -1,7 +1,3 @@
-@import url(card_buttons.css);
-@import url(card.css);
-@import url(mobile.css);
-
 :root {
     --white:rgb(255,255,255);
     --almost_white:rgb(231, 231, 231);
@@ -19,22 +15,33 @@
     --pastel_blue:rgb(97, 191, 235);
 }
 
-*{
-    background-color:var(--almost_dark);
-}
-
-.App{
+.input_form {
+    height: 15vh;
+    padding: 2%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    justify-content: center;
+    width: 50%;
 }
 
-.movies_list{
-    background-color:var(--semi_dark);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    overflow-y: auto;
+input{
+    background-color: var(--almost_white);
+    border-style: solid;
+    border-width: 0.1rem;
+    color: var(--almost_dark);
+}
+
+.create_button{
+    background-color: var(--semi_dark);
+    color: var(--white);
+    border: none;
+    padding: 0.2rem 0.5rem;
+}
+
+.create_button:hover{
+    background-color: var(--dark_green_blue);
+}
+
+.create_button:active{
+    background-color: var(--green_blue);
 }

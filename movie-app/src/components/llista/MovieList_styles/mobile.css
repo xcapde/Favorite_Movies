@@ -1,5 +1,9 @@
 @media only screen and (max-width:450px) {
  
+.input_form {
+    width: 90% !important;
+}    
+
 .movie_card{
     width: 43%;
     margin: 3.5%;

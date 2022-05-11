@@ -1,11 +1,12 @@
 import { Component } from "react";
+import { MovieCard } from "../card/MovieCard";
+import { MovieForm } from "../form/MovieForm";
 
 export class MovieList extends Component{
     constructor(){ 
         super();    
 
         this.state = {
-            titol: "Porject movies",
             movies:[
                 {
                     id: 1,
@@ -72,43 +73,36 @@ export class MovieList extends Component{
                 },
             ],
         }
-    }
-    
+    };
+
+    addMovie = (data) =>  {
+        let lastIndex = this.state.movies[this.state.movies.length-1].id;
+        let newIndex = lastIndex+1;
+        let newMovie = {id:newIndex,...data};
+
+        this.setState({movies:[...this.state.movies,newMovie]});
+    };
+
     deleteMovie = (id) => {
 
-        // let deleteConfirmation =
+        // let deleteConfirmation = FALTA POSAR UN AVÍS PER CONFIRMAR ES VOL ELIMINAR 
 
         let selectedMovies = this.state.movies.filter(movie => movie.id !== id);
-        // console.log(selectedMovies)
 
         this.setState({movies: selectedMovies});
-    }
+    };
 
     render() {
-        return (<div className="movies_list">               
-                
-                {this.state.movies.map((movie,key) => (
-                    
-                    <div className="movie_card" key={key}>
-                        {/* {console.log(key)} */}
-                        <div className="movie_img">
-                            <img src={movie.imgURL} alt="movie cover"/>
-                            {/* <p className="img_year">{movie.year}</p> */}
-                        </div>
-                        <div className="movie_info">
-                            <div className="card_text">
-                                <h1>{movie.title}</h1>
-                                <h2>{movie.genres}</h2>
-                                <h2>{movie.year}</h2>
-                            </div>
-                            <div className="card_buttons">
-                                <button className="favorite_button"><i className="fa-solid fa-star"></i></button>
-                                <button onClick={()=>this.deleteMovie(movie.id)} className="delete_button"><i className="fa-solid fa-trash-can"></i></button>
-                            </div>
-                        </div>
-                    </div>                    
+        return (<section>
+                    < MovieForm addMovie = {this.addMovie} />
+                    <div className="movies_list">               
+    
+                        {this.state.movies.map((movie,key) => (
+                        <MovieCard key={key} movie={movie} deleteMovie={this.deleteMovie} />
+
                     ))}
 
-            </div>)
+                    </div>
+                </section>)
     }
 }
