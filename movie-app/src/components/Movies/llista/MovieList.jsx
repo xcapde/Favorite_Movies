@@ -96,11 +96,13 @@ export class MovieList extends Component{
         return (<section>
                     < MovieForm addMovie = {this.addMovie} />
                     <div className="movies_list">               
-    
+                        
                         {this.state.movies.map((movie,key) => (
                         <MovieCard key={key} movie={movie} deleteMovie={this.deleteMovie} />
+                        ))}
 
-                    ))}
+                        <button type="button" name="openForm" className="button_open_form"><i class="fa-solid fa-plus"></i></button>
+
 
                     </div>
                 </section>)

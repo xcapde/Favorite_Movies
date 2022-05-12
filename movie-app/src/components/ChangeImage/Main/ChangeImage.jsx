@@ -1,4 +1,4 @@
-import { Component, useState } from "react";
+import { Component } from "react";
 
 export class ChangeImage extends Component {
     state = {
@@ -29,12 +29,6 @@ export class ChangeImage extends Component {
     };
     // OPCIÓ 2 - ONCHANGE + ONCLICK
 
-    // OPCIÓ 3 - OP2 + PREVIEW
-    previewImg = () =>{
-        
-    };
-    // OPCIÓ 3 - OP2 + PREVIEW
-
     render (){
         return (
             <section>
@@ -51,7 +45,7 @@ export class ChangeImage extends Component {
 
                 {/* OPCIÓ 2 - ONCHANGE + ONCLICK */}
                 {/* <form>
-                    <img src={this.state.imgInit} alt="background image"/>
+                    <img src={this.state.imgInit} alt=""/>
                     <div className="input_zone">
                         <input type="text" className="input" onChange={this.onChangeIMG} placeholder="Image URL"/>
                         <button type="button" onClick={this.changeImg}>CHANGE</button>
@@ -60,10 +54,11 @@ export class ChangeImage extends Component {
 
 
                 {/* OPCIÓ 3 - OP2 + PREVIEW */}
-                <form>
-                    <img src={this.state.imgInit} alt="background image"/>
+                <form> 
+                    <img src={this.state.imgInit} alt=""/>
                     <div className="preview">
-                        <img src=""/>
+                        {/*NOMÉS CAL CANVIAR SRC PEL NOU STATE*/}
+                        <img src={this.state.newImg} alt=""/>
                         {/* <img src="https://cdn.pixabay.com/photo/2022/05/02/10/32/leaves-7169336_960_720.jpg"/> */}
                         <div className="preview_detail">Preview</div>
 

@@ -24,7 +24,7 @@
     width: 50%;
 }
 
-input{
+.input_form input{
     background-color: var(--almost_white);
     border-style: solid;
     border-width: 0.1rem;

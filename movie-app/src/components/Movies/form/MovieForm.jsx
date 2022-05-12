@@ -1,9 +1,20 @@
 import { Component } from "react";
 
 export class MovieForm extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
+   
+
+    keyPress = (key, e) => { 
+        if (key === "Enter") {
+          e.target.addButton.click();
+        }
+    }
+    
+    resetFormInputs = (e) => {
+        e.target.title.value = "";
+        e.target.genres.value = "";
+        e.target.year.value = "";
+        e.target.imgURL.value = "";
+    };
     
     handleSubmit = (e) => {
         e.preventDefault()
@@ -18,12 +29,14 @@ export class MovieForm extends Component {
             'imgURL':imgURL,
         }
         this.props.addMovie(newMovie);
+        this.resetFormInputs()
 
-        let children = e.target.children;
-        for (let element of children){
-            element.value="";
-        }
-    };
+
+        // ALTRA MANERA DE FER RESET DELS INPUTS
+        // let children = e.target.children;
+        // for (let element of children){
+        //     element.value="";
+    }
 
     render (){
         return (<form onSubmit={this.handleSubmit} className="input_form">
@@ -31,8 +44,8 @@ export class MovieForm extends Component {
                     <input type="text" name='year' className="year_input" placeholder="Year"/>
                     <input type="text" name='imgURL' className="imgURL_input" placeholder="Cover image URL"/>
                     <input type="text" name='genres' className="genres_input" placeholder="Genres"/>
-                    <button type="submit" className="create_button">Create</button>
+                    <button type="submit" name='addButton' className="create_button">Create</button>
                 </form>) 
-        }
+    }
 
 }

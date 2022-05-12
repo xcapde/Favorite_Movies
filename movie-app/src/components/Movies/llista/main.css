@@ -1,5 +1,5 @@
-@import url(card_buttons.css);
-@import url(card.css);
+@import url(../card/card_buttons.css);
+@import url(../card/card.css);
 @import url(mobile.css);
 
 :root {
@@ -46,4 +46,29 @@ section{
     display: flex;
     flex-wrap: wrap;
     overflow-y: auto;
+}
+
+.button_open_form{
+    position: absolute;
+    bottom: 1%;
+    right: 2%;
+    background-color: var(--almost_dark);
+    border: none;
+    border-radius: 2em;
+    width: 2.5rem;
+    height: 2.5rem;
+    filter:drop-shadow(.0rem .0rem .2rem rgba(0, 0, 0, 0.301));
+}
+
+.button_open_form:hover{
+    background-color: var(--green_blue);
+}
+
+.button_open_form:active{
+    background-color: var(--dark_green_blue);
+}
+
+.button_open_form i{
+    color: white;
+    background:none;
 }
