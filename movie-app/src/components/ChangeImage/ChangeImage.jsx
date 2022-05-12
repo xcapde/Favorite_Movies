@@ -26,16 +26,19 @@ export class ChangeImage extends Component {
 
     changeImg = () => {
         this.setState({imgInit:this.state.newImg})
-    }
+    };
     // OPCIÓ 2 - ONCHANGE + ONCLICK
 
     // OPCIÓ 3 - OP2 + PREVIEW
-
+    previewImg = () =>{
+        
+    };
     // OPCIÓ 3 - OP2 + PREVIEW
 
     render (){
         return (
             <section>
+
                 {/* OPCIÓ 1 - HANDLER SUBMIT */}
                 {/* <form onSubmit={this.onSubmitHandle}>
                     <img src={this.state.imgInit} alt="background image"/>
@@ -55,6 +58,7 @@ export class ChangeImage extends Component {
                     </div>
                 </form> */}
 
+
                 {/* OPCIÓ 3 - OP2 + PREVIEW */}
                 <form>
                     <img src={this.state.imgInit} alt="background image"/>
@@ -69,6 +73,7 @@ export class ChangeImage extends Component {
                         <button type="button" onClick={this.changeImg}>CHANGE</button>
                     </div>
                 </form>
+
             </section>
         )
     }
