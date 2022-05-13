@@ -1,4 +1,5 @@
 import { Component } from "react";
+// import { Preview } from "../Preview/Preview";
 
 export class ChangeImage extends Component {
     state = {
@@ -22,11 +23,13 @@ export class ChangeImage extends Component {
     onChangeIMG = (e) => {
         this.setState({newImg:e.target.value})
         console.log(this.state.newImg)
+        // e.target.value =("");
     };
 
     changeImg = () => {
         this.setState({imgInit:this.state.newImg})
     };
+
     // OPCIÓ 2 - ONCHANGE + ONCLICK
 
     render (){
@@ -56,13 +59,12 @@ export class ChangeImage extends Component {
                 {/* OPCIÓ 3 - OP2 + PREVIEW */}
                 <form> 
                     <img src={this.state.imgInit} alt=""/>
-                    <div className="preview">
-                        {/*NOMÉS CAL CANVIAR SRC PEL NOU STATE*/}
-                        <img src={this.state.newImg} alt=""/>
-                        {/* <img src="https://cdn.pixabay.com/photo/2022/05/02/10/32/leaves-7169336_960_720.jpg"/> */}
-                        <div className="preview_detail">Preview</div>
-
-                    </div>
+                        {/* <Preview onChangeIMG = {this.onChangeIMG}/> */}
+                        <div className="preview">
+                            {/*NOMÉS CAL CANVIAR SRC PEL URL DEL NOU STATE*/}
+                            <img src={this.state.newImg} alt=""/>
+                            <div className="preview_detail">Preview</div>
+                        </div>
                     <div className="input_zone">
                         <input type="text" className="input" onChange={this.onChangeIMG} placeholder="Image URL"/>
                         <button type="button" onClick={this.changeImg}>CHANGE</button>

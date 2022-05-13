@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-export class MovieForm extends Component {
+export class FormBinding extends Component {
    
 
     keyPress = (key, e) => { 
@@ -29,7 +29,7 @@ export class MovieForm extends Component {
             'imgURL':imgURL,
         }
         this.props.addMovie(newMovie);
-        this.resetFormInputs(e)
+        this.resetFormInputs()
 
 
         // ALTRA MANERA DE FER RESET DELS INPUTS
@@ -37,10 +37,15 @@ export class MovieForm extends Component {
         // for (let element of children){
         //     element.value="";
     }
+    // PASSO A MINUT 1.56 DEL VIDEO 2
+    onInputChange = (e) => {
+        this.setState({})
+        console.log(e.target.value)
+    }
 
     render (){
         return (<form onSubmit={this.handleSubmit} className="input_form">
-                    <input type="text" name="title" className="title_input" placeholder="Title"/>
+                    <input onChange ={this.onInputChange} type="text" name="title" className="title_input" placeholder="Title"/>
                     <input type="text" name='year' className="year_input" placeholder="Year"/>
                     <input type="text" name='imgURL' className="imgURL_input" placeholder="Cover image URL"/>
                     <input type="text" name='genres' className="genres_input" placeholder="Genres"/>

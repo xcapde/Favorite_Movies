@@ -8,7 +8,7 @@ import './components/ChangeImage/Preview/preview.css';
 function App() {
   return (
     <div className="App">
-      {/* < MovieList /> */}
+      < MovieList />
       <ChangeImage />
     </div>    
   );

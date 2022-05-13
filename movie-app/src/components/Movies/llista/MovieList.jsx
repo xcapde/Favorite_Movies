@@ -80,7 +80,7 @@ export class MovieList extends Component{
         let newIndex = lastIndex+1;
         let newMovie = {id:newIndex,...data};
 
-        this.setState({movies:[...this.state.movies,newMovie]});
+        this.setState({movies:[newMovie,...this.state.movies]});
     };
 
     deleteMovie = (id) => {
@@ -101,7 +101,7 @@ export class MovieList extends Component{
                         <MovieCard key={key} movie={movie} deleteMovie={this.deleteMovie} />
                         ))}
 
-                        <button type="button" name="openForm" className="button_open_form"><i class="fa-solid fa-plus"></i></button>
+                        <button type="button" name="openForm" className="button_open_form"><i className="fa-solid fa-plus"></i></button>
 
 
                     </div>
