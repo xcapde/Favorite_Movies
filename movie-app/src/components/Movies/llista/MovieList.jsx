@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { MovieCard } from "../card/MovieCard";
-import { MovieForm } from "../form/MovieForm";
+import { FormBinding } from "../form binding/FormBinding";
+// import { MovieForm } from "../form/MovieForm"; /*ESTÀ COMENTAT PER FER EL BIND DEL FORM A SOBRE*/
 
 export class MovieList extends Component{
     constructor(){ 
@@ -94,7 +95,8 @@ export class MovieList extends Component{
 
     render() {
         return (<section>
-                    < MovieForm addMovie = {this.addMovie} />
+                    {/* < MovieForm addMovie = {this.addMovie} /> *//*ESTÀ COMENTAT PER FER EL BIND DEL FORM A SOTA*/}
+                    <FormBinding addMovie = {this.addMovie}/>
                     <div className="movies_list">               
                         
                         {this.state.movies.map((movie,key) => (
@@ -106,5 +108,5 @@ export class MovieList extends Component{
 
                     </div>
                 </section>)
-    }
+    };
 }
