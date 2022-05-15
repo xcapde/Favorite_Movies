@@ -59,7 +59,7 @@ export class ChangeImage extends Component {
                 {/* OPCIÓ 3 - OP2 + PREVIEW */}
                 <form> 
                     <img src={this.state.imgInit} alt=""/>
-                        {/* <Preview onChangeIMG = {this.onChangeIMG}/> */}
+                        {/* <Preview onChangeIMG = {this.onChangeIMG} /> */}
                         <div className="preview">
                             {/*NOMÉS CAL CANVIAR SRC PEL URL DEL NOU STATE*/}
                             <img src={this.state.newImg} alt=""/>

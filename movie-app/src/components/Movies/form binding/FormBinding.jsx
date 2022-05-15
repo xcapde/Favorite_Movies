@@ -21,12 +21,15 @@ export class FormBinding extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        this.props.addMovie(this.state.newMovie);
-        this.resetFormInputs(e);
+        if (this.state.newMovie.title.length > 0){
+            this.props.addMovie(this.state.newMovie);
+        }
+
+        this.resetFormInputs();
     };
 
-    resetFormInputs = (e) => {
-    
+    resetFormInputs = () => {
+    this.setState({newMovie:{title:'', year:'', imgURL:'',genres:''}})
     };
 
     onInputChange = (e) => {
