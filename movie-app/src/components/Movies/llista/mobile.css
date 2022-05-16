@@ -1,7 +1,7 @@
 @media only screen and (max-width:450px) {
  
 .input_form {
-    width: 90% !important;
+    width: 70% !important;
 }    
 
 .movie_card{
@@ -19,6 +19,10 @@
 
 .card_text h2{
     font-size: x-small;
+}
+
+.form_and_preview{
+    justify-content: space-evenly !important;
 }
     
 }

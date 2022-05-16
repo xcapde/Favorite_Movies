@@ -1,0 +1,39 @@
+.previewZone{
+    width: 4rem;
+    min-height: 50%;
+    position: relative;
+}
+
+.previewMovie{
+    width: 4rem;
+    min-height: 50%;
+    background-color: rgba(0, 0, 0, 0.274);   
+    position: relative;
+}
+
+.previewMovie img {
+    width:100%;
+    height: 100%;
+    border-radius: 0.5rem;
+    border-color: rgba(20, 20, 20, 0.829); 
+    object-fit: cover;
+}
+
+.previewMovie_detail{
+    width: 100%;
+    height: 1.5em;
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.342);
+    color: rgba(255, 255, 255, 0.514);
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5em;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+}
+
+.previewMovie_hidden{
+    display: none;
+}

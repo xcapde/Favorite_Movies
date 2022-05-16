@@ -1,13 +1,20 @@
 import { Component } from "react";
 import { MovieCard } from "../card/MovieCard";
-import { FormBinding } from "../form binding/FormBinding";
+import { FormBinding } from "../form_binding/FormBinding";
 // import { MovieForm } from "../form/MovieForm"; /*ESTÀ COMENTAT PER FER EL BIND DEL FORM A SOBRE*/
+
+// INCLOURE BOTÓ EDITAR A LES CARDS I PREVIEW DE LA IMATGE EN EL FORM
+    // QUAN CLIC, S'OMPLE EN EL FORM AMB LES DADES I LA IMATGE EN LA PREVIEW
+    // QUAN MODIFIQUEM URL DE LA IMATGE CANVIA LA PREVIEW EN L'INSTANT
+    // TAMBÉ MODIFICAR ALTRES CAMPS
+    // QUAN OK --> ES GUARDA A L'ESTAT DE LA CARD --> STATE UPDATE
 
 export class MovieList extends Component{
     constructor(){ 
-        super();    
+        super();
 
         this.state = {
+            formIsActive:false,
             movies:[
                 {
                     id: 1,
@@ -85,28 +92,37 @@ export class MovieList extends Component{
     };
 
     deleteMovie = (id) => {
-
-        // let deleteConfirmation = FALTA POSAR UN AVÍS PER CONFIRMAR ES VOL ELIMINAR 
-
         let selectedMovies = this.state.movies.filter(movie => movie.id !== id);
 
         this.setState({movies: selectedMovies});
     };
 
+    showForm = () => {
+        if(this.state.formIsActive) this.setState({formIsActive:false})
+        else this.setState({formIsActive:true})
+    };
+    
+    updateMovie = (id) => {
+        this.setState({formIsActive:true});
+        let movieToUpdate = this.state.movies.filter(movie => movie.id === id);
+        // console.log(movieToUpdate[0].title);
+        return movieToUpdate;
+    }
+
     render() {
-        return (<section>
-                    {/* < MovieForm addMovie = {this.addMovie} /> *//*ESTÀ COMENTAT PER FER EL BIND DEL FORM A SOTA*/}
-                    <FormBinding addMovie = {this.addMovie}/>
-                    <div className="movies_list">               
-                        
+        return (<section className="the_list">
+
+                    {/* OPCIÓ 2 SHOW&HIDE FORM: FORMBINDING RENDER CLASS &{} + 2 CLASSES CSS FORM + MOVIELIST RENDER COMENTAT */}
+                    {/* <FormBinding addMovie={this.addMovie} updateMovie={this.updateMovie} formIsActive={this.state.formIsActive} /> */}
+                    {this.state.formIsActive?<FormBinding addMovie={this.addMovie} updateMovie={this.updateMovie}/>:''}
+                    
+                    <div className="movies_list">   
                         {this.state.movies.map((movie,key) => (
-                        <MovieCard key={key} movie={movie} deleteMovie={this.deleteMovie} />
-                        ))}
-
-                        <button type="button" name="openForm" className="button_open_form"><i className="fa-solid fa-plus"></i></button>
-
-
+                            <MovieCard key={key} movie={movie} deleteMovie={this.deleteMovie} updateMovie={this.updateMovie} />
+                        ))}   
                     </div>
+                    
+                    <button onClick={this.showForm} type="button" name="openForm" className="button_open_form"><i className="fa-solid fa-plus"></i></button>
                 </section>)
     };
 }

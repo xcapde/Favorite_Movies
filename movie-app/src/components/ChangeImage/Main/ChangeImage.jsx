@@ -21,20 +21,21 @@ export class ChangeImage extends Component {
 
     // OPCIÓ 2 - ONCHANGE + ONCLICK
     onChangeIMG = (e) => {
-        this.setState({newImg:e.target.value})
-        console.log(this.state.newImg)
-        // e.target.value =("");
+        this.setState({newImg:e.target.value});
+        console.log(this.state.newImg);
+        // ELIMINA EL CONTINGUT DE L'INPUT PERÒ NO ES VEU MAI -- ERROR
+        // e.target.value='';
     };
 
     changeImg = () => {
-        this.setState({imgInit:this.state.newImg})
+        this.setState({imgInit:this.state.newImg});
+        this.setState({newImg:''});
     };
-
     // OPCIÓ 2 - ONCHANGE + ONCLICK
 
     render (){
         return (
-            <section>
+            <section className="changing_img">
 
                 {/* OPCIÓ 1 - HANDLER SUBMIT */}
                 {/* <form onSubmit={this.onSubmitHandle}>

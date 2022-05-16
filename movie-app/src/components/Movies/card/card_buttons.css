@@ -6,9 +6,11 @@
     justify-content: space-around;
     height: 100%;
     width: 25%;
+    align-items: flex-end;
+    margin-right: 1%;
 }
 
-.favorite_button, .delete_button{
+.favorite_button, .delete_button, .update_button{
     z-index: 1;
     border: none;
     border-radius: 1rem;
@@ -17,38 +19,63 @@
     width: 1.9rem;
     height: 1.9rem;
     right: 2%;
-    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.favorite_button i, .delete_button i, .update_button i{
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+
+.favorite_button{
+    z-index: 2;
+    top: 1%;
+    right: 1%;
+    background-color:rgba(0, 0, 0, 0.288);
+    /* background: none; */
+    position: absolute;
+}
+
+.favorite_button {
+    color: rgba(255, 255, 255, 0.432);
 }
 
 .favorite_button:hover{
-    color: var(--white);
+    background-color:rgba(163, 163, 163, 0.705);
+    color: white;
 }
 
 .favorite_button:active{
-    background-color:var(--dark_green_blue);
-    color: var(--orange);
+    background-color: rgba(236, 183, 9, 0.856);
+    color:white;
 }
 
-.favorite_button i{
-    background: none;
-    margin: 0;
-    padding: 0;
+.favorite_button:after{
+    background-color: rgba(255, 255, 255, 0.726);
+    color:rgb(236, 183, 9);
 }
 
 .delete_button:hover{
-    color: var(--semi_dark);
+    background-color:var(--dark_green_blue);
+    color: var(--white);
 }
 
 .delete_button:active{
-    background-color:var(--dark_green_blue);
-    color: var(--red);
+    background-color:var(--red);
+    color: var(--white);
 }
 
-.delete_button i{
-    background: none;
-    margin: 0;
-    padding: 0;
+.update_button:hover{
+    background-color:var(--dark_green_blue);
+    color: var(--white);
+}
+
+.update_button:active{
+    background-color:var(--green);
+    color: var(--white);
 }
