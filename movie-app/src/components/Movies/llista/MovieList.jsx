@@ -137,7 +137,7 @@ export class MovieList extends Component{
                     </div>
                     
                     {this.state.formIsActive?
-                    <button onClick={this.showForm} type="button" name="openForm" className="button_open_form_opened"><i class="fa-solid fa-xmark"></i></button>
+                    <button onClick={this.showForm} type="button" name="openForm" className="button_open_form_opened"><i className="fa-solid fa-xmark"></i></button>
                     : <button onClick={this.showForm} type="button" name="openForm" className="button_open_form_closed"><i className="fa-solid fa-plus"></i></button>
                     }
 
