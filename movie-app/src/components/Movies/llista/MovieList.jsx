@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { createUUID } from "../../../utilities/createUuid";
 import { MovieCard } from "../card/MovieCard";
 import { FormBinding } from "../form_binding/FormBinding";
 // import { MovieForm } from "../form/MovieForm"; /*ESTÀ COMENTAT PER FER EL BIND DEL FORM A SOBRE*/
@@ -84,14 +85,24 @@ export class MovieList extends Component{
     };
 
     addMovie = (data) =>  {
-        let lastIndex = this.state.movies[this.state.movies.length-1].id;
-        let newIndex = lastIndex+1;
-        let newMovie = {id:newIndex,...data};
+        // OPCIÓ 1
+        // let lastIndex = this.state.movies[this.state.movies.length-1].id;
+        // let newIndex = lastIndex+1;
+        // let newMovie = {id:newIndex,...data};
+        // this.setState({movies:[newMovie,...this.state.movies]});
 
-        this.setState({movies:[newMovie,...this.state.movies]});
+        // OPCIÓ 2
+        data.id = createUUID();
+        this.setState({movies:[data,...this.state.movies]});
     };
 
     deleteMovie = (id) => {
+
+        let movieToDelete = this.state.movies.filter(movie => movie.id === id);
+        let deleteConfirmation = window.confirm(`Remove ${movieToDelete[0].title} from the list?`);
+        if(!deleteConfirmation) return; 
+        // CLÀUSULA DE SALVAGUARDA
+
         let selectedMovies = this.state.movies.filter(movie => movie.id !== id);
 
         this.setState({movies: selectedMovies});
@@ -104,17 +115,20 @@ export class MovieList extends Component{
     
     updateMovie = (id) => {
         this.setState({formIsActive:true});
+
         let movieToUpdate = this.state.movies.filter(movie => movie.id === id);
-        // console.log(movieToUpdate[0].title);
-        return movieToUpdate;
-    }
+        console.log(movieToUpdate[0]);
+    };
 
     render() {
         return (<section className="the_list">
 
                     {/* OPCIÓ 2 SHOW&HIDE FORM: FORMBINDING RENDER CLASS &{} + 2 CLASSES CSS FORM + MOVIELIST RENDER COMENTAT */}
                     {/* <FormBinding addMovie={this.addMovie} updateMovie={this.updateMovie} formIsActive={this.state.formIsActive} /> */}
-                    {this.state.formIsActive?<FormBinding addMovie={this.addMovie} updateMovie={this.updateMovie}/>:''}
+                    {this.state.formIsActive?
+                    <FormBinding addMovie={this.addMovie} updateMovie={this.updateMovie}/>
+                    :''
+                    }
                     
                     <div className="movies_list">   
                         {this.state.movies.map((movie,key) => (
@@ -122,7 +136,11 @@ export class MovieList extends Component{
                         ))}   
                     </div>
                     
-                    <button onClick={this.showForm} type="button" name="openForm" className="button_open_form"><i className="fa-solid fa-plus"></i></button>
+                    {this.state.formIsActive?
+                    <button onClick={this.showForm} type="button" name="openForm" className="button_open_form_opened"><i class="fa-solid fa-xmark"></i></button>
+                    : <button onClick={this.showForm} type="button" name="openForm" className="button_open_form_closed"><i className="fa-solid fa-plus"></i></button>
+                    }
+
                 </section>)
     };
 }

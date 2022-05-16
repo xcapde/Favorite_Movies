@@ -30,6 +30,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
     width: 50%;
 }
 
@@ -40,7 +41,7 @@
     color: var(--almost_dark);
 }
 
-.create_button, .updateForm_button{
+.create_button{
     background-color: var(--semi_dark);
     color: var(--white);
     border: none;
@@ -48,16 +49,12 @@
 
 }
 
-.create_button:hover, .updateForm_button:hover{
+.create_button:hover{
     background-color: var(--dark_green_blue);
 }
 
 .create_button:active{
     background-color: var(--green_blue);
-}
-
-.updateForm_button:active{
-    background-color: var(--green);
 }
 
 /* OPCIÓ 2 SHOW&HIDE FORM: FORMBINDING RENDER CLASS &{} + 2 CLASSES CSS FORM + MOVIELIST RENDER COMENTAT */

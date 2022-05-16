@@ -1,6 +1,12 @@
 import { Component } from "react";
 
 export class MovieCard extends Component {
+    constructor(){
+        super();
+        this.state={
+
+        }
+    }
 
     render() {
         // props --> per passar estats o variables de pare (movieList) a fill (cardList)
