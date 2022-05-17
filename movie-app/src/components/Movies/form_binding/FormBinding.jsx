@@ -2,17 +2,13 @@ import { Component } from "react";
 
 //IDEAL PER FER UPDATES VEIENT EL RESULTAT A L'INSTANT!
 export class FormBinding extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
     this.state = {
         seePreview:false,
-        newMovie:{
-            title:'',
-            year:'',
-            imgURL:'',
-            genres:'',
-        },
+        editIsActive:this.props.editIsActive,
+        newMovie:this.props.movieToEdit,
     };
     }
     keyPress = (key, e) => { 
@@ -41,31 +37,29 @@ export class FormBinding extends Component {
 
         const value = e.target.value;
         console.log(value)
-
+        
         this.setState({newMovie: {...this.state.newMovie, [name]:value}});
-        this.showPreview();
         //ES POSA EL ... PERQUÈ MANTINGUI TOTA LA INFORMACIÓ DELS ALTRES CAMPS I NO SE SOBREESCRIGUIN.
+
+        this.showPreview();
     };
 
-    // NO FUNCIONA BÉ, ELS INPUTS COMENCEN AMB LLARGADA 1, 0, 1, 2.. 
+    // NO FUNCIONA BÉ, ELS INPUTS COMENCEN AMB LLARGADA 1, 0, 1, 2..  --> DESACTIVAT A RENDER.
     showPreview = () => {
-        if(this.state.newMovie.imgURL.length > 0) this.setState({seePreview:true})
+        if(this.state.newMovie!==0) this.setState({seePreview:true})
         else this.setState({seePreview:false});
 
         console.log(this.state.seePreview);
-        console.log(this.state.newMovie.imgURL.length)
+        console.log(this.state.newMovie.length);
+
     };
 
-    updateThis = () =>{
-        let movieToUpdate = this.props.movieToUpdate;
-        // this.resetFormInputs();
+    movieEditing = () =>{
+        if(this.state.newMovie!=='') this.setState({editionMode:false})
+        else this.setState({editionMode:true});
+    };
 
-        this.setState({newMovie:{title:movieToUpdate.title}});
-        console.log(movieToUpdate[0].title)
-    }
-
-    render (){
-        
+    render (){      
         // OPCIÓ 2 SHOW&HIDE FORM: FORMBINDING RENDER CLASS &{} + 2 CLASSES CSS FORM + MOVIELIST RENDER COMENTAT
         // return (<section className={`form_and_preview ${this.props.formIsActive?'form_active':'form_inactive'}`}>
         
@@ -81,21 +75,21 @@ export class FormBinding extends Component {
                     </form>
 
                     {/* OPCIÓ 1 PREVIEW */}
-                    {/* <div className="previewMovie">
+                    <div className="previewMovie">
                                 <img src={this.state.newMovie.imgURL} alt=""/>
                                 <div className="previewMovie_detail">Preview</div>
-                    </div> */}
+                    </div>
 
                     {/* OPCIÓ 2 PREVIEW */}
                     {/* SHOW&HIDE PREVIEW --> DOESN'T WORK WELL */}
-                    <div className="previewZone">
+                    {/* <div className="previewZone">
                         {this.state.seePreview?
                         <div className="previewMovie">
                             <img src={this.state.newMovie.imgURL} alt=""/>
-                                    <div className="previewMovie_detail">Preview</div>
+                            <div className="previewMovie_detail">Preview</div>
                         </div>
                         :''}
-                    </div>
+                    </div> */}
 
                 </section>) 
     };

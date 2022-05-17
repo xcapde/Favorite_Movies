@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { movieServices } from "../../../services_APIs/movieServices";
 import { createUUID } from "../../../utilities/createUuid";
 import { MovieCard } from "../card/MovieCard";
 import { FormBinding } from "../form_binding/FormBinding";
@@ -16,72 +17,15 @@ export class MovieList extends Component{
 
         this.state = {
             formIsActive:false,
-            movies:[
-                {
-                    id: 1,
-                    title: "Interstellar",
-                    year: 2014,
-                    imgURL: "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
-                    genres: "Adventure, Drama, Sci-Fi"
-                },
-                {
-                    id: 2,
-                    title: "The Island",
-                    year: 2005,
-                    imgURL: "https://m.media-amazon.com/images/I/51nDms-dZZL.jpg",
-                    genres: "Action, Sci-Fi, Thriller"
-                },
-                {
-                    id: 3,
-                    title: "The Lion King",
-                    year: 1994,
-                    imgURL: "https://static.posters.cz/image/750/posters/lion-king-cover-i11508.jpg",
-                    genres: "Animation, Adventure, Drama"
-                },
-                {
-                    id: 4,
-                    title: "Intouchables",
-                    year: 2011,
-                    imgURL: "https://www.ethanproductions.com/movies-newDB/images/8436535541282.jpg",
-                    genres: "Biography, Comedy, Drama"
-                },
-                {
-                    id: 5,
-                    title: "Wall-E",
-                    year: 2008,
-                    imgURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbfXIhUhNKZ1CY_KaKQUIEwsZKHLyY8QU0Nh_oZQxMuQRZETcSMbpCRvCXZLS0xezMQzQ&usqp=CAU",
-                    genres: "Animation, Adventure, Family"
-                },
-                {
-                    id: 6,
-                    title: "The Avengers",
-                    year: 2012,
-                    imgURL: "https://wannagotothemovies.files.wordpress.com/2012/04/1-poster8.jpg",
-                    genres: "Action, Adventure, Sci-Fi"
-                },
-                {
-                    id: 7,
-                    title: "Braveheart",
-                    year: 1995,
-                    imgURL: "https://i.ytimg.com/vi/eBjvpfmxJG8/movieposter.jpg",
-                    genres: "Biography, Drama, History"
-                },
-                {
-                    id: 8,
-                    title: "Coco",
-                    year: 2017,
-                    imgURL: "https://tietarteve.com/wp-content/uploads/2015/11/Coco2.jpg",
-                    genres: "Animation, Adventure, Comedy"
-                },
-                {
-                    id: 9,
-                    title: "The Truman Show",
-                    year: 1993,
-                    imgURL: "https://es.web.img3.acsta.net/medias/nmedia/18/90/27/81/20482778.jpg",
-                    genres: "Comedy, Drama"
-                },
-            ],
+            editIsActive:false,           
+            movieToEdit:{}, 
+            movies:[],
         }
+    };
+
+    // AL CARREGAR LA PÀGINA TAMBÉ CARREGA LES MOVIES DE L'API
+    componentDidMount() {
+        this.setState({movies:movieServices.getAllMovies()})
     };
 
     addMovie = (data) =>  {
@@ -94,6 +38,8 @@ export class MovieList extends Component{
         // OPCIÓ 2
         data.id = createUUID();
         this.setState({movies:[data,...this.state.movies]});
+        // TANCAR FORMULARI AUTO QUAN PELI AFEGIDA
+        // this.setState({formIsActive:false});
     };
 
     deleteMovie = (id) => {
@@ -109,15 +55,22 @@ export class MovieList extends Component{
     };
 
     showForm = () => {
-        if(this.state.formIsActive) this.setState({formIsActive:false})
-        else this.setState({formIsActive:true})
+        // OPCIÓ 1
+        // if(this.state.formIsActive) this.setState({formIsActive:false})
+        // else this.setState({formIsActive:true});
+        
+        // OPCIÓ 2: REDUIDA
+        this.setState({formIsActive:!this.state.formIsActive});
     };
     
-    updateMovie = (id) => {
+    movieToEdit = (id) => {
         this.setState({formIsActive:true});
 
-        let movieToUpdate = this.state.movies.filter(movie => movie.id === id);
-        console.log(movieToUpdate[0]);
+
+        let pickedMovie = this.state.movies.filter(movie => movie.id === id);
+        this.setState({movieToEdit:pickedMovie[0]});
+
+        console.log(this.state.movieToEdit);
     };
 
     render() {
@@ -126,13 +79,13 @@ export class MovieList extends Component{
                     {/* OPCIÓ 2 SHOW&HIDE FORM: FORMBINDING RENDER CLASS &{} + 2 CLASSES CSS FORM + MOVIELIST RENDER COMENTAT */}
                     {/* <FormBinding addMovie={this.addMovie} updateMovie={this.updateMovie} formIsActive={this.state.formIsActive} /> */}
                     {this.state.formIsActive?
-                    <FormBinding addMovie={this.addMovie} updateMovie={this.updateMovie}/>
+                    <FormBinding addMovie={this.addMovie} movieToEdit={this.state.movieToEdit} editIsActive={this.state.editIsActive} />
                     :''
                     }
                     
                     <div className="movies_list">   
                         {this.state.movies.map((movie,key) => (
-                            <MovieCard key={key} movie={movie} deleteMovie={this.deleteMovie} updateMovie={this.updateMovie} />
+                            <MovieCard key={key} movie={movie} deleteMovie={this.deleteMovie} movieToEdit={this.movieToEdit} />
                         ))}   
                     </div>
                     
