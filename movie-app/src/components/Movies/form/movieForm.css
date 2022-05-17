@@ -41,11 +41,24 @@
     color: var(--almost_dark);
 }
 
-.create_button, .update_button{
+.create_button, .update_button, .resetForm_button{
     background-color: var(--semi_dark);
     color: var(--white);
     border: none;
     padding: 0.2rem 0.5rem;
+    width: 100%;
+    position: relative;
+}
+
+.resetForm_button{
+    z-index: 1;
+    position: absolute;
+    top:33%;
+    right: 5%;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    font-size: x-small;
 }
 
 .create_button:hover{
@@ -60,6 +73,10 @@
     /* background-color: var(--semi_dark); */
     /* background-color: var(--green); */
     background-color: rgba(255, 255, 255, 0.452);
+}
+    /* PEL TERNARY NO ACTIVAT PERQUÈ NO FUNCIONA CORRECTAMENT */
+.update_button_ready{
+        background-color: var(--green);
 }
 
 .update_button:hover{

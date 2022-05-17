@@ -77,7 +77,7 @@ export class MovieList extends Component{
         return (<section className="the_list">
 
                     {this.state.formIsActive?
-                    <FormBinding addMovie={this.addMovie} movieToEdit={this.state.movieToEdit} editIsActive={this.state.editIsActive} />
+                    <FormBinding addMovie={this.addMovie} movieToEdit={this.state.movieToEdit} editIsActive={this.state.editIsActive} movies={this.state.movies} />
                     :''
                     }
                     
