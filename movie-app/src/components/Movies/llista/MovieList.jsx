@@ -2,7 +2,7 @@ import { Component } from "react";
 import { movieServices } from "../../../services_APIs/movieServices";
 import { createUUID } from "../../../utilities/createUuid";
 import { MovieCard } from "../card/MovieCard";
-import { FormBinding } from "../form_binding/FormBinding";
+import { FormBinding } from "../form/FormBinding";
 // import { MovieForm } from "../form/MovieForm"; /*ESTÀ COMENTAT PER FER EL BIND DEL FORM A SOBRE*/
 
 // INCLOURE BOTÓ EDITAR A LES CARDS I PREVIEW DE LA IMATGE EN EL FORM
@@ -25,7 +25,7 @@ export class MovieList extends Component{
 
     // AL CARREGAR LA PÀGINA TAMBÉ CARREGA LES MOVIES DE L'API
     componentDidMount() {
-        this.setState({movies:movieServices.getAllMovies()})
+        this.setState({movies:movieServices.getAllMovies()});
     };
 
     editMovie = (id) => {
@@ -33,8 +33,9 @@ export class MovieList extends Component{
 
         let selectedMovie = this.state.movies.filter(movie => movie.id === id);
         this.setState({movieToEdit:selectedMovie[0]});
+        // console.log(this.state.movieToEdit);
 
-        console.log(this.state.movieToEdit);
+        this.setState({editIsActive:true})
     };
 
     addMovie = (data) =>  {
@@ -75,8 +76,6 @@ export class MovieList extends Component{
     render() {
         return (<section className="the_list">
 
-                    {/* OPCIÓ 2 SHOW&HIDE FORM: FORMBINDING RENDER CLASS &{} + 2 CLASSES CSS FORM + MOVIELIST RENDER COMENTAT */}
-                    {/* <FormBinding addMovie={this.addMovie} updateMovie={this.updateMovie} formIsActive={this.state.formIsActive} /> */}
                     {this.state.formIsActive?
                     <FormBinding addMovie={this.addMovie} movieToEdit={this.state.movieToEdit} editIsActive={this.state.editIsActive} />
                     :''

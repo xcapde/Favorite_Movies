@@ -41,12 +41,11 @@
     color: var(--almost_dark);
 }
 
-.create_button{
+.create_button, .update_button{
     background-color: var(--semi_dark);
     color: var(--white);
     border: none;
     padding: 0.2rem 0.5rem;
-
 }
 
 .create_button:hover{
@@ -57,13 +56,16 @@
     background-color: var(--green_blue);
 }
 
-/* OPCIÓ 2 SHOW&HIDE FORM: FORMBINDING RENDER CLASS &{} + 2 CLASSES CSS FORM + MOVIELIST RENDER COMENTAT */
-/* CLASSES ASSOCIADES AL BOTÓ I AL FORM PER CANVIAR ENTRE SHOW & HIDE FORMULARI */
-
-.form_active{
-    display: flex;
+.update_button{
+    /* background-color: var(--semi_dark); */
+    /* background-color: var(--green); */
+    background-color: rgba(255, 255, 255, 0.452);
 }
 
-.form_inactive{
-    display: none;
+.update_button:hover{
+    background-color: var(--dark_green);
+}
+
+.update_button:active{
+    background-color: var(--light_green);
 }

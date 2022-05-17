@@ -17,7 +17,12 @@
     --darker_orange:rgb(255, 115, 0);
     --semi_orange:.0rem .0rem .2rem rgba(255, 140, 0, 0.644);
     --pastel_blue:rgb(97, 191, 235);
+    --light_purple:rgb(147, 46, 214);
+    --purple:rgb(123, 26, 187);
+    --dark_purple:rgb(102, 13, 161);
+    --light_green:rgb(31, 218, 62);
     --green:rgb(21, 197, 51);
+    --dark_green:rgb(12, 179, 40);
 }
 
 *{
