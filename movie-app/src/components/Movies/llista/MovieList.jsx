@@ -28,6 +28,15 @@ export class MovieList extends Component{
         this.setState({movies:movieServices.getAllMovies()})
     };
 
+    editMovie = (id) => {
+        this.setState({formIsActive:true});
+
+        let selectedMovie = this.state.movies.filter(movie => movie.id === id);
+        this.setState({movieToEdit:selectedMovie[0]});
+
+        console.log(this.state.movieToEdit);
+    };
+
     addMovie = (data) =>  {
         // OPCIÓ 1
         // let lastIndex = this.state.movies[this.state.movies.length-1].id;
@@ -62,16 +71,6 @@ export class MovieList extends Component{
         // OPCIÓ 2: REDUIDA
         this.setState({formIsActive:!this.state.formIsActive});
     };
-    
-    movieToEdit = (id) => {
-        this.setState({formIsActive:true});
-
-
-        let pickedMovie = this.state.movies.filter(movie => movie.id === id);
-        this.setState({movieToEdit:pickedMovie[0]});
-
-        console.log(this.state.movieToEdit);
-    };
 
     render() {
         return (<section className="the_list">
@@ -85,7 +84,7 @@ export class MovieList extends Component{
                     
                     <div className="movies_list">   
                         {this.state.movies.map((movie,key) => (
-                            <MovieCard key={key} movie={movie} deleteMovie={this.deleteMovie} movieToEdit={this.movieToEdit} />
+                            <MovieCard key={key} movie={movie} deleteMovie={this.deleteMovie} editMovie={this.editMovie} />
                         ))}   
                     </div>
                     

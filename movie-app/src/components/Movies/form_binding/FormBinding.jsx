@@ -51,7 +51,6 @@ export class FormBinding extends Component {
 
         console.log(this.state.seePreview);
         console.log(this.state.newMovie.length);
-
     };
 
     movieEditing = () =>{
