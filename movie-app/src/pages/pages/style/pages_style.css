@@ -1,0 +1,60 @@
+:root {
+    --white:white;
+    --light:rgb(245, 245, 245);
+    --grey:rgb(80, 80, 80);
+    --almost_dark:rgb(27, 27, 26);
+    --orange: darkorange;
+    --light_pink_red:rgb(247, 37, 79);
+    --pink_red:crimson;
+    --dark_pink_red:rgb(206, 6, 46);
+}
+
+.pages{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color:var(--almost_dark);
+    width: 100vw;
+    height: 100vh;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.pages h1{
+    background: none;
+    color: var(--orange);
+    font-weight: lighter;
+}
+
+.pages a{
+    background: none;
+}
+
+.pages_buttons{
+    background: none;
+    width: 100%;
+}
+
+.pages_buttons button{
+color: var(--white);
+background: none;
+background-color: var(--pink_red);
+border: none;
+border-radius: 1rem;
+padding: 1rem;
+margin: 5% 2% 0% 2%;
+}
+
+.pages_buttons button:hover{
+    background-color: var(--dark_pink_red);
+}
+
+.pages_buttons button:active{
+    background-color: var(--light_pink_red);
+}
+
+.pages_buttons button i{
+    font-size: medium;
+    background: none;
+}

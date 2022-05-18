@@ -22,6 +22,7 @@
     display: flex;
     justify-content:center;
     align-items: center;
+    background-color:var(--almost_dark);
 }
 
 .input_form {
@@ -32,6 +33,8 @@
     justify-content: center;
     position: relative;
     width: 50%;
+    background-color:var(--almost_dark);
+
 }
 
 .input_form input{

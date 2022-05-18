@@ -1,18 +1,15 @@
-import { MovieList } from './components/Movies/llista/MovieList';
 import './components/Movies/llista/main.css';
-import './components/Movies/form/movieForm.css';
-// import { ChangeImage } from './components/ChangeImage/Main/ChangeImage';
-// import './components/ChangeImage/Main/changeImage.css';
-// import './components/ChangeImage/Preview/preview.css';
-import './components/Movies/form/bind_preview.css';
+import { Home } from './pages/home/Home';
+import { MovieList } from '../../components/Movies/llista/MovieList'
+
 
 function App() {
-  return (
-    <div className="App">
-      < MovieList />
-      {/* <ChangeImage /> */}
-    </div>    
-  );
+  return  (
+            <div className='App'>
+              {/* <Home/> */}
+              <MovieList/>
+            </div>
+          );
 }
 
 export default App;

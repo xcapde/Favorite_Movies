@@ -25,7 +25,8 @@ export class MovieList extends Component{
 
     // AL CARREGAR LA PÀGINA TAMBÉ CARREGA LES MOVIES DE L'API
     componentDidMount() {
-        this.setState({movies:movieServices.getAllMovies()});
+        this.setState({
+            movies:movieServices.getAllMovies()});
     };
 
     editMovie = (id) => {
@@ -49,7 +50,7 @@ export class MovieList extends Component{
         data.id = createUUID();
         this.setState({movies:[data,...this.state.movies]});
         // TANCAR FORMULARI AUTO QUAN PELI AFEGIDA
-        // this.setState({formIsActive:false});
+        this.setState({formIsActive:false});
     };
 
     deleteMovie = (id) => {

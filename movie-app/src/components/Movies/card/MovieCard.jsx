@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Link } from 'react-router-dom';
 
 export class MovieCard extends Component {
 
@@ -12,6 +13,7 @@ export class MovieCard extends Component {
                         <div className="movie_img">
                             <img src={movie.imgURL} alt="movie cover"/>
                             <button className="favorite_button"><i className="fa-solid fa-star"></i></button>
+                            <Link to="/movie_detail"><button className="movie_detail_button"><i class="fa-solid fa-info"></i></button></Link>
                         </div>
                         <div className="movie_info">
                             <div className="card_text">

@@ -7,9 +7,10 @@ export class FormBinding extends Component {
 
     this.state = {
         seePreview:false,
-        newMovie:this.props.movieToEdit,
         movies:this.props.movies,
+        newMovie:this.props.movieToEdit,
         editIsActive:this.props.editIsActive,
+        formIsActive:this.props.formIsActive,
         // updateIsAvaliable:false,
     };
     }
@@ -21,9 +22,9 @@ export class FormBinding extends Component {
     };
 
     movieUpdate = () =>{
-        console.log('Sóc movieUpdate ^^');
+        console.log('👁️‍🗨️Sóc movieUpdate');
         if(this.state.newMovie===this.props.movieToEdit){
-            console.log('Yessss twins!');
+            console.log('✅Yessss twins!');
             // hauria de tancar-se l'edit sense afegir card
         }
         else{
@@ -32,7 +33,7 @@ export class FormBinding extends Component {
             // console.log(this.props.movieToEdit)
             // this.setState({updateIsAvaliable:true})
             // console.log(this.state.updateIsAvaliable)
-            console.log('Nooo som iguals..!');
+            console.log('❌Nooo som iguals..!');
             // hauria de fer copia de l'array original i modificar només la posició de la [id]
             // i modificar state amb setState igualant-lo a la copia de l'array després de l'operació.
 
@@ -40,6 +41,7 @@ export class FormBinding extends Component {
             console.log(this.state.movies);
 
         this.setState({editIsActive:false});
+        this.setState({formIsActive:false});
     };
         
     handleSubmit = (e) => {
