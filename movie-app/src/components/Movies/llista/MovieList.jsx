@@ -72,13 +72,18 @@ export class MovieList extends Component{
         
         // OPCIÓ 2: REDUIDA
         this.setState({formIsActive:!this.state.formIsActive});
+        if(this.state.editIsActive===false){
+            console.log('👁️‍🗨️Sóc showForm');
+            console.log('😶 Hauríem de borrar el valor dels inputs!')
+        }
     };
 
     render() {
         return (<section className="the_list">
 
                     {this.state.formIsActive?
-                    <FormBinding addMovie={this.addMovie} movieToEdit={this.state.movieToEdit} editIsActive={this.state.editIsActive} movies={this.state.movies} />
+                    <FormBinding addMovie={this.addMovie} movieToEdit={this.state.movieToEdit} 
+                    editIsActive={this.state.editIsActive} movies={this.state.movies} showForm={this.showForm} />
                     :''
                     }
                     

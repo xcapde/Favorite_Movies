@@ -22,35 +22,32 @@ export class FormBinding extends Component {
     };
 
     movieUpdate = () =>{
-        console.log('👁️‍🗨️Sóc movieUpdate');
-        if(this.state.newMovie===this.props.movieToEdit){
-            console.log('✅Yessss twins!');
-            // hauria de tancar-se l'edit sense afegir card
-        }
-        else{
-        //(this.state.newMovie!==this.props.movieToEdit)
-            // console.log(this.state.newMovie)
-            // console.log(this.props.movieToEdit)
-            // this.setState({updateIsAvaliable:true})
-            // console.log(this.state.updateIsAvaliable)
-            console.log('❌Nooo som iguals..!');
-            // hauria de fer copia de l'array original i modificar només la posició de la [id]
-            // i modificar state amb setState igualant-lo a la copia de l'array després de l'operació.
-
-        }        
-            console.log(this.state.movies);
-
-        this.setState({editIsActive:false});
-        this.setState({formIsActive:false});
     };
         
     handleSubmit = (e) => {
         e.preventDefault();
 
-        if (this.state.newMovie.title.length > 0){
+        if ((this.props.editIsActive===false)&&(this.state.newMovie.title.length > 0)){
             this.props.addMovie(this.state.newMovie);
         }
+        if((this.props.editIsActive===true)&&(this.state.newMovie===this.props.movieToEdit)){
+            console.log('👁️‍🗨️Sóc handleSubmit');
+            console.log('❌ No ha canviat res!')
+            // hauria de tancar-se l'edit sense afegir card
 
+        }
+        if ((this.props.editIsActive===true)&&(this.state.newMovie!==this.props.movieToEdit)){
+            console.log('👁️‍🗨️Sóc handleSubmit');
+            console.log('✅ Són diferents! què vols que faci?')
+            // hauria de fer copia de l'array original i modificar només la posició de la [id]
+            // i modificar state amb setState igualant-lo a la copia de l'array després de l'operació.
+
+            this.movieUpdate();
+        }
+        console.log(this.state.movies);
+
+        this.setState({editIsActive:false});
+        this.props.showForm()
         this.resetFormInputs();
     };
 
@@ -81,8 +78,7 @@ export class FormBinding extends Component {
 
     render (){              
         return (<section className="form_and_preview">
-                    {/* <button onClick={this.resetFormInputs} className="resetForm_button"><i class="fa-solid fa-trash-can"></i></button> */}
-                    
+                    <button onClick={this.resetFormInputs} className="resetForm_button">&times;</button>                
                     <form onSubmit={this.handleSubmit} className="input_form">
                             <input onChange ={this.onInputChange} value={this.state.newMovie.title} type="text" name="title" className="title_input" placeholder="Title"/>
                             <input onChange ={this.onInputChange} value={this.state.newMovie.year} type="text" name='year' className="year_input" placeholder="Year"/>
@@ -96,7 +92,7 @@ export class FormBinding extends Component {
 
                             {/* className={this.state.updateIsAvaliable? "update_button":"update_button_ready"} DOUBLE TERNARY CONDITIONAL*/}
                     </form>
-
+                    
                     {/* OPCIÓ 1 - PREVIEW */}
                     <div className="previewMovie">
                                 <img src={this.state.newMovie.imgURL} alt=""/>
