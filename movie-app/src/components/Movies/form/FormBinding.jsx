@@ -37,7 +37,7 @@ export class FormBinding extends Component {
         if ((this.props.editIsActive===true)&&(this.state.newMovie!==this.props.movieToEdit)){
             this.updateMovie();
         }
-        
+
         this.resetFormInputs();
         this.props.showForm();
     };
@@ -66,6 +66,8 @@ export class FormBinding extends Component {
     };
 
     render (){
+        console.log(this.props.movieToEdit.title)
+
         return (<section className="form_and_preview">
 
                     <button onClick={this.resetFormInputs} className="resetForm_button">&times;</button>                

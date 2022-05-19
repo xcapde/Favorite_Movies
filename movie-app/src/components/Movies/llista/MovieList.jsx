@@ -18,7 +18,6 @@ export class MovieList extends Component{
         this.state = {
             formIsActive:false,
             editIsActive:false,
-            createIsActive:false,           
             movieToEdit:{}, 
             indexToEdit:'',
             movies:[],
@@ -85,7 +84,7 @@ export class MovieList extends Component{
                     {this.state.formIsActive?
                     <FormBinding addMovie={this.addMovie} movieToEdit={this.state.movieToEdit} 
                     editIsActive={this.state.editIsActive} movies={this.state.movies} showForm={this.showForm} 
-                    indexToEdit={this.state.indexToEdit}/>
+                    indexToEdit={this.state.indexToEdit} createIsActive={this.state.createIsActive}/>
                     :''
                     }
                     
