@@ -16,6 +16,7 @@
     height: 100%;
     border-color: rgba(20, 20, 20, 0.829); 
     object-fit: cover;
+    /* display: contents; */
 }
 
 .previewMovie_detail{

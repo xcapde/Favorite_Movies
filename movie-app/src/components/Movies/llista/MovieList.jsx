@@ -3,13 +3,6 @@ import { movieServices } from "../../../services_APIs/movieServices";
 import { createUUID } from "../../../utilities/createUuid";
 import { MovieCard } from "../card/MovieCard";
 import { FormBinding } from "../form/FormBinding";
-// import { MovieForm } from "../form/MovieForm"; /*ESTÀ COMENTAT PER FER EL BIND DEL FORM A SOBRE*/
-
-// INCLOURE BOTÓ EDITAR A LES CARDS I PREVIEW DE LA IMATGE EN EL FORM
-    // QUAN CLIC, S'OMPLE EN EL FORM AMB LES DADES I LA IMATGE EN LA PREVIEW
-    // QUAN MODIFIQUEM URL DE LA IMATGE CANVIA LA PREVIEW EN L'INSTANT
-    // TAMBÉ MODIFICAR ALTRES CAMPS
-    // QUAN OK --> ES GUARDA A L'ESTAT DE LA CARD --> STATE UPDATE
 
 export class MovieList extends Component{
     constructor(){ 
@@ -18,16 +11,28 @@ export class MovieList extends Component{
         this.state = {
             formIsActive:false,
             editIsActive:false,
+            createIsActive:false,
             movieToEdit:{}, 
             indexToEdit:'',
             movies:[],
         }
     };
 
-    // AL CARREGAR LA PÀGINA TAMBÉ CARREGA LES MOVIES DE L'API
+    // QUAN ES RENDERITZA LA PÀGINA, TAMBÉ CARREGA LES MOVIES DE L'API
     componentDidMount() {
         this.setState({
             movies:movieServices.getAllMovies()});        
+    };
+
+    resetFormInputs_Add = () => {
+        this.setState({movieToEdit:{title:'', year:'', imgURL:'',genres:''}})
+    };
+
+    createMovie = () => {
+        this.setState({createIsActive:!this.state.createIsActive});
+        this.setState({editIsActive:false});
+        this.showForm();
+        this.resetFormInputs_Add();
     };
 
     editMovie = (id) => {
@@ -60,7 +65,7 @@ export class MovieList extends Component{
     deleteMovie = (id) => {
 
         let movieToDelete = this.state.movies.filter(movie => movie.id === id);
-        let deleteConfirmation = window.confirm(`Remove ${movieToDelete[0].title} from the list?`);
+        let deleteConfirmation = window.confirm(`❌ Remove ${movieToDelete[0].title} from the list?`);
         if(!deleteConfirmation) return; 
         // CLÀUSULA DE SALVAGUARDA
 
@@ -84,7 +89,7 @@ export class MovieList extends Component{
                     {this.state.formIsActive?
                     <FormBinding addMovie={this.addMovie} movieToEdit={this.state.movieToEdit} 
                     editIsActive={this.state.editIsActive} movies={this.state.movies} showForm={this.showForm} 
-                    indexToEdit={this.state.indexToEdit} createIsActive={this.state.createIsActive}/>
+                    indexToEdit={this.state.indexToEdit} createIsActive={this.state.createIsActive} createMovie={this.createMovie}/>
                     :''
                     }
                     
@@ -95,8 +100,8 @@ export class MovieList extends Component{
                     </div>
                     
                     {this.state.formIsActive?
-                    <button onClick={this.showForm} type="button" name="openForm" className="button_open_form_opened"><i className="fa-solid fa-xmark"></i></button>
-                    : <button onClick={this.showForm} type="button" name="openForm" className="button_open_form_closed"><i className="fa-solid fa-plus"></i></button>
+                    <button onClick={this.createMovie} type="button" name="openForm" className="button_open_form_opened"><i className="fa-solid fa-xmark"></i></button>
+                    : <button onClick={this.createMovie} type="button" name="openForm" className="button_open_form_closed"><i className="fa-solid fa-plus"></i></button>
                     }
 
                 </section>)

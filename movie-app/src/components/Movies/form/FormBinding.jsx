@@ -10,6 +10,7 @@ export class FormBinding extends Component {
         movies:this.props.movies,
         newMovie:this.props.movieToEdit,
         editIsActive:this.props.editIsActive,
+        createIsActive:this.props.createIsActive,
         formIsActive:this.props.formIsActive,
     };
     }
@@ -32,10 +33,11 @@ export class FormBinding extends Component {
             this.props.addMovie(this.state.newMovie);
         }
         if((this.props.editIsActive===true)&&(this.state.newMovie===this.props.movieToEdit)){
-            alert(`❌ There is not new data for ${this.props.movieToEdit.title}`) 
+            alert(`ℹ️ ${this.props.movieToEdit.title} details have not changed`) 
         }
         if ((this.props.editIsActive===true)&&(this.state.newMovie!==this.props.movieToEdit)){
             this.updateMovie();
+            alert(`✅ ${this.props.movieToEdit.title} has been updated!`) 
         }
 
         this.resetFormInputs();
@@ -53,14 +55,13 @@ export class FormBinding extends Component {
         // console.log(value)
         this.setState({newMovie: {...this.state.newMovie, [name]:value}});
         //ES POSA EL ... PERQUÈ MANTINGUI TOTA LA INFORMACIÓ DELS ALTRES CAMPS I NO SE SOBREESCRIGUIN.
-        // this.showPreview();
     };
 
     // NO OK, DESACTIVAT
     showPreview = () => {
         //No funciona bé, la llargada de l'input comença a 1 i segueix en 0, 1 ,2.. --> desactivat en el RENDER
-        if(this.state.newMovie!==0) this.setState({seePreview:true})
-        else this.setState({seePreview:false});
+        if(this.state.newMovie.imgURL>0) this.setState({seePreview:true})
+        else {this.setState({seePreview:false})};
         // console.log(this.state.seePreview);
         // console.log(this.state.newMovie);
     };
@@ -80,26 +81,32 @@ export class FormBinding extends Component {
                             
                             {this.state.editIsActive?
                             <button type="submit" name='updateButton' className="update_button">Update</button>
-                            : <button type="submit" name='addButton' className="create_button">Create</button>
-                            }
+                            : <button type="submit" name='addButton' className="create_button">Create</button>}
 
                             {/* className={this.state.updateIsAvaliable? "update_button":"update_button_ready"} DOUBLE TERNARY CONDITIONAL*/}
                     </form>
+
                     
                     {/* OPCIÓ 1 - PREVIEW */}
-                    <div className="previewMovie">
-                                <img src={this.state.newMovie.imgURL} alt=""/>
+                    {/* <div className="previewMovie">
+                                <img src={this.state.newMovie.imgURL} alt=" "/>
                                 <div className="previewMovie_detail">Preview</div>
-                    </div>
+                    </div> */}
 
                     {/* OPCIÓ 2 - PREVIEW - TERNARY DOESN'T WORK WELL*/}
-                    {/* <div className="previewZone">
-                        {this.state.seePreview?
-                        <div className="previewMovie">
-                            <img src={this.state.newMovie.imgURL} alt=""/>
+                    <div className="previewZone">
+                        <div className={this.state.seePreview? "previewMovie_hidden":"previewMovie"}>
+                            <img src={this.state.newMovie.imgURL} alt="" />
                             <div className="previewMovie_detail">Preview</div>
                         </div>
-                        :''}
+                    </div>
+
+                    {/* OPCIÓ 3 - PREVIEW TERNARY CHANGE OK */}
+                    {/* <div className="previewMovie">
+                                {this.state.editIsActive?
+                                <img src={this.props.movieToEdit.imgURL} alt=" "/>
+                                : <img src={this.state.newMovie.imgURL} alt=" "/>}
+                                <div className="previewMovie_detail">Preview</div>
                     </div> */}
 
                 </section>) 
