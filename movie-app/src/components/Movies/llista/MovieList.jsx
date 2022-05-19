@@ -17,7 +17,8 @@ export class MovieList extends Component{
 
         this.state = {
             formIsActive:false,
-            editIsActive:false,           
+            editIsActive:false,
+            createIsActive:false,           
             movieToEdit:{}, 
             indexToEdit:'',
             movies:[],
@@ -31,17 +32,15 @@ export class MovieList extends Component{
     };
 
     editMovie = (id) => {
-
         this.setState({formIsActive:true});
-        this.setState({editIsActive:true})
+        this.setState({editIsActive:true});
+        this.setState({createIsActive:false});
     
         let selectedMovie = this.state.movies.filter(movie => movie.id === id);
         this.setState({movieToEdit:selectedMovie[0]});
 
         let selectedIndex = this.state.movies.findIndex(movie => movie.id === id);
         this.setState({indexToEdit:selectedIndex})
-        // console.log(`index to edit =' ${selectedIndex}`)
-        // console.log(`id to edit ${id}`)
 
         this.setState({editIsActive:true})
     };
@@ -56,7 +55,7 @@ export class MovieList extends Component{
         // OPCIÓ 2
         data.id = createUUID();
         this.setState({movies:[data,...this.state.movies]});
-        this.setState({formIsActive:false});
+        this.setState({createIsActive:false});
     };
 
     deleteMovie = (id) => {
@@ -78,10 +77,6 @@ export class MovieList extends Component{
         
         // OPCIÓ 2: REDUIDA
         this.setState({formIsActive:!this.state.formIsActive});
-        if((this.state.formIsActive===false)){
-            console.log('👁️‍🗨️ShowForm');
-            console.log('😒 Hauríem de poder escriure nova peli')
-        }
     };
 
     render() {

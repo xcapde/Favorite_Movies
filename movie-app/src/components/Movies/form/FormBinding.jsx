@@ -20,7 +20,7 @@ export class FormBinding extends Component {
         }
     };
 
-    updateMovie = () =>{
+    updateMovie = () => {
         this.setState({movies:[this.state.newMovie,...this.props.movies]});
         this.state.movies.splice(this.props.indexToEdit,1,this.state.newMovie)
     };
@@ -36,10 +36,10 @@ export class FormBinding extends Component {
         }
         if ((this.props.editIsActive===true)&&(this.state.newMovie!==this.props.movieToEdit)){
             this.updateMovie();
-            // console.log('👁️‍🗨️Sóc handleSubmit');
-            // console.log('✅ Són diferents! què vols que faci?')
         }
-        this.props.showForm()
+        
+        this.resetFormInputs();
+        this.props.showForm();
     };
 
     resetFormInputs = () => {
@@ -101,6 +101,6 @@ export class FormBinding extends Component {
                     </div> */}
 
                 </section>) 
-    };
+        };
 
 }
