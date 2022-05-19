@@ -29,6 +29,7 @@
 
 .pages a{
     background: none;
+    display: contents;
 }
 
 .pages_buttons{

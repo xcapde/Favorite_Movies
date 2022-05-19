@@ -10,6 +10,10 @@
     margin-right: 1%;
 }
 
+.card_buttons a{
+    display: contents;
+}
+
 .favorite_button, .delete_button, .edit_button, .movie_detail_button{
     z-index: 1;
     border: none;
@@ -24,6 +28,7 @@
     justify-content: center;
     margin: 0;
     padding: 0;
+    cursor: pointer;
 }
 
 .favorite_button i, .delete_button i, .edit_button i, .movie_detail_button i{

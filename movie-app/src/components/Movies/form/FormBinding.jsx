@@ -11,7 +11,6 @@ export class FormBinding extends Component {
         newMovie:this.props.movieToEdit,
         editIsActive:this.props.editIsActive,
         formIsActive:this.props.formIsActive,
-        // updateIsAvaliable:false,
     };
     }
     
@@ -21,7 +20,9 @@ export class FormBinding extends Component {
         }
     };
 
-    movieUpdate = () =>{
+    updateMovie = () =>{
+        this.setState({movies:[this.state.newMovie,...this.props.movies]});
+        this.state.movies.splice(this.props.indexToEdit,1,this.state.newMovie)
     };
         
     handleSubmit = (e) => {
@@ -31,24 +32,14 @@ export class FormBinding extends Component {
             this.props.addMovie(this.state.newMovie);
         }
         if((this.props.editIsActive===true)&&(this.state.newMovie===this.props.movieToEdit)){
-            console.log('👁️‍🗨️Sóc handleSubmit');
-            console.log('❌ No ha canviat res!')
-            // hauria de tancar-se l'edit sense afegir card
-
+            alert(`❌ There is not new data for ${this.props.movieToEdit.title}`) 
         }
         if ((this.props.editIsActive===true)&&(this.state.newMovie!==this.props.movieToEdit)){
-            console.log('👁️‍🗨️Sóc handleSubmit');
-            console.log('✅ Són diferents! què vols que faci?')
-            // hauria de fer copia de l'array original i modificar només la posició de la [id]
-            // i modificar state amb setState igualant-lo a la copia de l'array després de l'operació.
-
-            this.movieUpdate();
+            this.updateMovie();
+            // console.log('👁️‍🗨️Sóc handleSubmit');
+            // console.log('✅ Són diferents! què vols que faci?')
         }
-        console.log(this.state.movies);
-
-        this.setState({editIsActive:false});
         this.props.showForm()
-        this.resetFormInputs();
     };
 
     resetFormInputs = () => {
@@ -62,8 +53,7 @@ export class FormBinding extends Component {
         // console.log(value)
         this.setState({newMovie: {...this.state.newMovie, [name]:value}});
         //ES POSA EL ... PERQUÈ MANTINGUI TOTA LA INFORMACIÓ DELS ALTRES CAMPS I NO SE SOBREESCRIGUIN.
-
-        this.showPreview();
+        // this.showPreview();
     };
 
     // NO OK, DESACTIVAT
@@ -71,22 +61,23 @@ export class FormBinding extends Component {
         //No funciona bé, la llargada de l'input comença a 1 i segueix en 0, 1 ,2.. --> desactivat en el RENDER
         if(this.state.newMovie!==0) this.setState({seePreview:true})
         else this.setState({seePreview:false});
-
         // console.log(this.state.seePreview);
         // console.log(this.state.newMovie);
     };
 
-    render (){              
+    render (){
         return (<section className="form_and_preview">
+
                     <button onClick={this.resetFormInputs} className="resetForm_button">&times;</button>                
                     <form onSubmit={this.handleSubmit} className="input_form">
+                            
                             <input onChange ={this.onInputChange} value={this.state.newMovie.title} type="text" name="title" className="title_input" placeholder="Title"/>
                             <input onChange ={this.onInputChange} value={this.state.newMovie.year} type="text" name='year' className="year_input" placeholder="Year"/>
                             <input onChange ={this.onInputChange} value={this.state.newMovie.imgURL} type="text" name='imgURL' className="imgURL_input" placeholder="Cover image URL"/>
                             <input onChange ={this.onInputChange} value={this.state.newMovie.genres} type="text" name='genres' className="genres_input" placeholder="Genres"/>
-
+                            
                             {this.state.editIsActive?
-                            <button onClick={this.movieUpdate} type="submit" name='updateButton' className="update_button">Update</button>
+                            <button type="submit" name='updateButton' className="update_button">Update</button>
                             : <button type="submit" name='addButton' className="create_button">Create</button>
                             }
 
