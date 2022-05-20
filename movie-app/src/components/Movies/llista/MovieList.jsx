@@ -19,11 +19,17 @@ export class MovieList extends Component{
         }
     };
 
-    // QUAN ES RENDERITZA LA PÀGINA, TAMBÉ CARREGA LES MOVIES DES DE L'API
-    componentDidMount() {
+    // FUNCIÓ EXTERNA QUE GUARDA LA FUNCIÓ DE GET DATA DEL SERVER 
+    // PER UTILITZAR A ALTRES FUNCIONS, COM A DELETE.
+    getData = () => {
         movieServices.getAllMovies().then(res => {
             this.setState({movies:res});
         })
+    };
+
+    // QUAN ES RENDERITZA LA PÀGINA, TAMBÉ CARREGA LES MOVIES DES DE L'API
+    componentDidMount() {
+        this.getData();
 
         // movieServices.getAllMovies EQUIVAL A LA PROMESA D'AXIOS (movies) A JS, QUE NO ESTÀ RESOLTA ENCARA,
         // SEGUIM POSANT UN ".THEN" PER QUAN COMPLEIXI LA PROMESA,
@@ -77,14 +83,19 @@ export class MovieList extends Component{
 
     deleteMovie = (id) => {
 
-        let movieToDelete = this.state.movies.filter(movie => movie.id === id);
-        let deleteConfirmation = window.confirm(`❌ Remove ${movieToDelete[0].title} from the list?`);
+        let deleteConfirmation = window.confirm(`❌ Remove from the list?`);
         if(!deleteConfirmation) return; 
         // CLÀUSULA DE SALVAGUARDA
 
-        let selectedMovies = this.state.movies.filter(movie => movie.id !== id);
+        movieServices.deleteAMovie(id).then(res => {
+            this.getData();
+            alert(`❌${res.title} deleted`)
+        });
+        // OPCIÓ SENSE SERVER API
+        // let movieToDelete = this.state.movies.filter(movie => movie.id === id);
+        // let selectedMovies = this.state.movies.filter(movie => movie.id !== id);
 
-        this.setState({movies: selectedMovies});
+        // this.setState({movies: selectedMovies});
     };
 
     showForm = () => {

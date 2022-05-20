@@ -13,11 +13,13 @@ export class FormBinding extends Component {
         editIsActive:this.props.editIsActive,
         createIsActive:this.props.createIsActive,
     };
-    }
+    };
 
 //ACTUALITZA L'ESTAT A L'INSTANT
     componentDidUpdate() {
         this.state.newMovie=this.props.movieToEdit;
+        console.log(this.state.newMovie)
+
     };
     
     keyPress = (key, e) => { 
