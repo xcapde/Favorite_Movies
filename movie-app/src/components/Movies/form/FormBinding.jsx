@@ -9,11 +9,16 @@ export class FormBinding extends Component {
         seePreview:false,
         movies:this.props.movies,
         newMovie:this.props.movieToEdit,
+        formIsActive:this.props.formIsActive,
         editIsActive:this.props.editIsActive,
         createIsActive:this.props.createIsActive,
-        formIsActive:this.props.formIsActive,
     };
     }
+
+//ACTUALITZA L'ESTAT A L'INSTANT
+    componentDidUpdate() {
+        this.state.newMovie=this.props.movieToEdit;
+    };
     
     keyPress = (key, e) => { 
         if (key === "Enter") {
@@ -87,27 +92,19 @@ export class FormBinding extends Component {
                     </form>
 
                     
-                    {/* OPCIÓ 1 - PREVIEW */}
+                    {/* OPCIÓ 1 - PREVIEW NORMAL*/}
                     {/* <div className="previewMovie">
                                 <img src={this.state.newMovie.imgURL} alt=" "/>
                                 <div className="previewMovie_detail">Preview</div>
                     </div> */}
 
-                    {/* OPCIÓ 2 - PREVIEW - TERNARY DOESN'T WORK WELL*/}
+                    {/* OPCIÓ 2 - PREVIEW TERNARY. DOESN'T WORK WELL*/}
                     <div className="previewZone">
                         <div className={this.state.seePreview? "previewMovie_hidden":"previewMovie"}>
                             <img src={this.state.newMovie.imgURL} alt="" />
                             <div className="previewMovie_detail">Preview</div>
                         </div>
                     </div>
-
-                    {/* OPCIÓ 3 - PREVIEW TERNARY CHANGE OK */}
-                    {/* <div className="previewMovie">
-                                {this.state.editIsActive?
-                                <img src={this.props.movieToEdit.imgURL} alt=" "/>
-                                : <img src={this.state.newMovie.imgURL} alt=" "/>}
-                                <div className="previewMovie_detail">Preview</div>
-                    </div> */}
 
                 </section>) 
         };

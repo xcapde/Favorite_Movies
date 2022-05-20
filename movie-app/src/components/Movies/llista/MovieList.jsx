@@ -4,6 +4,7 @@ import { createUUID } from "../../../utilities/createUuid";
 import { MovieCard } from "../card/MovieCard";
 import { FormBinding } from "../form/FormBinding";
 
+// IGUALAR ELS PROPS QUE CANVIO QUAN CLICO EDITMOVIE --> IGUALAR A STATE (SETSTATE) PERQUÈ MOSTRI LA INFO DE LA CARD CORRECTE
 export class MovieList extends Component{
     constructor(){ 
         super();
@@ -18,10 +19,20 @@ export class MovieList extends Component{
         }
     };
 
-    // QUAN ES RENDERITZA LA PÀGINA, TAMBÉ CARREGA LES MOVIES DE L'API
+    // QUAN ES RENDERITZA LA PÀGINA, TAMBÉ CARREGA LES MOVIES DES DE L'API
     componentDidMount() {
-        this.setState({
-            movies:movieServices.getAllMovies()});        
+        movieServices.getAllMovies().then(res => {
+            this.setState({movies:res});
+        })
+
+        // movieServices.getAllMovies EQUIVAL A LA PROMESA D'AXIOS (movies) A JS, QUE NO ESTÀ RESOLTA ENCARA,
+        // SEGUIM POSANT UN ".THEN" PER QUAN COMPLEIXI LA PROMESA,
+        // QUAN HAGI RESOLT -> CANVIÏ L'ESTAT AMB UN this.setState
+
+        // COMENTAT PERQUÈ HO FAREM DES DEL SERVIDOR --> SERVICES --> movieServices.js
+        // this.setState({
+        //     movies:movieServices.getAllMovies()
+        // });        
     };
 
     resetFormInputs_Add = () => {
@@ -36,6 +47,8 @@ export class MovieList extends Component{
     };
 
     editMovie = (id) => {
+
+
         this.setState({formIsActive:true});
         this.setState({editIsActive:true});
         this.setState({createIsActive:false});

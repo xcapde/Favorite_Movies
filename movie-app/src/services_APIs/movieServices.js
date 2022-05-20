@@ -1,10 +1,33 @@
-import movies from "./movies.json"
+// OPCIÓ 1: DES D'UNA API INTERNA
+// import movies from "./movies.json"
+// export const movieServices = {
+//     getAllMovies() {
+//         return movies;
+//     },
+// }
 
+// OPCIÓ 2: DES DEL SERVER
+// UTILITZANT TIPUS FETCH - EN AQUEST CAS UNA LLIBRERIA QUE ES DIU AXIOS -> IMPORT
+// FEM UNA CONSTANT A ON IGUALAR AMB L'URL I LA FEM SERVIR A GET +/MOVIES(ENDPOINT) PER ENTRAR DINS DEL PROJECTE
+
+import axios from "axios"
+const baseURL = 'https://62863bbb96bccbf32d71c12e.mockapi.io'
 export const movieServices = {
     getAllMovies() {
+        const movies = axios.get(baseURL+"/movies").then((res)=> {
+                return res.data;
+            });
+
         return movies;
     },
+
+    deleteAMovie(id) {
+        const deletedMovie = axios.delete(baseURL+`/movies/${id}`).then((res) => {
+            console.log(res.data)
+        })
+    }
 }
+
 
 
 //CLASSE 17/05/22
