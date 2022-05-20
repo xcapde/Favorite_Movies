@@ -13,14 +13,14 @@ export class FormBinding extends Component {
         editIsActive:this.props.editIsActive,
         createIsActive:this.props.createIsActive,
     };
-    };
+    }
 
 //ACTUALITZA L'ESTAT A L'INSTANT
-    componentDidUpdate() {
-        this.state.newMovie=this.props.movieToEdit;
-        console.log(this.state.newMovie)
-
-    };
+// ULL!!!!!! SI NO ES COMENTA NO EM DEIXA AFEGIR NOVES MOVIES... TÉ A VEURE AMB EL SERVER SUPOSO IGUAL QUE DELETE QUE NO DEIXA ELIMINAR LES NOVES.
+    // componentDidUpdate() {
+    //     this.state.newMovie=this.props.movieToEdit;
+    //     console.log(this.state.newMovie)
+    // };
     
     keyPress = (key, e) => { 
         if (key === "Enter") {
