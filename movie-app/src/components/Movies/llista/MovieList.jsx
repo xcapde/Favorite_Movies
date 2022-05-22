@@ -69,16 +69,24 @@ export class MovieList extends Component{
     };
 
     addMovie = (data) =>  {
-        // OPCIÓ 1
+
+        // movieServices.postAMovie(data).then(res => {
+        //     this.setState({movies:[res,...this.state.movies]});
+        //     alert(`✅${res.title} added!`)
+        //     this.setState({createIsActive:false});
+        //     this.getData();
+        // });
+
+        // OPCIÓ 2 UUID - SENSE API SERVER
+        data.id = createUUID();
+        this.setState({movies:[data,...this.state.movies]});
+        this.setState({createIsActive:false});
+        
+        // OPCIÓ 1 INDEX+1 - NO API
         // let lastIndex = this.state.movies[this.state.movies.length-1].id;
         // let newIndex = lastIndex+1;
         // let newMovie = {id:newIndex,...data};
         // this.setState({movies:[newMovie,...this.state.movies]});
-
-        // OPCIÓ 2
-        data.id = createUUID();
-        this.setState({movies:[data,...this.state.movies]});
-        this.setState({createIsActive:false});
     };
 
     deleteMovie = (id) => {
@@ -113,7 +121,8 @@ export class MovieList extends Component{
                     {this.state.formIsActive?
                     <FormBinding addMovie={this.addMovie} movieToEdit={this.state.movieToEdit} 
                     editIsActive={this.state.editIsActive} movies={this.state.movies} showForm={this.showForm} 
-                    indexToEdit={this.state.indexToEdit} createIsActive={this.state.createIsActive} createMovie={this.createMovie}/>
+                    indexToEdit={this.state.indexToEdit} createIsActive={this.state.createIsActive} createMovie={this.createMovie} 
+                    key={this.state.movieToEdit.id}/>
                     :''
                     }
                     

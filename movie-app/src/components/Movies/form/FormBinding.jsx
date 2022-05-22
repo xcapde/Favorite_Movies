@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Preview } from "./preview/Preview";
 
 //IDEAL PER FER UPDATES VEIENT EL RESULTAT A L'INSTANT!
 export class FormBinding extends Component {
@@ -13,15 +14,8 @@ export class FormBinding extends Component {
         editIsActive:this.props.editIsActive,
         createIsActive:this.props.createIsActive,
     };
-    }
+    };
 
-//ACTUALITZA L'ESTAT A L'INSTANT
-// ULL!!!!!! SI NO ES COMENTA NO EM DEIXA AFEGIR NOVES MOVIES... TÉ A VEURE AMB EL SERVER SUPOSO IGUAL QUE DELETE QUE NO DEIXA ELIMINAR LES NOVES.
-    // componentDidUpdate() {
-    //     this.state.newMovie=this.props.movieToEdit;
-    //     console.log(this.state.newMovie)
-    // };
-    
     keyPress = (key, e) => { 
         if (key === "Enter") {
           e.target.addButton.click();
@@ -89,23 +83,11 @@ export class FormBinding extends Component {
                             {this.state.editIsActive?
                             <button type="submit" name='updateButton' className="update_button">Update</button>
                             : <button type="submit" name='addButton' className="create_button">Create</button>}
-
-                            {/* className={this.state.updateIsAvaliable? "update_button":"update_button_ready"} DOUBLE TERNARY CONDITIONAL*/}
                     </form>
 
-                    
-                    {/* OPCIÓ 1 - PREVIEW NORMAL*/}
-                    {/* <div className="previewMovie">
-                                <img src={this.state.newMovie.imgURL} alt=" "/>
-                                <div className="previewMovie_detail">Preview</div>
-                    </div> */}
-
-                    {/* OPCIÓ 2 - PREVIEW TERNARY. DOESN'T WORK WELL*/}
+                    {/* TERNARY. DOESN'T WORK WELL*/}
                     <div className="previewZone">
-                        <div className={this.state.seePreview? "previewMovie_hidden":"previewMovie"}>
-                            <img src={this.state.newMovie.imgURL} alt="" />
-                            <div className="previewMovie_detail">Preview</div>
-                        </div>
+                        < Preview seePreview={this.state.seePreview} newMovie={this.state.newMovie} />
                     </div>
 
                 </section>) 
