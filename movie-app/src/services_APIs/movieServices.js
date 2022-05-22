@@ -17,7 +17,6 @@ export const movieServices = {
         const movies = axios.get(baseURL+"/movies").then((res)=> {
                 return res.data;
             });
-
         return movies;
     },
 
@@ -25,20 +24,21 @@ export const movieServices = {
         const deletedMovie = axios.delete(baseURL+`/movies/${id}`).then((res) => {
             return res.data;
         })
-
         return deletedMovie;
     },
 
-    // postAMovie(data) {
-    //     const newMovie = axios.post(baseURL+`/movies`,{data}).then((res) => {
-    //         return res.data;
-    //     })
-    // },
+    postAMovie(data) {
+        const postNewMovie = axios.post(baseURL+`/movies`, data).then((res) => {
+            return res.data;
+        })     
+        return postNewMovie;
+    },
 
-    // putAMovie(id) {
-    //     const updatedMovie = axios.post(baseURL+`/movies/${id}`).then((res) => {
+    // putAMovie(id,data) {
+    //     const updatedMovie = axios.post(baseURL+`/movies/${id}`, data).then((res) => {
     //         return res.data;
     //     })
+    //     return updatedMovie;
     // },
 }
 

@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { movieServices } from "../../../services_APIs/movieServices";
-import { createUUID } from "../../../utilities/createUuid";
+// import { createUUID } from "../../../utilities/createUuid";
 import { MovieCard } from "../card/MovieCard";
 import { FormBinding } from "../form/FormBinding";
 
@@ -70,17 +70,16 @@ export class MovieList extends Component{
 
     addMovie = (data) =>  {
 
-        // movieServices.postAMovie(data).then(res => {
-        //     this.setState({movies:[res,...this.state.movies]});
-        //     alert(`✅${res.title} added!`)
-        //     this.setState({createIsActive:false});
-        //     this.getData();
-        // });
+        movieServices.postAMovie(data).then(res => {
+            this.setState({createIsActive:false});
+            this.getData();
+            alert(`✅${res.title} added!`)
+        });
 
         // OPCIÓ 2 UUID - SENSE API SERVER
-        data.id = createUUID();
-        this.setState({movies:[data,...this.state.movies]});
-        this.setState({createIsActive:false});
+        // data.id = createUUID();
+        // this.setState({movies:[data,...this.state.movies]});
+        // this.setState({createIsActive:false});
         
         // OPCIÓ 1 INDEX+1 - NO API
         // let lastIndex = this.state.movies[this.state.movies.length-1].id;
@@ -122,7 +121,7 @@ export class MovieList extends Component{
                     <FormBinding addMovie={this.addMovie} movieToEdit={this.state.movieToEdit} 
                     editIsActive={this.state.editIsActive} movies={this.state.movies} showForm={this.showForm} 
                     indexToEdit={this.state.indexToEdit} createIsActive={this.state.createIsActive} createMovie={this.createMovie} 
-                    key={this.state.movieToEdit.id}/>
+                    key={this.state.movieToEdit.id} getData={this.getData}/>
                     :''
                     }
                     
