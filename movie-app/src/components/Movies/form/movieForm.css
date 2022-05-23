@@ -1,3 +1,5 @@
+@import url(../llista/mobile.css);
+
 :root {
     --white:rgb(255,255,255);
     --almost_white:rgb(231, 231, 231);

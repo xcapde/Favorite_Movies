@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { movieServices } from "../../../services_APIs/movieServices";
-// import { createUUID } from "../../../utilities/createUuid";
 import { MovieCard } from "../card/MovieCard";
 import { FormBinding } from "../form/FormBinding";
 import '../llista/main.css';
@@ -107,7 +106,6 @@ export class MovieList extends Component{
             alert(`❌${res.title} deleted`)
         });
         // OPCIÓ SENSE SERVER API
-        // let movieToDelete = this.state.movies.filter(movie => movie.id === id);
         // let selectedMovies = this.state.movies.filter(movie => movie.id !== id);
 
         // this.setState({movies: selectedMovies});
