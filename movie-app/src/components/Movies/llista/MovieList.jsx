@@ -68,8 +68,8 @@ export class MovieList extends Component{
     };
 
     updateOneMovie = (id,data) => {
-        movieServices.putAMovie(id, data).then(res => {
-            // movieServices.putAMovie(parseInt(id), data).then(res => { --> per passar la ID d'String a Número, no cal.
+        movieServices.putMovie(id, data).then(res => {
+            // movieServices.putMovie(parseInt(id), data).then(res => { --> per passar la ID d'String a Número, no cal.
             // console.log(res)
             this.getData();
         });
@@ -77,7 +77,7 @@ export class MovieList extends Component{
 
     addMovie = (data) =>  {
 
-        movieServices.postAMovie(data).then(res => {
+        movieServices.postMovie(data).then(res => {
             this.setState({createIsActive:false});
             this.getData();
             alert(`✅${res.title} added!`)
@@ -103,7 +103,7 @@ export class MovieList extends Component{
 
         movieServices.deleteAMovie(id).then(res => {
             this.getData();
-            alert(`❌${res.title} deleted`)
+            alert(`❌${res.title} removed`)
         });
         // OPCIÓ SENSE SERVER API
         // let selectedMovies = this.state.movies.filter(movie => movie.id !== id);

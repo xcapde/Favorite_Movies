@@ -1,21 +1,21 @@
 import React from "react";
 import { BrowserRouter, Routes, Route,} from "react-router-dom";
 import { Home } from "../pages/home/Home";
-import { Login } from "../pages/pages/LogIn";
-import { MovieDetail } from "../pages/pages/MovieDetail";
+import { MovieDetails } from "../pages/pages/MovieDetails";
 import { SubPage } from "../pages/pages/SubPage";
 
-// abreviació teclat = rfc 
-// link per entrar a movie_detail posat a movies cards
+// Abreviació teclat = rfc 
+// Link per entrar a movie_detail posat a movies cards
+// Posem els : al "path" per indicar que "id" és un valor dinàmic
+
 
 export default function RouterSample(){
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={< Home />} />
-                <Route path="/login" element={< Login/>} />
-                <Route path="/movie_detail" element={< MovieDetail/>} />
-                <Route path="/movie_detail/subpage" element={< SubPage />} />
+                <Route path="/movie_detail/:id" element={< MovieDetails/>} />
+                <Route path="/movie_detail/:id/subpage" element={< SubPage />} />
             </Routes>
         </BrowserRouter>
     );

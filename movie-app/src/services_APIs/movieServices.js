@@ -27,18 +27,25 @@ export const movieServices = {
         return deletedMovie;
     },
 
-    postAMovie(data) {
+    postMovie(data) {
         const postNewMovie = axios.post(baseURL+`/movies`, data).then((res) => {
             return res.data;
         })     
         return postNewMovie;
     },
 
-    putAMovie(id,data) {
+    putMovie(id,data) {
         const updatedMovie = axios.put(baseURL+`/movies/${id}`, data).then((res) => {
             return res.data;
         })
         return updatedMovie;
+    },
+
+    getMovieById(id) {
+        const movieById = axios.get(baseURL+`/movies/${id}`).then((res) => {
+            return res.data;
+        })
+        return movieById;
     },
 }
 

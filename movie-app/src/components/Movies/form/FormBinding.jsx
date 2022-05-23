@@ -85,7 +85,7 @@ export class FormBinding extends Component {
                             
                             <input onChange ={this.onInputChange} value={this.state.newMovie.title} type="text" name="title" className="title_input" placeholder="Title"/>
                             <input onChange ={this.onInputChange} value={this.state.newMovie.year} type="text" name='year' className="year_input" placeholder="Year"/>
-                            <input onChange ={this.onInputChange} value={this.state.newMovie.imgURL} type="text" name='imgURL' className="imgURL_input" placeholder="Cover image URL"/>
+                            <input onChange ={this.onInputChange} value={this.state.newMovie.imgURL} type="text" name='imgURL' className="imgURL_input" placeholder="Image URL"/>
                             <input onChange ={this.onInputChange} value={this.state.newMovie.genres} type="text" name='genres' className="genres_input" placeholder="Genres"/>
                             
                             {this.state.editIsActive?
@@ -100,8 +100,6 @@ export class FormBinding extends Component {
                             <Preview seePreview={this.state.seePreview} newMovie={this.state.newMovie} />
                         </div>
                     }
-
                 </section>) 
         };
-
 }
