@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { Preview } from "./preview/Preview";
-// import { movieServices } from "../../../services_APIs/movieServices";
 
 
 //IDEAL PER FER UPDATES VEIENT EL RESULTAT A L'INSTANT!
@@ -25,14 +24,16 @@ export class FormBinding extends Component {
     };
 
     updateMovie = () => {
-        // movieServices.putAMovie().then(res => {
-        // this.props.getData();
-        // console.log(res)
-        // });
+        let movie = this.state.newMovie;
+        let id = movie.id;
+        // delete movie.id;
+        let data = movie;
 
-        // OPCIÓ 1 - SENSE SERVER API
-        this.setState({movies:[this.state.newMovie,...this.props.movies]});
-        this.state.movies.splice(this.props.indexToEdit,1,this.state.newMovie)
+        this.props.updateOneMovie(id,data);
+        
+        // OPCIÓ 1 - SENSE API SERVER
+        // this.setState({movies:[this.state.newMovie,...this.props.movies]});
+        // this.state.movies.splice(this.props.indexToEdit,1,this.state.newMovie)
     };
         
     handleSubmit = (e) => {
@@ -76,7 +77,6 @@ export class FormBinding extends Component {
     };
 
     render (){
-        console.log(this.props.movieToEdit.title)
 
         return (<section className="form_and_preview">
 
@@ -94,9 +94,12 @@ export class FormBinding extends Component {
                     </form>
 
                     {/* TERNARY. DOESN'T WORK WELL*/}
-                    <div className="previewZone">
-                        < Preview seePreview={this.state.seePreview} newMovie={this.state.newMovie} />
-                    </div>
+                    {this.props.seePreview?
+                        '':
+                        <div className="previewZone">
+                            <Preview seePreview={this.state.seePreview} newMovie={this.state.newMovie} />
+                        </div>
+                    }
 
                 </section>) 
         };

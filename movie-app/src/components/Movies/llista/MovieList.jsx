@@ -52,20 +52,26 @@ export class MovieList extends Component{
         this.resetFormInputs_Add();
     };
 
-    editMovie = (id) => {
-
-
+    editMovie = (data) => {
         this.setState({formIsActive:true});
         this.setState({editIsActive:true});
         this.setState({createIsActive:false});
-    
-        let selectedMovie = this.state.movies.filter(movie => movie.id === id);
-        this.setState({movieToEdit:selectedMovie[0]});
+        
+        this.setState({movieToEdit:data});
 
-        let selectedIndex = this.state.movies.findIndex(movie => movie.id === id);
-        this.setState({indexToEdit:selectedIndex})
+        // OPCIÓ 1 SENSE API SERVER
+        // let selectedMovie = this.state.movies.filter(movie => movie.id === id);
 
-        this.setState({editIsActive:true})
+        // let selectedIndex = this.state.movies.findIndex(movie => movie.id === id);
+        // this.setState({indexToEdit:selectedIndex})
+    };
+
+    updateOneMovie = (id,data) => {
+        movieServices.putAMovie(id, data).then(res => {
+            // movieServices.putAMovie(parseInt(id), data).then(res => { --> per passar la ID d'String a Número, no cal.
+            // console.log(res)
+            this.getData();
+        });
     };
 
     addMovie = (data) =>  {
@@ -118,22 +124,22 @@ export class MovieList extends Component{
         return (<section className="the_list">
 
                     {this.state.formIsActive?
-                    <FormBinding addMovie={this.addMovie} movieToEdit={this.state.movieToEdit} 
-                    editIsActive={this.state.editIsActive} movies={this.state.movies} showForm={this.showForm} 
-                    indexToEdit={this.state.indexToEdit} createIsActive={this.state.createIsActive} createMovie={this.createMovie} 
-                    key={this.state.movieToEdit.id} getData={this.getData}/>
-                    :''
+                        <FormBinding addMovie={this.addMovie} movieToEdit={this.state.movieToEdit} 
+                        editIsActive={this.state.editIsActive} movies={this.state.movies} showForm={this.showForm} 
+                        indexToEdit={this.state.indexToEdit} createIsActive={this.state.createIsActive} createMovie={this.createMovie} 
+                        key={this.state.movieToEdit.id} updateOneMovie={this.updateOneMovie} />
+                        :''
                     }
                     
                     <div className="movies_list">   
                         {this.state.movies.map((movie,key) => (
                             <MovieCard key={key} movie={movie} deleteMovie={this.deleteMovie} editMovie={this.editMovie} />
-                        ))}   
+                        )).reverse()}   
                     </div>
                     
                     {this.state.formIsActive?
-                    <button onClick={this.createMovie} type="button" name="openForm" className="button_open_form_opened"><i className="fa-solid fa-xmark"></i></button>
-                    : <button onClick={this.createMovie} type="button" name="openForm" className="button_open_form_closed"><i className="fa-solid fa-plus"></i></button>
+                        <button onClick={this.createMovie} type="button" name="openForm" className="button_open_form_opened"><i className="fa-solid fa-xmark"></i></button>
+                        : <button onClick={this.createMovie} type="button" name="openForm" className="button_open_form_closed"><i className="fa-solid fa-plus"></i></button>
                     }
 
                 </section>)

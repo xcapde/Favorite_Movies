@@ -11,10 +11,10 @@ export class Preview extends Component{
 
     render(){
         return  (
-                <div className={this.props.seePreview? "previewMovie_hidden":"previewMovie"}>
+                <div className="previewMovie">
                     <img src={this.props.newMovie.imgURL} alt=""/>
                     <div className="previewMovie_detail">Preview</div>
                 </div>
                 )
-    };
+        };
 }

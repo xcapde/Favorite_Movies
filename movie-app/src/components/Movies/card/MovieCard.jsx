@@ -22,7 +22,8 @@ export class MovieCard extends Component {
                                 <h2>{movie.year}</h2>
                             </div>
                             <div className="card_buttons">
-                                <button onClick={()=>this.props.editMovie(movie.id)} className="edit_button"><i className="fa-solid fa-pencil"></i></button>
+                                {/* OPCIÓ 2-A EDIT MOVIE PASSEM TOTA LA MOVIE PERQUÈ LA ID PER AGAFAR LA DATA A LIST*/}
+                                <button onClick={()=>this.props.editMovie(movie)} className="edit_button"><i className="fa-solid fa-pencil"></i></button>
                                 <button onClick={()=>this.props.deleteMovie(movie.id)} className="delete_button"><i className="fa-solid fa-trash-can"></i></button>
                             </div>
                         </div>

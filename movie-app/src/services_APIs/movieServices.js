@@ -34,12 +34,12 @@ export const movieServices = {
         return postNewMovie;
     },
 
-    // putAMovie(id,data) {
-    //     const updatedMovie = axios.post(baseURL+`/movies/${id}`, data).then((res) => {
-    //         return res.data;
-    //     })
-    //     return updatedMovie;
-    // },
+    putAMovie(id,data) {
+        const updatedMovie = axios.put(baseURL+`/movies/${id}`, data).then((res) => {
+            return res.data;
+        })
+        return updatedMovie;
+    },
 }
 
 
