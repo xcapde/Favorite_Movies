@@ -1,5 +1,8 @@
 import { Component } from "react";
 import { Link } from 'react-router-dom';
+import '../card/card.css';
+import '../card/card_buttons.css';
+import '../llista/mobile.css';
 
 export class MovieCard extends Component {
 

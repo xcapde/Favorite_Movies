@@ -1,4 +1,6 @@
 import { Component } from "react";
+import '../preview/preview.css';
+
 
 export class Preview extends Component{
     constructor(props){

@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Preview } from "./preview/Preview";
-
+import '../form/movieForm.css';
+import '../llista/mobile.css';
 
 //IDEAL PER FER UPDATES VEIENT EL RESULTAT A L'INSTANT!
 export class FormBinding extends Component {

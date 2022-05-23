@@ -1,4 +1,3 @@
-import './components/Movies/llista/main.css';
 import { Home } from './pages/home/Home';
 import { MovieList } from '../../components/Movies/llista/MovieList'
 

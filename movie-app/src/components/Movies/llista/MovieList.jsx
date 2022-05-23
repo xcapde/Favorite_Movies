@@ -3,6 +3,8 @@ import { movieServices } from "../../../services_APIs/movieServices";
 // import { createUUID } from "../../../utilities/createUuid";
 import { MovieCard } from "../card/MovieCard";
 import { FormBinding } from "../form/FormBinding";
+import '../llista/main.css';
+import '../llista/mobile.css';
 
 // IGUALAR ELS PROPS QUE CANVIO QUAN CLICO EDITMOVIE --> IGUALAR A STATE (SETSTATE) PERQUÈ MOSTRI LA INFO DE LA CARD CORRECTE
 export class MovieList extends Component{
