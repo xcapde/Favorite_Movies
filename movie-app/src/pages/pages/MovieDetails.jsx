@@ -4,8 +4,8 @@ import './style/pages_style.css';
 import { movieServices } from "../../services_APIs/movieServices";
 
 export class MovieDetails extends Component  {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             movieInfo:{},
         };

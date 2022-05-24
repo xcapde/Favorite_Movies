@@ -14,6 +14,7 @@ export class MovieList extends Component{
             formIsActive:false,
             editIsActive:false,
             createIsActive:false,
+            favoriteListIsActive:false,
             movieToEdit:{}, 
             indexToEdit:'',
             movies:[],
@@ -148,12 +149,18 @@ export class MovieList extends Component{
         this.setState({formIsActive:!this.state.formIsActive});
     };
 
-    switchList = () => {
-        // if.. bla bla bla..
-        let favList = this.state.movies.filter(movie => movie.formIsActive === true);
-        console.log(favList)
-        // this.setState({movies:favList})
-    };
+    // switchList = () => {
+    //     this.setState({favoriteListIsActive:!this.state.favoriteListIsActive});
+        
+    //     let favList = this.state.movies.filter(movie => movie.id<50);
+    //     console.log(favList)
+    //     let allMovies=this.state.movies;
+    //     if(this.state.favoriteListIsActive===true){
+    //     this.setState({movies:favList});
+    //     }else{
+    //     this.setState({movies:allMovies})
+    //     }
+    // };
 
     render() {
         return (<section className="the_list">
@@ -162,13 +169,13 @@ export class MovieList extends Component{
                         <Form addMovie={this.addMovie} movieToEdit={this.state.movieToEdit} 
                         editIsActive={this.state.editIsActive} movies={this.state.movies} showForm={this.showForm} 
                         indexToEdit={this.state.indexToEdit} createIsActive={this.state.createIsActive} 
-                        createMovie={this.createMovie} key={this.state.movieToEdit.id} updateOneMovie={this.updateOneMovie} />
+                        createMovie={this.createMovie} key={this.state.movieToEdit.id} updateOneMovie={this.updateOneMovie}/>
                         :''
                     }
                     
                     <div className="movies_list">   
                         {this.state.movies.map((movie,key) => (
-                            <MovieCard key={key} movie={movie} deleteMovie={this.deleteMovie} editMovie={this.editMovie} />
+                            <MovieCard key={key} movie={movie} deleteMovie={this.deleteMovie} editMovie={this.editMovie}/>
                         )).reverse()}   
                     </div>
                     
@@ -177,7 +184,7 @@ export class MovieList extends Component{
                         : <button onClick={this.createMovie} type="button" name="startCreate" className="button_open_form_closed"><i className="fa-solid fa-plus"></i></button>
                     }
 
-                    <button onClick={()=> this.switchList()} type="button" name="changeList" className="button_switchList"><i className="fa-solid fa-star"></i></button>
+                    {/* <button onClick={()=> this.switchList()} type="button" name="changeList" className={this.state.favoriteListIsActive? "button_switchList fav_actived":"button_switchList"}><i className="fa-solid fa-star"></i></button> */}
 
                 </section>)
     };

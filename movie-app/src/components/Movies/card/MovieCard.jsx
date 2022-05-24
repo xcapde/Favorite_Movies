@@ -9,9 +9,15 @@ export class MovieCard extends Component {
         };
     }
 
-    markFavorite = () => {
+    markFavorite = (movie) => {
         this.setState({movieIsFav:!this.state.movieIsFav});
-        // console.log(this.state.movieIsFav)
+        // console.log(movie.movieIsFav);
+        // let favorite=movie.movieIsFav;
+        // favorite=true;
+        // console.log(favorite);
+        // console.log(movie)
+
+        // this.setState({movieIsFav:favorite});
     };
 
 
@@ -23,15 +29,12 @@ export class MovieCard extends Component {
 
 
         return (
-            <div className="movie_card">
+            <div className={this.state.movieIsFav? "movie_card fav_card":"movie_card"}>
                         <div className="movie_img">                            
                             <img src={movie.imgURL} alt="movie cover"/>
-                            {this.state.movieIsFav?
-                                <button onClick={()=>this.markFavorite(movie.id)} className="favorite_button fav_true"><i className="fa-solid fa-star"></i></button>
-                                : <button onClick={()=>this.markFavorite(movie.id)} className="favorite_button"><i className="fa-solid fa-star"></i></button>
-                            }
+                            <button onClick={()=>this.markFavorite(movie)} className={this.state.movieIsFav? "favorite_button fav_true":"favorite_button"}><i className="fa-solid fa-star"></i></button>
                             <Link to={`/movie_detail/${this.props.movie.id}`} >
-                            <button className="movie_detail_button"><i className="fa-solid fa-info"></i></button>
+                                <button className="movie_detail_button"><i className="fa-solid fa-info"></i></button>
                             </Link>
                         </div>
                         <div className="movie_info">

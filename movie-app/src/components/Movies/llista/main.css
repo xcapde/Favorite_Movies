@@ -1,3 +1,5 @@
+@import url(mobile.css);
+
 :root {
     --white:rgb(255,255,255);
     --almost_white:rgb(231, 231, 231);
@@ -92,10 +94,10 @@ body{
 }
 
 .button_switchList{
-    bottom: 8%;
+    bottom: 10%;
     right: 2%;
 }
 
-.button_switchList::after{
-    background-color: rgb(255, 198, 13);
+.fav_actived, .fav_actived:hover{
+    background-color: rgb(196, 153, 12);
 }
