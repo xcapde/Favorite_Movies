@@ -42,6 +42,10 @@ export class FormBinding extends Component {
         if ((this.props.editIsActive===false)&&(this.state.newMovie.title.length > 0)){
             this.props.addMovie(this.state.newMovie);
         }
+        if ((this.props.editIsActive===false)&&(this.state.newMovie.title.length === 0)){
+            alert(`ℹ️ Title is needed!`);
+            return;
+        }
         if((this.props.editIsActive===true)&&(this.state.newMovie===this.props.movieToEdit)){
             alert(`ℹ️ ${this.props.movieToEdit.title} details have not changed`) 
         }
@@ -62,6 +66,7 @@ export class FormBinding extends Component {
         const name = e.target.name;
         // console.log(e.target.name)
         const value = e.target.value;
+        // const value = e.target.value.toLowerCase();
         // console.log(value)
         this.setState({newMovie: {...this.state.newMovie, [name]:value}});
         //ES POSA EL ... PERQUÈ MANTINGUI TOTA LA INFORMACIÓ DELS ALTRES CAMPS I NO SE SOBREESCRIGUIN.
@@ -95,7 +100,8 @@ export class FormBinding extends Component {
 
                     {/* TERNARY. DOESN'T WORK WELL*/}
                     {this.props.seePreview?
-                        '':
+                        //pots posar '' o null
+                        '' :
                         <div className="previewZone">
                             <Preview seePreview={this.state.seePreview} newMovie={this.state.newMovie} />
                         </div>

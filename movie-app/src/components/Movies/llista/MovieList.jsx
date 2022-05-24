@@ -29,7 +29,7 @@ export class MovieList extends Component{
     };
 
     // QUAN ES RENDERITZA LA PÀGINA, TAMBÉ CARREGA LES MOVIES DES DE L'API
-    componentDidMount() {
+    componentDidMount(){
         this.getData();
 
         // movieServices.getAllMovies EQUIVAL A LA PROMESA D'AXIOS (movies) A JS, QUE NO ESTÀ RESOLTA ENCARA,
@@ -53,12 +53,27 @@ export class MovieList extends Component{
         this.resetFormInputs_Add();
     };
 
-    editMovie = (data) => {
-        this.setState({formIsActive:true});
-        this.setState({editIsActive:true});
-        this.setState({createIsActive:false});
-        
-        this.setState({movieToEdit:data});
+    editMovie = (movie) => {
+        if(this.state.formIsActive===false){
+        this.setState({
+            formIsActive:true,
+            editIsActive:true,
+            createIsActive:false,
+            movieToEdit:movie,
+        });
+        }
+        if((this.state.formIsActive===true)&&(movie.id===this.state.movieToEdit.id)) {
+            this.setState({
+                movieToEdit:{},
+                editIsActive:false,
+                formIsActive:false,
+            })
+        }
+        if((this.state.formIsActive===true)&&(movie.id!==this.state.movieToEdit.id)) {
+            this.setState({
+                movieToEdit:movie,
+            })
+        }
 
         // OPCIÓ 1 SENSE API SERVER
         // let selectedMovie = this.state.movies.filter(movie => movie.id === id);
@@ -67,17 +82,18 @@ export class MovieList extends Component{
         // this.setState({indexToEdit:selectedIndex})
     };
 
-    updateOneMovie = (id,data) => {
-        movieServices.putMovie(id, data).then(res => {
+    updateOneMovie = (id, updatedMovieData) => {
+        movieServices.putMovie(id, updatedMovieData).then((res) => {
             // movieServices.putMovie(parseInt(id), data).then(res => { --> per passar la ID d'String a Número, no cal.
+            // es pot posar data, movie, updatedMovie.. és indiferent.
             // console.log(res)
-            this.getData();
+            // si ens torna una resposta (if(res)) llavors ens torna totes les pelis, no cal però ok.
+            if(res) this.getData();
         });
     };
 
-    addMovie = (data) =>  {
-
-        movieServices.postMovie(data).then(res => {
+    addMovie = (newMovieData) =>  {
+        movieServices.postMovie(newMovieData).then(res => {
             this.setState({createIsActive:false});
             this.getData();
             alert(`✅${res.title} added!`)
@@ -101,17 +117,20 @@ export class MovieList extends Component{
         if(!deleteConfirmation) return; 
         // CLÀUSULA DE SALVAGUARDA
 
-        movieServices.deleteAMovie(id).then(res => {
-            this.getData();
+        //parseInt(id) per passar el string de la id a número però no cal..
+        movieServices.deleteAMovie(parseInt(id)).then(res => {
+            if(res)this.getData();
             alert(`❌${res.title} removed`)
         });
         // OPCIÓ SENSE SERVER API
+        // let movieToDelete = this.state.movies.filter(movie => movie.id === id);
         // let selectedMovies = this.state.movies.filter(movie => movie.id !== id);
 
         // this.setState({movies: selectedMovies});
     };
 
     showForm = () => {
+        //funció toggle - switch obrir tancar
         // OPCIÓ 1
         // if(this.state.formIsActive) this.setState({formIsActive:false})
         // else this.setState({formIsActive:true});
@@ -126,8 +145,8 @@ export class MovieList extends Component{
                     {this.state.formIsActive?
                         <FormBinding addMovie={this.addMovie} movieToEdit={this.state.movieToEdit} 
                         editIsActive={this.state.editIsActive} movies={this.state.movies} showForm={this.showForm} 
-                        indexToEdit={this.state.indexToEdit} createIsActive={this.state.createIsActive} createMovie={this.createMovie} 
-                        key={this.state.movieToEdit.id} updateOneMovie={this.updateOneMovie} />
+                        indexToEdit={this.state.indexToEdit} createIsActive={this.state.createIsActive} 
+                        createMovie={this.createMovie} key={this.state.movieToEdit.id} updateOneMovie={this.updateOneMovie} />
                         :''
                     }
                     
