@@ -56,9 +56,19 @@
     color:white;
 }
 
-.favorite_button:after{
-    background-color: rgba(255, 255, 255, 0.726);
-    color:rgb(236, 183, 9);
+.fav_true{
+    background-color: rgba(236, 183, 9, 0.856);
+    color:white;
+}
+
+.fav_true:hover{
+    background-color: rgb(255, 198, 13);
+    color:white;
+}
+
+.fav_true:active{
+    color: rgba(255, 255, 255, 0.432);
+    color:white;
 }
 
 .movie_detail_button{

@@ -58,7 +58,7 @@ body{
     justify-content: flex-start;
 }
 
-.button_open_form_opened, .button_open_form_closed{
+.button_open_form_opened, .button_open_form_closed, .button_switchList{
     position: fixed;
     bottom: 1%;
     right: 2%;
@@ -78,15 +78,24 @@ body{
     background-color: var(--dark_red);
 }
 
-.button_open_form_closed:hover{
+.button_open_form_closed:hover, .button_switchList:hover{
     background-color: var(--green_blue);
 }
 
-.button_open_form_opened:active, .button_open_form_closed:active{
+.button_open_form_opened:active, .button_open_form_closed:active, .button_switchList:active{
     background-color: var(--dark_green_blue);
 }
 
-.button_open_form_opened i, .button_open_form_closed i{
+.button_open_form_opened i, .button_open_form_closed i, .button_switchList i{
     color: white;
     background:none;
+}
+
+.button_switchList{
+    bottom: 8%;
+    right: 2%;
+}
+
+.button_switchList::after{
+    background-color: rgb(255, 198, 13);
 }

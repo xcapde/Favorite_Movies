@@ -2,18 +2,34 @@ import { Component } from "react";
 import { Link } from 'react-router-dom';
 import '../card/card.css';
 export class MovieCard extends Component {
+    constructor(){
+        super();
+        this.state={
+            movieIsFav:false,
+        };
+    }
+
+    markFavorite = () => {
+        this.setState({movieIsFav:!this.state.movieIsFav});
+        // console.log(this.state.movieIsFav)
+    };
 
 
     render() {
         // props --> per passar estats o variables de pare (movieList) a fill (cardList)
         // nova variable per igualar tots els atributs de l'ítem "movie" al del seu pare. 
         let movie = this.props.movie;
+        // console.log(this.state)
+
 
         return (
             <div className="movie_card">
                         <div className="movie_img">                            
                             <img src={movie.imgURL} alt="movie cover"/>
-                            <button className="favorite_button"><i className="fa-solid fa-star"></i></button>
+                            {this.state.movieIsFav?
+                                <button onClick={()=>this.markFavorite(movie.id)} className="favorite_button fav_true"><i className="fa-solid fa-star"></i></button>
+                                : <button onClick={()=>this.markFavorite(movie.id)} className="favorite_button"><i className="fa-solid fa-star"></i></button>
+                            }
                             <Link to={`/movie_detail/${this.props.movie.id}`} >
                             <button className="movie_detail_button"><i className="fa-solid fa-info"></i></button>
                             </Link>

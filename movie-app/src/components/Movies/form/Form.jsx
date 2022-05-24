@@ -3,7 +3,7 @@ import { Preview } from "./preview/Preview";
 import '../form/movieForm.css';
 
 //IDEAL PER FER UPDATES VEIENT EL RESULTAT A L'INSTANT!
-export class FormBinding extends Component {
+export class Form extends Component {
     constructor(props){
         super(props);
 
@@ -43,7 +43,7 @@ export class FormBinding extends Component {
             this.props.addMovie(this.state.newMovie);
         }
         if ((this.props.editIsActive===false)&&(this.state.newMovie.title.length === 0)){
-            alert(`ℹ️ Title is needed!`);
+            alert(`ℹ️ Title is required!`);
             return;
         }
         if((this.props.editIsActive===true)&&(this.state.newMovie===this.props.movieToEdit)){

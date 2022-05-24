@@ -4,7 +4,8 @@
         "title": "Interstellar",
         "year": 2014,
         "imgURL": "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
-        "genres": "Adventure, Drama, Sci-Fi"
+        "genres": "Adventure, Drama, Sci-Fi",
+        "movieIsFav": false
     },
     {
         "id": 2,

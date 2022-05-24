@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { movieServices } from "../../../services_APIs/movieServices";
 import { MovieCard } from "../card/MovieCard";
-import { FormBinding } from "../form/FormBinding";
+import { Form } from "../form/Form";
 import '../llista/main.css';
 import '../llista/mobile.css';
 
@@ -47,18 +47,27 @@ export class MovieList extends Component{
     };
 
     createMovie = () => {
-        this.setState({createIsActive:!this.state.createIsActive});
-        this.setState({editIsActive:false});
-        this.showForm();
+        this.setState({
+            createIsActive:true,
+            editIsActive:false,
+        });
         this.resetFormInputs_Add();
+
+        if((this.state.formIsActive===true)&&(this.state.createIsActive===true)){
+            this.showForm();
+            this.setState({createIsActive:false});
+        };
+        if(this.state.formIsActive===false){
+            this.showForm();
+        };
     };
 
     editMovie = (movie) => {
+        this.setState({createIsActive:false})
         if(this.state.formIsActive===false){
         this.setState({
             formIsActive:true,
             editIsActive:true,
-            createIsActive:false,
             movieToEdit:movie,
         });
         }
@@ -139,11 +148,18 @@ export class MovieList extends Component{
         this.setState({formIsActive:!this.state.formIsActive});
     };
 
+    switchList = () => {
+        // if.. bla bla bla..
+        let favList = this.state.movies.filter(movie => movie.formIsActive === true);
+        console.log(favList)
+        // this.setState({movies:favList})
+    };
+
     render() {
         return (<section className="the_list">
 
                     {this.state.formIsActive?
-                        <FormBinding addMovie={this.addMovie} movieToEdit={this.state.movieToEdit} 
+                        <Form addMovie={this.addMovie} movieToEdit={this.state.movieToEdit} 
                         editIsActive={this.state.editIsActive} movies={this.state.movies} showForm={this.showForm} 
                         indexToEdit={this.state.indexToEdit} createIsActive={this.state.createIsActive} 
                         createMovie={this.createMovie} key={this.state.movieToEdit.id} updateOneMovie={this.updateOneMovie} />
@@ -156,10 +172,12 @@ export class MovieList extends Component{
                         )).reverse()}   
                     </div>
                     
-                    {this.state.formIsActive?
-                        <button onClick={this.createMovie} type="button" name="openForm" className="button_open_form_opened"><i className="fa-solid fa-xmark"></i></button>
-                        : <button onClick={this.createMovie} type="button" name="openForm" className="button_open_form_closed"><i className="fa-solid fa-plus"></i></button>
+                    {this.state.createIsActive?
+                        <button onClick={this.createMovie} type="button" name="stopCreate" className="button_open_form_opened"><i className="fa-solid fa-xmark"></i></button>
+                        : <button onClick={this.createMovie} type="button" name="startCreate" className="button_open_form_closed"><i className="fa-solid fa-plus"></i></button>
                     }
+
+                    <button onClick={()=> this.switchList()} type="button" name="changeList" className="button_switchList"><i className="fa-solid fa-star"></i></button>
 
                 </section>)
     };

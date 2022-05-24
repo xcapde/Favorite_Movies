@@ -26,7 +26,7 @@ export class MovieDetails extends Component  {
     render() {
         return <div className="pages">
                     <h1>{`HOLA!! SÓC LA MOVIE DETAIL ${this.state.movieInfo.id} 😊`}</h1>
-                    
+                                        
                     <div className="pages_buttons">
                         <Link to="/">
                             <button><i className="fa-solid fa-house"></i></button>
