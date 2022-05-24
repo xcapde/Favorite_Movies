@@ -155,6 +155,7 @@ export class MovieList extends Component{
     //     let favList = this.state.movies.filter(movie => movie.id<50);
     //     console.log(favList)
     //     let allMovies=this.state.movies;
+    
     //     if(this.state.favoriteListIsActive===true){
     //     this.setState({movies:favList});
     //     }else{
@@ -172,7 +173,7 @@ export class MovieList extends Component{
                         createMovie={this.createMovie} key={this.state.movieToEdit.id} updateOneMovie={this.updateOneMovie}/>
                         :''
                     }
-                    
+
                     <div className="movies_list">   
                         {this.state.movies.map((movie,key) => (
                             <MovieCard key={key} movie={movie} deleteMovie={this.deleteMovie} editMovie={this.editMovie}/>
