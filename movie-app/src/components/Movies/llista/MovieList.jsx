@@ -84,6 +84,11 @@ export class MovieList extends Component{
                 movieToEdit:movie,
             })
         }
+        if((this.state.formIsActive===true)&&(this.state.createIsActive===true)){
+            this.setState({
+                editIsActive:true,
+            })
+        }
 
         // OPCIÓ 1 SENSE API SERVER
         // let selectedMovie = this.state.movies.filter(movie => movie.id === id);

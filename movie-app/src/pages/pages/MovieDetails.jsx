@@ -45,7 +45,7 @@ export class MovieDetails extends Component {
             </header>
             <main>
                 <h2>Details</h2>
-                <img src={`${this.state.movieInfo.imgURL}`}/>
+                <img src={`${this.state.movieInfo.imgURL}`} alt="Movie cover"/>
                 <p>Bla bla bla...</p>
             </main>
         </div>

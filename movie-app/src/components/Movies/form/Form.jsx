@@ -2,7 +2,6 @@ import { Component } from "react";
 import { Preview } from "./preview/Preview";
 import '../form/movieForm.css';
 
-//IDEAL PER FER UPDATES VEIENT EL RESULTAT A L'INSTANT!
 export class Form extends Component {
     constructor(props){
         super(props);
@@ -30,7 +29,6 @@ export class Form extends Component {
         let data = movie;
 
         this.props.updateOneMovie(id,data);
-        
         // OPCIÓ 1 - SENSE API SERVER
         // this.setState({movies:[this.state.newMovie,...this.props.movies]});
         // this.state.movies.splice(this.props.indexToEdit,1,this.state.newMovie)
@@ -59,7 +57,10 @@ export class Form extends Component {
     };
 
     resetFormInputs = () => {
-    this.setState({newMovie:{title:'', year:'', imgURL:'',genres:''}})
+    this.setState({
+        newMovie:{title:'', year:'', imgURL:'',genres:''},
+        seePreview:false,
+    })
     };
 
     onInputChange = (e) => {
@@ -70,19 +71,25 @@ export class Form extends Component {
         // console.log(value)
         this.setState({newMovie: {...this.state.newMovie, [name]:value}});
         //ES POSA EL ... PERQUÈ MANTINGUI TOTA LA INFORMACIÓ DELS ALTRES CAMPS I NO SE SOBREESCRIGUIN.
+        // this.showPreview();
     };
 
-    // NO OK, DESACTIVAT
-    showPreview = () => {
-        //No funciona bé, la llargada de l'input comença a 1 i segueix en 0, 1 ,2.. --> desactivat en el RENDER
-        if(this.state.newMovie.imgURL>0) this.setState({seePreview:true})
-        else {this.setState({seePreview:false})};
-        // console.log(this.state.seePreview);
-        // console.log(this.state.newMovie);
-    };
+    // showPreview = () => { NO OK.. ACTIVAR TAMBÉ A ONINPUTCHANGE
+    // NO S'EXECUTA BÉ PER ENLLOC...AMB 1 PUNT DE RETRÀS
+
+    //     let imageLength = this.state.newMovie.imgURL.length;
+    //     console.log(`URL length ${imageLength}`)
+    //     let image = this.state.newMovie.imgURL;
+    //     console.log(`Preview URL ${image}`)
+
+    //     if(imageLength>0){
+    //         this.setState({seePreview:true})}
+    //     else {this.setState({seePreview:false})};
+
+    //     console.log(`Preview State ${this.state.seePreview}`)
+    // };
 
     render (){
-
         return (<section className="form_and_preview">
 
                     <button onClick={this.resetFormInputs} className="resetForm_button">&times;</button>                
@@ -98,14 +105,14 @@ export class Form extends Component {
                             : <button type="submit" name='addButton' className="create_button">Create</button>}
                     </form>
 
-                    {/* TERNARY. DOESN'T WORK WELL*/}
-                    {this.props.seePreview?
-                        //pots posar '' o null
-                        '' :
+                    {/* TERNARY NO OK*/}
                         <div className="previewZone">
-                            <Preview seePreview={this.state.seePreview} newMovie={this.state.newMovie} />
+                            <>{this.state.seePreview?
+                                null                            
+                                :<Preview newMovie={this.state.newMovie} seePreview={this.state.seePreview} />
+                            }</>                            
                         </div>
-                    }
+                    
                 </section>) 
         };
 }

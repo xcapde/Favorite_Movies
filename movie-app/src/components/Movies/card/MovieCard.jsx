@@ -11,9 +11,15 @@ export class MovieCard extends Component {
 
     markFavorite = (movie) => {
         this.setState({movieIsFavorite:!this.state.movieIsFavorite});
-        console.log(this.state.movieIsFavorite)
-        console.log(movie.movieIsFav);
-        // this.setState({movieIsFav:favorite});
+        // console.log(`mark state ${this.state.movieIsFavorite}`)
+
+        // let favoriteStatus=movie.movieIsFav
+        // if(this.state.movieIsFavorite===true){
+        //     favoriteStatus=true}
+        // else {favoriteStatus=false}
+
+        // console.log(`mark status ${favoriteStatus}`);
+        // console.log(movie)
     };
 
 
