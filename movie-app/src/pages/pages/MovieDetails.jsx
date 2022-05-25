@@ -39,14 +39,25 @@ export class MovieDetails extends Component {
                     <i className="fa-solid fa-arrow-left"></i>
                     </button>
                 </Link>
-
                 </div>
                 <h1>{`${this.state.movieInfo.title}`}</h1>
             </header>
+            
             <main>
-                <h2>Details</h2>
-                <img src={`${this.state.movieInfo.imgURL}`} alt="Movie cover"/>
-                <p>Bla bla bla...</p>
+                <div className="movie_content">
+                  <img src={`${this.state.movieInfo.imgURL}`} alt="Movie cover"/>
+                  <div className="movie_sinopsi">
+                    <h2>Sinopsi</h2>
+                    <p>Where can I get some?
+                      There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>
+                  </div>
+                  <div className="movie_data">
+                    <h2>Information</h2>
+                    <h3>{`Year: ${this.state.movieInfo.year}`}</h3>
+                    <h3>{`Genres: ${this.state.movieInfo.genres}`}</h3>
+                    <h3>{`Favorite: ${this.state.movieInfo.movieIsFav}`}</h3>
+                  </div>
+                </div>                
             </main>
         </div>
     );
