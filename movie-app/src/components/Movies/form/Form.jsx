@@ -75,7 +75,7 @@ export class Form extends Component {
     };
 
     // showPreview = () => { NO OK.. ACTIVAR TAMBÉ A ONINPUTCHANGE
-    // NO S'EXECUTA BÉ PER ENLLOC...AMB 1 PUNT DE RETRÀS
+    // // NO S'EXECUTA BÉ PER ENLLOC...AMB 1 PUNT DE RETRÀS
 
     //     let imageLength = this.state.newMovie.imgURL.length;
     //     console.log(`URL length ${imageLength}`)
@@ -107,10 +107,7 @@ export class Form extends Component {
 
                     {/* TERNARY NO OK*/}
                         <div className="previewZone">
-                            <>{this.state.seePreview?
-                                null                            
-                                :<Preview newMovie={this.state.newMovie} seePreview={this.state.seePreview} />
-                            }</>                            
+                            <Preview newMovie={this.state.newMovie} seePreview={this.state.seePreview} />
                         </div>
                     
                 </section>) 

@@ -6,7 +6,7 @@
 
 .previewMovie{
     width: 4rem;
-    min-height: 50%;
+    min-height: 5rem;
     background-color: rgba(0, 0, 0, 0.274);   
     position: relative;
 }
