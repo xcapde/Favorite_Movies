@@ -1,3 +1,4 @@
+@import url(pages_buttons.css);
 :root {
     --white:white;
     --light:rgb(245, 245, 245);
@@ -12,19 +13,14 @@
 .pages{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    text-align: left;
     background-color:var(--almost_dark);
     width: 100vw;
     height: 100vh;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
-}
-
-.pages h1{
-    background: none;
-    color: var(--orange);
-    font-weight: lighter;
 }
 
 .pages a{
@@ -32,30 +28,42 @@
     display: contents;
 }
 
-.pages_buttons{
-    background: none;
+.pages_header{
+    display: flex;
     width: 100%;
 }
 
-.pages_buttons button{
-color: var(--white);
-background: none;
-background-color: var(--pink_red);
-border: none;
-border-radius: 1rem;
-padding: 1rem;
-margin: 5% 2% 0% 2%;
-}
-
-.pages_buttons button:hover{
-    background-color: var(--dark_pink_red);
-}
-
-.pages_buttons button:active{
-    background-color: var(--light_pink_red);
-}
-
-.pages_buttons button i{
-    font-size: medium;
+.pages h1{
     background: none;
+    color: var(--orange);
+    font-weight: lighter;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+main{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main img{
+    width: 20%;
+    margin: 2% 0%;
+}
+
+.pages h2, .pages p{
+    background: none;
+    color: var(--white);
+    font-weight: lighter;
+    margin: 0;
+    padding: 0;
+}
+
+@media only screen and (max-width:450px) {
+    main img{
+        width: 80%;
+    }
 }

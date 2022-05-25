@@ -1,0 +1,28 @@
+.pages_buttons{
+    background: none;
+    display: flex;
+    align-content: center;
+}
+
+.pages_buttons button {
+  color: var(--white);
+  background: none;
+  background-color: var(--pink_red);
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.pages_buttons button:hover {
+  background-color: var(--dark_pink_red);
+}
+
+.pages_buttons button:active {
+  background-color: var(--light_pink_red);
+}
+
+.pages_buttons button i {
+  font-size: medium;
+  background: none;
+}

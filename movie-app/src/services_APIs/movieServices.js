@@ -28,7 +28,9 @@ export const movieServices = {
   },
 
   postMovie(data) {
-    const postNewMovie = axios.post(baseURL + `/movies`, data).then((res) => {
+    const postNewMovie = axios
+    .post(baseURL + `/movies`, data)
+    .then((res) => {
       return res.data;
     });
     return postNewMovie;
@@ -44,12 +46,16 @@ export const movieServices = {
   },
 
   getMovieById(id) {
-    const movieById = axios.get(baseURL + `/movies/${id}`).then((res) => {
+    const movieById = axios.get(baseURL + `/movies/`+id).then(res => {
       return res.data;
     });
     return movieById;
+    
   },
 };
+
+
+
 
 //CLASSE 17/05/22
 

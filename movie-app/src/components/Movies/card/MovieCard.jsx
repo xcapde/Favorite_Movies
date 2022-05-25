@@ -5,18 +5,14 @@ export class MovieCard extends Component {
     constructor(){
         super();
         this.state={
-            movieIsFav:false,
+            movieIsFavorite:false,
         };
     }
 
     markFavorite = (movie) => {
-        this.setState({movieIsFav:!this.state.movieIsFav});
-        // console.log(movie.movieIsFav);
-        // let favorite=movie.movieIsFav;
-        // favorite=true;
-        // console.log(favorite);
-        // console.log(movie)
-
+        this.setState({movieIsFavorite:!this.state.movieIsFavorite});
+        console.log(this.state.movieIsFavorite)
+        console.log(movie.movieIsFav);
         // this.setState({movieIsFav:favorite});
     };
 
@@ -29,13 +25,13 @@ export class MovieCard extends Component {
 
 
         return (
-            <div className={this.state.movieIsFav? "movie_card fav_card":"movie_card"}>
-                        <div className="movie_img">                            
-                            <img src={movie.imgURL} alt="movie cover"/>
-                            <button onClick={()=>this.markFavorite(movie)} className={this.state.movieIsFav? "favorite_button fav_true":"favorite_button"}><i className="fa-solid fa-star"></i></button>
-                            <Link to={`/movie_detail/${this.props.movie.id}`} >
+            <div className={this.state.movieIsFavorite? "movie_card fav_card":"movie_card"}>
+                        <div className="movie_img">
+                            <Link to={`/movie_detail/${this.props.movie.id}`}>                            
+                                <img src={movie.imgURL} alt="movie cover"/>
                                 <button className="movie_detail_button"><i className="fa-solid fa-info"></i></button>
                             </Link>
+                            <button onClick={()=>this.markFavorite(movie)} className={this.state.movieIsFavorite? "favorite_button fav_true":"favorite_button"}><i className="fa-solid fa-star"></i></button>
                         </div>
                         <div className="movie_info">
                             <div className="card_text">
