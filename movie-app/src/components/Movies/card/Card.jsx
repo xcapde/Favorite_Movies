@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../card_functional_hooks/card.css';
+import '../card/card.css';
 // export const Card = (props) => { --> també es pot declarar com a variable = funció
 // export function Card (props.movie o props.deleteMovie) { --> li deiem que de les props que ens agafa, agafi només les que diem.   
 // export function Card ({ movie, deleteMovie}) {

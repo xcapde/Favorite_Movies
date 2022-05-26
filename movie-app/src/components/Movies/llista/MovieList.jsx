@@ -1,7 +1,6 @@
 import { Component } from "react";
 import { movieServices } from "../../../services_APIs/movieServices";
-// import { MovieCard } from "../card/MovieCard";
-import { Card } from "../card_functional_hooks/Card";
+import { Card } from "../card/Card";
 import { Form } from "../form/Form";
 import '../llista/main.css';
 import '../llista/mobile.css';
