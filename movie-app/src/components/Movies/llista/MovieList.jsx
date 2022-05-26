@@ -66,6 +66,7 @@ export class MovieList extends Component{
 
     editMovie = (movie) => {
         this.setState({createIsActive:false})
+        
         if(this.state.formIsActive===false){
         this.setState({
             formIsActive:true,
