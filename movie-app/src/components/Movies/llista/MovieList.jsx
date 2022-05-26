@@ -155,6 +155,17 @@ export class MovieList extends Component{
         this.setState({formIsActive:!this.state.formIsActive});
     };
 
+    markFavorite = (movie) => {
+        // Declarem variable perquè no es pot modificar un atribut.
+        let data = movie;
+
+        if(data.movieIsFav===false) data.movieIsFav=true 
+        else data.movieIsFav=false;
+        
+        movieServices.putMovie(data.id,data).then( res => {
+            if(res) this.getData();
+        });
+    }
     // switchList = () => {
     //     this.setState({favoriteListIsActive:!this.state.favoriteListIsActive});
         
@@ -182,7 +193,7 @@ export class MovieList extends Component{
 
                     <div className="movies_list">   
                         {this.state.movies.map((movie,key) => (
-                            <Card key={key} movie={movie} deleteMovie={this.deleteMovie} editMovie={this.editMovie}/>
+                            <Card key={key} movie={movie} deleteMovie={this.deleteMovie} editMovie={this.editMovie} markFavorite={this.markFavorite}/>
                         )).reverse()}   
                     </div>
                     

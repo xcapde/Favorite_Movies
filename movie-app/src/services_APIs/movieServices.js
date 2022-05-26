@@ -50,7 +50,6 @@ export const movieServices = {
       return res.data;
     });
     return movieById;
-    
   },
 };
 
