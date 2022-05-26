@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { movieServices } from "../../../services_APIs/movieServices";
-import { MovieCard } from "../card/MovieCard";
+// import { MovieCard } from "../card/MovieCard";
+import { Card } from "../card_functional_hooks/Card";
 import { Form } from "../form/Form";
 import '../llista/main.css';
 import '../llista/mobile.css';
@@ -181,7 +182,7 @@ export class MovieList extends Component{
 
                     <div className="movies_list">   
                         {this.state.movies.map((movie,key) => (
-                            <MovieCard key={key} movie={movie} deleteMovie={this.deleteMovie} editMovie={this.editMovie}/>
+                            <Card key={key} movie={movie} deleteMovie={this.deleteMovie} editMovie={this.editMovie}/>
                         )).reverse()}   
                     </div>
                     
