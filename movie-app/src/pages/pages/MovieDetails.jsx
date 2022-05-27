@@ -1,51 +1,45 @@
-import { Component } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./style/pages_style.css";
 import { movieServices } from "../../services_APIs/movieServices";
+import "./style/pages_style.css";
 
-export class MovieDetails extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      movieInfo: {},
-    };
-  }
+export function MovieDetails () {
+    const [movieInfo, setMovieInfo] = useState({});
 
-  seeMovieDetailsById = () => {
+  const seeMovieDetailsById = () => {
     // let thisMoviePath = window.location.pathname;
     // let thisMovieID = thisMoviePath.split("/movie_detail/")[1];
     let thisMovieID = window.location.pathname.split("/movie_detail/")[1];
     // console.log(thisMovieID);
 
     movieServices.getMovieById(thisMovieID).then((res) => {
-    //   console.log(res);
-      this.setState({ movieInfo: res });
-      // console.log(this.state.movieInfo)
+      console.log(res);
+      setMovieInfo(res);
+      console.log(this.state.movieInfo)
     });
   };
 
-  componentDidMount() {
-    this.seeMovieDetailsById();
-  }
+  // equival a componentDidMount
+  useEffect(() => {
+    seeMovieDetailsById();
+  });
 
-  render() {
-    return (
+  return (
         <div className="pages">
             <header className="pages_header">
                 <div className="pages_buttons">
                 <Link to="/">
                     <button>
-                    {/* <i className="fa-solid fa-house"></i> */}
                     <i className="fa-solid fa-arrow-left"></i>
                     </button>
                 </Link>
                 </div>
-                <h1>{`${this.state.movieInfo.title}`}</h1>
+                <h1>{`${movieInfo.title}`}</h1>
             </header>
             
             <main>
                 <div className="movie_content">
-                  <img src={`${this.state.movieInfo.imgURL}`} alt="Movie cover"/>
+                  <img src={`${movieInfo.imgURL}`} alt="Movie cover"/>
                   <div className="movie_sinopsi">
                     <h2>Sinopsi</h2>
                     <p>Where can I get some?
@@ -53,13 +47,12 @@ export class MovieDetails extends Component {
                   </div>
                   <div className="movie_data">
                     <h2>Information</h2>
-                    <h3>{`Year: ${this.state.movieInfo.year}`}</h3>
-                    <h3>{`Genres: ${this.state.movieInfo.genres}`}</h3>
-                    <h3>{`Favorite: ${this.state.movieInfo.movieIsFav}`}</h3>
+                    <h3>{`Year: ${movieInfo.year}`}</h3>
+                    <h3>{`Genres: ${movieInfo.genres}`}</h3>
+                    <h3>{`Favorite: ${movieInfo.movieIsFav}`}</h3>
                   </div>
                 </div>                
             </main>
         </div>
-    );
-  }
+        );
 }

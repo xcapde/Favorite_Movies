@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../card/card.css';
 // export const Card = (props) => { --> també es pot declarar com a variable = funció
@@ -5,7 +6,11 @@ import '../card/card.css';
 // export function Card ({ movie, deleteMovie}) {
 export function Card (props) {
  
-    const movie = props.movie;
+    const [movie, setMovie] = useState(props.movie);
+
+    useEffect(() => {
+        setMovie(props.movie)
+    }, [props.movie])
 
     const markFavorite = (movie) => {
         props.markFavorite(movie);

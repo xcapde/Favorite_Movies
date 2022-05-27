@@ -6,7 +6,7 @@ export function Preview (props){
 
     return  (
             <div className="previewMovie">
-                    <img src={newMovie.imgURL} alt="Preview"/>
+                    <img src={newMovie.imgURL} alt=""/>
                     <div className="previewMovie_detail">Preview</div>
             </div>                
             )

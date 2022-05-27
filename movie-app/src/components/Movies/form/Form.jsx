@@ -1,6 +1,6 @@
 import '../form/movieForm.css';
 import { Preview } from "./preview/Preview";
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 //és equivalent a començar dins del Render de les class.
 //pots especificar props ({movie, deleteMovie})
