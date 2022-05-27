@@ -14,7 +14,7 @@
     padding: 0;
     cursor: pointer;
     top: 1%;
-    background-color:rgba(0, 0, 0, 0.288);
+    background-color:rgba(0, 0, 0, 0.425);
     color: rgba(255, 255, 255, 0.432);
     position: absolute;
 }
@@ -63,7 +63,8 @@
     top: 50%
 }
 
-.left_arrow:hover, .right_arrow:hover{
+/* GOLD */
+/* .left_arrow:hover, .right_arrow:hover{
     background-color: rgba(255, 255, 255, 0.822);
     color: black;
 }
@@ -71,4 +72,15 @@
 .left_arrow:active, .right_arrow:active{
     background-color: rgba(255, 255, 255, 0.63);
     color: black;
+} */
+
+/* DARK */
+.left_arrow:hover, .right_arrow:hover{
+    background-color: rgba(32, 32, 32, 0.719);
+    color: white;
+}
+
+.left_arrow:active, .right_arrow:active{
+    background-color: rgba(3, 3, 3, 0.63);
+    color: white;
 }

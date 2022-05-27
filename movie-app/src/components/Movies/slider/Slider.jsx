@@ -1,6 +1,6 @@
-import '../slider/slider_dark.css'
-import '../slider/slider_mobile.css'
-import '../slider/slider_buttons.css'
+import '../slider/styles/slider_dark.css'
+import '../slider/styles/slider_mobile.css'
+import '../slider/styles/slider_buttons.css'
 
 export function Slider () {
 
