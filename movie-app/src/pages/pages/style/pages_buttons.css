@@ -16,6 +16,7 @@
 
 .pages_buttons button:hover {
   background-color: var(--dark_pink_red);
+  cursor: pointer;
 }
 
 .pages_buttons button:active {

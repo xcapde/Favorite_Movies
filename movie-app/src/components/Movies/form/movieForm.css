@@ -71,6 +71,7 @@
 .resetForm_button:hover{
     background-color: var(--red);
     color: var(--white);
+    cursor: pointer;
 }
 
 .resetForm_button:active{
@@ -80,6 +81,7 @@
 
 .create_button:hover{
     background-color: var(--dark_green_blue);
+    cursor: pointer;
 }
 
 .create_button:active{
@@ -92,6 +94,7 @@
 
 .update_button:hover{
     background-color: var(--dark_green);
+    cursor: pointer;
 }
 
 .update_button:active{

@@ -78,10 +78,12 @@ body{
 
 .button_open_form_opened:hover{
     background-color: var(--dark_red);
+    cursor: pointer;
 }
 
 .button_open_form_closed:hover, .button_switchList:hover{
     background-color: var(--green_blue);
+    cursor: pointer;
 }
 
 .button_open_form_opened:active, .button_open_form_closed:active, .button_switchList:active{
@@ -100,4 +102,5 @@ body{
 
 .fav_actived, .fav_actived:hover{
     background-color: rgb(196, 153, 12);
+    cursor: pointer;
 }

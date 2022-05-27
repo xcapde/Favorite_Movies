@@ -3,7 +3,7 @@ import { movieServices } from "../../../services_APIs/movieServices";
 import { Card } from "../card/Card";
 import { Form } from "../form/Form";
 import { Slider } from "../slider/Slider";
-import '../llista/main_v2.css';
+import '../llista/main.css';
 import '../llista/mobile.css';
 
 export function MovieList() {

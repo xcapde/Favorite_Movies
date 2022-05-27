@@ -10,12 +10,12 @@
     }
     
     .slider_card_text h1{
-        font-size: medium;
-        font-weight: 400;
+        font-size: large;
+        font-weight: 500;
     }
-    
-    .slider_card_text h2{
-        font-size: x-small;
+
+    .slider_favorite_button i{
+        font-size: larger;
     }
 }
         
