@@ -1,0 +1,103 @@
+@import url(mobile.css);
+
+:root {
+    --white:rgb(24, 24, 24);
+    --almost_white:rgb(231, 231, 231);
+    --light_green_blue:rgb(68, 61, 41);
+    --green_blue:rgb(216, 206, 180);
+    --dark_green_blue:rgb(189, 177, 148);
+    --semi_dark:rgb(43, 43, 43);
+    --almost_dark:rgb(27, 27, 26);
+    --transp_dark:rgba(22, 22, 22, 0.705);
+    --red: rgb(255, 82, 51);
+    --dark_red:rgb(219, 50, 20);
+    --orange: darkorange;
+    --darker_orange:rgb(255, 115, 0);
+    --semi_orange:.0rem .0rem .2rem rgba(255, 140, 0, 0.644);
+    --pastel_blue:rgb(97, 191, 235);
+    --light_purple:rgb(147, 46, 214);
+    --purple:rgb(123, 26, 187);
+    --dark_purple:rgb(102, 13, 161);
+    --light_green:rgb(31, 218, 62);
+    --green:rgb(21, 197, 51);
+    --dark_green:rgb(12, 179, 40);
+}
+
+*{
+    background-color:var(--almost_dark);
+    /* background-color: rgb(222, 224, 75); */
+}
+
+body{
+    margin: 0;
+}
+
+.App{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color:var(--almost_dark);
+}
+
+/* section */
+.the_list{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.movies_list{
+    background-color:var(--semi_dark);
+    width: 100%;
+    height: unset;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    justify-content: flex-start;
+}
+
+.button_open_form_opened, .button_open_form_closed, .button_switchList{
+    position: fixed;
+    bottom: 1%;
+    right: 2%;
+    background-color: var(--almost_dark);
+    border: none;
+    border-radius: 2em;
+    width: 2.5rem;
+    height: 2.5rem;
+    filter:drop-shadow(.0rem .0rem .2rem rgba(0, 0, 0, 0.301));
+}
+
+.button_open_form_opened{
+    background-color: var(--red);
+}
+
+.button_open_form_opened:hover{
+    background-color: var(--dark_red);
+}
+
+.button_open_form_closed:hover, .button_switchList:hover{
+    background-color: var(--green_blue);
+}
+
+.button_open_form_opened:active, .button_open_form_closed:active, .button_switchList:active{
+    background-color: var(--dark_green_blue);
+}
+
+.button_open_form_opened i, .button_open_form_closed i, .button_switchList i{
+    color: white;
+    background:none;
+}
+
+.button_switchList{
+    bottom: 10%;
+    right: 2%;
+}
+
+.fav_actived, .fav_actived:hover{
+    background-color: rgb(196, 153, 12);
+}

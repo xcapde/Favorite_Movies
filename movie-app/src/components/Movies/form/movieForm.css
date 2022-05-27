@@ -48,7 +48,7 @@
 
 .create_button, .update_button, .resetForm_button{
     background-color: var(--semi_dark);
-    color: var(--white);
+    color: var(--almost_white);
     border: none;
     padding: 0.2rem 0.5rem;
     width: 100%;

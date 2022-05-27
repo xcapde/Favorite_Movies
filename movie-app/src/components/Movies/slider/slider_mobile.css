@@ -1,0 +1,21 @@
+@media only screen and (max-width:450px) {
+ 
+    .slider_card{
+        width: 95%;
+        margin: 2.5%;
+    }
+        
+    .slider_img{
+        background-color: var(--almost_dark);
+    }
+    
+    .slider_card_text h1{
+        font-size: medium;
+        font-weight: 400;
+    }
+    
+    .slider_card_text h2{
+        font-size: x-small;
+    }
+}
+        

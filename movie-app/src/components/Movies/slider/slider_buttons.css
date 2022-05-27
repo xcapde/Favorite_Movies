@@ -1,0 +1,74 @@
+/* BUTTONS */
+
+.slider_favorite_button, .left_arrow, .right_arrow{
+    z-index: 1;
+    border: none;
+    border-radius: 1rem;
+    width: 1.9rem;
+    height: 1.9rem;
+    right: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    top: 1%;
+    background-color:rgba(0, 0, 0, 0.288);
+    color: rgba(255, 255, 255, 0.432);
+    position: absolute;
+}
+
+.slider_favorite_button i, .left_arrow i, .right_arrow i{
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+
+.slider_favorite_button{
+    background: none;
+    position: inherit;
+    color: rgb(158, 115, 6);
+}
+
+/* GOLD */
+/* .slider_favorite_button:hover{
+    background-color:rgb(201, 147, 13);
+    color: white;
+}
+
+.slider_favorite_button:active{
+    background-color: rgb(235, 181, 45);
+} */
+
+/* DARK */
+.slider_favorite_button:hover{
+    background-color:rgb(201, 147, 13);
+    color: rgb(32, 32, 32);
+}
+
+.slider_favorite_button:active{
+    background-color: rgb(156, 117, 18);
+}
+
+.left_arrow{
+    position: absolute;
+    left: 2%;
+    top: 50%
+}
+
+.right_arrow{
+    position: absolute;
+    right: 2%;
+    top: 50%
+}
+
+.left_arrow:hover, .right_arrow:hover{
+    background-color: rgba(255, 255, 255, 0.822);
+    color: black;
+}
+
+.left_arrow:active, .right_arrow:active{
+    background-color: rgba(255, 255, 255, 0.63);
+    color: black;
+}

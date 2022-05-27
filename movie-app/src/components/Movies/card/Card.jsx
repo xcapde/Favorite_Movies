@@ -31,7 +31,6 @@ export function Card (props) {
                                 <img src={movie.imgURL} alt="movie cover"/>
                                 <button className="movie_detail_button"><i className="fa-solid fa-info"></i></button>
                             </Link>
-                            {/* <button onClick={()=>markFavorite(movie)} className="favorite_button"><i className="fa-solid fa-star"></i></button> */}
                             <button onClick={()=>markFavorite(movie)} className={movie.movieIsFav? "favorite_button fav_true":"favorite_button"}><i className="fa-solid fa-star"></i></button>
                         </div>
                         <div className="movie_info">

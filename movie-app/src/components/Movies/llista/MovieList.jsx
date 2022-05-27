@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { movieServices } from "../../../services_APIs/movieServices";
 import { Card } from "../card/Card";
 import { Form } from "../form/Form";
-import '../llista/main.css';
+import { Slider } from "../slider/Slider";
+import '../llista/main_v2.css';
 import '../llista/mobile.css';
 
 export function MovieList() {
@@ -167,7 +168,8 @@ export function MovieList() {
                         :''
                     }
 
-                    <div className="movies_list">   
+                    <div className="movies_list">
+                            <Slider/>   
                         {movies.map((movie,key) => (
                             <Card key={key} movie={movie} deleteMovie={deleteMovie} editMovie={editMovie} markFavorite={markFavorite}/>
                         )).reverse()}   

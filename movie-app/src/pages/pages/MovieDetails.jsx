@@ -1,21 +1,26 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { movieServices } from "../../services_APIs/movieServices";
 import "./style/pages_style.css";
 
 export function MovieDetails () {
     const [movieInfo, setMovieInfo] = useState({});
+    const [id, setId] = useState(useParams().id)
+    //useParams et torna la info del path o de l'endpoint
 
   const seeMovieDetailsById = () => {
+    // OPCIÓ 1 - FORMA DE FER-HO SENSE EL USEPARAMS
     // let thisMoviePath = window.location.pathname;
     // let thisMovieID = thisMoviePath.split("/movie_detail/")[1];
-    let thisMovieID = window.location.pathname.split("/movie_detail/")[1];
-    // console.log(thisMovieID);
+    // let thisMovieID = window.location.pathname.split("/movie_detail/")[1];
+    // movieServices.getMovieById(thisMovieID).then((res) => {
+    //   setMovieInfo(res);
+    // });
 
-    movieServices.getMovieById(thisMovieID).then((res) => {
-      console.log(res);
+    // OPCIÓ 2 - FORMA DE FER-HO AMB USEPARAMS
+    movieServices.getMovieById(id).then((res) => {
+      // console.log(res);
       setMovieInfo(res);
-      console.log(this.state.movieInfo)
     });
   };
 
