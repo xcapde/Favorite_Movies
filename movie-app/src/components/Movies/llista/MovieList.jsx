@@ -13,16 +13,13 @@ export function MovieList() {
     const [movies, setMovies] = useState([]);
     const [movieToEdit, setMovieToEdit] = useState({});
     const [indexToEdit] = useState('');
-   
-    const getData = () => {
-        movieServices.getAllMovies().then(res => {
-             setMovies(res);
-        })
-    };
+    const [favList, setFavList] = useState([]);
 
-    // QUAN ES RENDERITZA LA PÀGINA, TAMBÉ CARREGA LES MOVIES DES DE L'API
+    // S'EXECUTA AL RENDERITZAR L'APP
     useEffect(() => {
-         getData();
+        
+        getData();
+        showPreviousFavList();
 
         // movieServices.getAllMovies EQUIVAL A LA PROMESA D'AXIOS (movies) A JS, QUE NO ESTÀ RESOLTA ENCARA,
         // SEGUIM POSANT UN ".THEN" PER QUAN COMPLEIXI LA PROMESA,
@@ -34,7 +31,14 @@ export function MovieList() {
         // });
         
         //En el useEfectt cal segon paràmetre indicat el que està esperant.. per això l'array buit 
-    },[]);
+    },[]
+    );
+
+    const getData = () => {
+        movieServices.getAllMovies().then(res => {
+             setMovies(res);
+        })
+    };
 
     const resetFormInputs_Add = () => {
          setMovieToEdit({title:'', year:'', imgURL:'',genres:''})
@@ -143,7 +147,30 @@ export function MovieList() {
         movieServices.putMovie(data.id,data).then( res => {
             if(res) getData();
         });
-    }
+
+        addToSlide(data);
+    };
+
+    const addToSlide = (movie) => {
+        let data = movie;
+        showPreviousFavList();
+
+        if(data.movieIsFav === true){
+            favList.push(data);
+            alert(`✅${data.title} added to favorites!`)
+        } else { 
+            let favIndex = favList.findIndex(movie => movie.id === data.id)
+            favList.splice(favIndex,1);
+            alert(`❌${data.title} removed from favorites!`)
+        };
+    };
+
+    const showPreviousFavList = () => {
+        let favorites = movies.filter(movie => movie.movieIsFav === true);
+        setFavList(favorites);
+        console.log(favorites)
+    };
+
     // switchList = () => {
     //      setState({favoriteListIsActive:! state.favoriteListIsActive});
         
@@ -169,7 +196,7 @@ export function MovieList() {
                     }
 
                     <div className="movies_list">
-                            <Slider/>   
+                            <Slider favList={favList} />   
                         {movies.map((movie,key) => (
                             <Card key={key} movie={movie} deleteMovie={deleteMovie} editMovie={editMovie} markFavorite={markFavorite}/>
                         )).reverse()}   

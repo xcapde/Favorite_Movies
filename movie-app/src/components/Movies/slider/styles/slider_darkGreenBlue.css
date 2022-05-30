@@ -17,7 +17,7 @@
     filter:drop-shadow(.0rem .0rem .2rem var(--green_blue));
 } */
 
-/* SLIDE INFO */
+/* SLIDER INFO */
 
 .slider_info{
     background-color:rgb(32, 32, 32);
@@ -28,6 +28,7 @@
     justify-content: center;
     align-items: center;
     color: var(--green_blue);
+    flex-direction: column;
 }
 
 .slider_info h1{
@@ -38,7 +39,7 @@
     font-weight: 400;
 }
 
-/* SLIDE IMAGE */
+/* SLIDER IMAGE */
 
 .slider_img{
     background-color: var(--almost_dark);
