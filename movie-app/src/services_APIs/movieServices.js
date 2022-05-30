@@ -28,18 +28,14 @@ export const movieServices = {
   },
 
   postMovie(data) {
-    const postNewMovie = axios
-    .post(baseURL + `/movies`, data)
-    .then((res) => {
+    const postNewMovie = axios.post(baseURL + `/movies`, data).then((res) => {
       return res.data;
     });
     return postNewMovie;
   },
 
   putMovie(id, data) {
-    const updatedMovie = axios
-      .put(baseURL + `/movies/${id}`, data)
-      .then((res) => {
+    const updatedMovie = axios.put(baseURL + `/movies/${id}`, data).then((res) => {
         return res.data;
       });
     return updatedMovie;
@@ -51,6 +47,14 @@ export const movieServices = {
     });
     return movieById;
   },
+
+  getFavMovies() {
+    const favMovies = axios.get(baseURL + "/movies").then(res => {
+      return res.data.filter(movie => movie.movieIsFav === true);
+    });
+    return favMovies;
+  },
+
 };
 
 

@@ -1,6 +1,6 @@
 /* BUTTONS */
 
-.slider_favorite_button, .left_arrow, .right_arrow{
+.left_arrow, .right_arrow{
     z-index: 2;
     border: none;
     border-radius: 1rem;
@@ -19,49 +19,10 @@
     position: absolute;
 }
 
-.slider_favorite_button i, .left_arrow i, .right_arrow i{
+.left_arrow i, .right_arrow i{
     background: none;
     margin: 0;
     padding: 0;
-}
-
-.slider_favorite_button{
-    background: none;
-    position: inherit;
-    /* color: rgb(158, 115, 6); */
-    color:rgb(1, 139, 116);
-}
-
-/* GOLD */
-/* .slider_favorite_button:hover{
-    background-color:rgb(201, 147, 13);
-    color: white;
-}
-
-.slider_favorite_button:active{
-    background-color: rgb(235, 181, 45);
-} */
-
-/* DARK-GOLD */
-/* .slider_favorite_button:hover{
-    background-color:rgb(201, 147, 13);
-    color: rgb(32, 32, 32);
-}
-
-.slider_favorite_button:active{
-    background-color: rgb(156, 117, 18);
-} */
-
-/* DARK-BLUE */
-.slider_favorite_button:hover{
-    background-color: rgba(3, 3, 3, 0.24);
-    color: rgb(22, 189, 161);
-    cursor: pointer;
-}
-
-.slider_favorite_button:active{
-    background-color: rgba(3, 3, 3, 0.151);
-    color: rgb(1, 139, 116);
 }
 
 .left_arrow{
@@ -76,18 +37,6 @@
     top: 50%
 }
 
-/* GOLD */
-/* .left_arrow:hover, .right_arrow:hover{
-    background-color: rgba(255, 255, 255, 0.822);
-    color: black;
-}
-
-.left_arrow:active, .right_arrow:active{
-    background-color: rgba(255, 255, 255, 0.63);
-    color: black;
-} */
-
-/* DARK */
 .left_arrow:hover, .right_arrow:hover{
     background-color: rgba(32, 32, 32, 0.719);
     color: white;

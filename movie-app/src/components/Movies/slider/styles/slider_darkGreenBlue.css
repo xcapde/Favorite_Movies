@@ -39,6 +39,11 @@
     font-weight: 400;
 }
 
+.favData {
+    width: 100%;
+    height: 100%;
+}
+
 /* SLIDER IMAGE */
 
 .slider_img{
@@ -82,10 +87,13 @@
     cursor: pointer;
 }
 
+.right_arrow, .left_arrow {
+    margin: 10% !important;
+}
+
 /* MOVIE INFO */
 
 .slider_movie_info{
-    background-color:rgb(32, 32, 32);
     height: 10%;
     display: flex;
     flex-direction: row;    
@@ -114,14 +122,5 @@
     overflow: hidden;
     text-overflow: ellipsis;
     color: var(--green_blue);
-
-}
-
-.favZone{
-    background: none;
-    height: 100%;
-    width: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
 }

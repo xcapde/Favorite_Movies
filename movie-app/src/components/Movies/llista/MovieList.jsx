@@ -17,10 +17,8 @@ export function MovieList() {
 
     // S'EXECUTA AL RENDERITZAR L'APP
     useEffect(() => {
-        
         getData();
         showPreviousFavList();
-
         // movieServices.getAllMovies EQUIVAL A LA PROMESA D'AXIOS (movies) A JS, QUE NO ESTÀ RESOLTA ENCARA,
         // SEGUIM POSANT UN ".THEN" PER QUAN COMPLEIXI LA PROMESA,
         // QUAN HAGI RESOLT -> CANVIÏ L'ESTAT AMB UN  setState
@@ -153,7 +151,6 @@ export function MovieList() {
 
     const addToSlide = (movie) => {
         let data = movie;
-        showPreviousFavList();
 
         if(data.movieIsFav === true){
             favList.push(data);
@@ -163,12 +160,16 @@ export function MovieList() {
             favList.splice(favIndex,1);
             alert(`❌${data.title} removed from favorites!`)
         };
+        
+        showPreviousFavList();
     };
 
     const showPreviousFavList = () => {
-        let favorites = movies.filter(movie => movie.movieIsFav === true);
-        setFavList(favorites);
-        console.log(favorites)
+
+        movieServices.getFavMovies().then(res => {
+            setFavList(res);
+        })
+
     };
 
     // switchList = () => {
@@ -196,7 +197,10 @@ export function MovieList() {
                     }
 
                     <div className="movies_list">
-                            <Slider favList={favList} />   
+                            <>{favList.length === 0?
+                                null :
+                                <Slider favList={favList}/>}
+                            </>   
                         {movies.map((movie,key) => (
                             <Card key={key} movie={movie} deleteMovie={deleteMovie} editMovie={editMovie} markFavorite={markFavorite}/>
                         )).reverse()}   
