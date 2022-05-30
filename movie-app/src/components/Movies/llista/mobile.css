@@ -1,4 +1,54 @@
 @media only screen and (max-width:450px) {
+.desktop_navigation{
+    display: none;
+}
+
+.mobile_app_bar{
+    order: 0;
+    z-index: 2;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    height: 10rem;
+}
+
+.logo {
+    font-size: medium;
+    display: flex;
+    width: 25%;
+    justify-content: center;
+    margin:0.3rem;
+}
+
+.searcher {
+    width: 70%;
+    height: 1.8rem;
+}
+
+.mobile_nav_bar{
+    order: 3;
+    z-index: 2;
+    display: flex;
+    width: 100%;
+}
+
+.nav{
+    width: 100%;
+    height: 4rem;
+    display: flex;
+}
+
+.nav a{
+    height: 100%;
+    width: 33.33%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: none;
+}
  
 .input_form {
     width: 70% !important;
@@ -23,6 +73,10 @@
 
 .form_and_preview{
     justify-content: space-evenly !important;
+}
+
+.button_open_form_opened, .button_open_form_closed, .button_switchList{
+    bottom: 5rem;
 }
     
 }

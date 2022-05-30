@@ -15,8 +15,13 @@
     cursor: pointer;
     top: 1%;
     background-color:rgba(0, 0, 0, 0.425);
+    background: linear-gradient(to top left, rgba(0, 0, 0, 0.308), rgba(205, 206, 206, 0.562));
     color: rgba(255, 255, 255, 0.432);
     position: absolute;
+}
+
+.right_arrow{
+    background: linear-gradient(to top right, rgba(0, 0, 0, 0.308), rgba(205, 206, 206, 0.562));
 }
 
 .left_arrow i, .right_arrow i{
@@ -44,6 +49,6 @@
 }
 
 .left_arrow:active, .right_arrow:active{
-    background-color: rgba(3, 3, 3, 0.63);
+    background-color: rgba(3, 3, 3, 0.795);
     color: white;
 }

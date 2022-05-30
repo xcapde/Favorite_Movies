@@ -7,6 +7,7 @@
         
     .slider_img{
         background-color: var(--almost_dark);
+        height: 30rem;
     }
     
     .slider_card_text h1{

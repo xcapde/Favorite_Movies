@@ -1,4 +1,5 @@
 @import url(mobile.css);
+@import url(navbar.css);
 
 :root {
     --white:rgb(255,255,255);

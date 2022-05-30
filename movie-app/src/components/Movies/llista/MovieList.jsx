@@ -188,30 +188,63 @@ export function MovieList() {
 
         return (<section className="the_list">
 
-                    { formIsActive?
-                        <Form addMovie={addMovie} movieToEdit={movieToEdit} 
-                        editIsActive={editIsActive} movies={movies} showForm={showForm} 
-                        indexToEdit={indexToEdit} createIsActive={createIsActive} 
-                        createMovie={createMovie} key={movieToEdit.id} updateOneMovie={updateOneMovie}/>
-                        :''
-                    }
+                    <header className="desktop_navigation">
+                            <div className="logo">RE<span className="logo_movie">M<i class="fa-solid fa-circle-play"></i>VIE</span></div>
+                            <div className="searcher">
+                                <input type="text" placeholder="Search..." />
+                                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
 
-                    <div className="movies_list">
+                            <div className="nav">
+                                <a>Explore</a>
+                                <a>Contact</a>
+                                <a>Login</a>
+                            </div>
+                    </header>
+
+                    <div className="mobile_app_bar">
+                        <div className="logo">RE<span className="logo_movie">M<i class="fa-solid fa-circle-play"></i>VIE</span></div>
+                        <div className="searcher">
+                            <input type="text" placeholder="Search..." />
+                            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </div>
+
+                    <div className="mobile_nav_bar">
+                        <div className="nav">
+                            <a>Explore</a>
+                            <a>Contact</a>
+                            <a>Login</a>
+                        </div>
+                    </div>
+                    
+                    {/* <div className="the_list"> */}
+                        { formIsActive?
+                            <Form addMovie={addMovie} movieToEdit={movieToEdit} 
+                            editIsActive={editIsActive} movies={movies} showForm={showForm} 
+                            indexToEdit={indexToEdit} createIsActive={createIsActive} 
+                            createMovie={createMovie} key={movieToEdit.id} updateOneMovie={updateOneMovie}/>
+                            :''
+                        }
+
+                        <div className="movies_list">
                             <>{favList.length === 0?
                                 null :
                                 <Slider favList={favList}/>}
                             </>   
-                        {movies.map((movie,key) => (
-                            <Card key={key} movie={movie} deleteMovie={deleteMovie} editMovie={editMovie} markFavorite={markFavorite}/>
-                        )).reverse()}   
-                    </div>
-                    
-                    {createIsActive?
-                        <button onClick = {createMovie} type="button" name="stopCreate" className="button_open_form_opened"><i className="fa-solid fa-xmark"></i></button>
-                        : <button onClick = {createMovie} type="button" name="startCreate" className="button_open_form_closed"><i className="fa-solid fa-plus"></i></button>
-                    }
+                            
+                            {movies.map((movie,key) => (
+                                <Card key={key} movie={movie} deleteMovie={deleteMovie} editMovie={editMovie} markFavorite={markFavorite}/>
+                            )).reverse()}   
+                        </div>
+                        
+                        {createIsActive?
+                            <button onClick = {createMovie} type="button" name="stopCreate" className="button_open_form_opened"><i className="fa-solid fa-xmark"></i></button>
+                            : <button onClick = {createMovie} type="button" name="startCreate" className="button_open_form_closed"><i className="fa-solid fa-plus"></i></button>
+                        }
 
-                    {/* <button onClick={()=>  switchList()} type="button" name="changeList" className={ state.favoriteListIsActive? "button_switchList fav_actived":"button_switchList"}><i className="fa-solid fa-star"></i></button> */}
+                        {/* <button onClick={()=>  switchList()} type="button" name="changeList" className={ state.favoriteListIsActive? "button_switchList fav_actived":"button_switchList"}><i className="fa-solid fa-star"></i></button> */}
+                    {/* </div> */}
 
                 </section>)
 }
