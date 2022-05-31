@@ -1,6 +1,7 @@
 import '../slider/styles/slider_modern.css'
 import '../slider/styles/slider_mobile.css'
 import '../slider/styles/slider_buttons.css'
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react'
 
 export function Slider (props) {
@@ -17,8 +18,10 @@ export function Slider (props) {
     );
 
     useEffect(()=>{
-        let intervalID = setInterval(()=>nextSlide(), 4000);
+        let interval = 4000;
+        let intervalID = setInterval(()=>nextSlide(), interval);
         return() => clearInterval(intervalID);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[index]
     );
 
@@ -60,7 +63,7 @@ export function Slider (props) {
         <div className='slider_card'>
 
                 <div className='dots'>{props.favList.map((movie, key) => 
-                <div className={key === index ? "dot active_dot" : "dot"} onClick={()=>showSlide(key)}></div>)}</div>
+                <div key={key} className={key === index ? "dot active_dot" : "dot"} onClick={()=>showSlide(key)}></div>)}</div>
 
             {props.favList ? props.favList.map((movie, key) =>
 
@@ -73,13 +76,14 @@ export function Slider (props) {
                         </div>
                         <div className='slider_img'>
                             <div onClick={prevSlide} className='left_img_zone'>
-                                <button className="left_arrow"><i class="fa-solid fa-angle-left"></i></button>
+                                <button className="left_arrow"><i className="fa-solid fa-angle-left"></i></button>
                             </div>
                             <div onClick={nextSlide} className='right_img_zone'>
-                                <button className="right_arrow"><i class="fa-solid fa-angle-right"></i></button>
+                                <button className="right_arrow"><i className="fa-solid fa-angle-right"></i></button>
                             </div>
-
-                            <img src={movie.imgURL} alt="movie cover"/>                           
+                            <Link to={`/movie_detail/${movie.id}`}>
+                            <img src={movie.imgURL} alt="movie cover"/>
+                            </Link>                           
                         </div>
                         <div className="slider_movie_info">
                             <div className="slider_card_text">

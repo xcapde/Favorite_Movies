@@ -13,7 +13,7 @@
     .searcher, .nav {
         display: none !important;
     }
-
+    
     .back_home, .logo_movie, i{
         background: none;
         display: contents;
@@ -44,7 +44,7 @@
         left: 0;
     }
 
-    .bottom_nav_bar a{
+    .bottom_nav_bar button{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -68,11 +68,11 @@
         display: flex !important;
     }
 
-    .nav a:hover{
+    .nav button:hover{
         background-color: #00372f;
     }
     
-    .nav a:active{
+    .nav button:active{
         background-color: #02574a;
     }
 }

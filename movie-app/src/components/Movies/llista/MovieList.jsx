@@ -3,8 +3,11 @@ import { movieServices } from "../../../services_APIs/movieServices";
 import { Card } from "../card/Card";
 import { Form } from "../form/Form";
 import { Slider } from "../slider/Slider";
+import { ModalInfo } from "../modal/ModalInfo";
+import { ModalOptions } from "../modal/ModalOptions";
 import '../llista/main.css';
 import '../llista/mobile.css';
+
 
 export function MovieList() {
     const [formIsActive, setFormIsActive] = useState(false);
@@ -187,8 +190,10 @@ export function MovieList() {
     // };
 
         return (<section className="the_list">
+
+                        <ModalInfo/>
+                        <ModalOptions/>
                     
-                    {/* <div className="the_list"> */}
                         { formIsActive?
                             <Form addMovie={addMovie} movieToEdit={movieToEdit} 
                             editIsActive={editIsActive} movies={movies} showForm={showForm} 
@@ -214,7 +219,6 @@ export function MovieList() {
                         }
 
                         {/* <button onClick={()=>  switchList()} type="button" name="changeList" className={ state.favoriteListIsActive? "button_switchList fav_actived":"button_switchList"}><i className="fa-solid fa-star"></i></button> */}
-                    {/* </div> */}
 
                 </section>)
 }
