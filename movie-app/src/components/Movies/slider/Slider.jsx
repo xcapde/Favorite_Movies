@@ -9,7 +9,7 @@ export function Slider (props) {
     // eslint-disable-next-line
     const [favList, setFavList] = useState(props.favList);
     // exemple amb setTimeOut -->
-    const [isAuto, setIsAuto] = useState(true);
+    // const [isAuto, setIsAuto] = useState(true);
     
     useEffect(()=>{
         setFavList(props.favList)
@@ -17,8 +17,7 @@ export function Slider (props) {
     );
 
     useEffect(()=>{
-        let interval = 4000;
-        let intervalID = setInterval(()=>nextSlide(), interval);
+        let intervalID = setInterval(()=>nextSlide(), 4000);
         return() => clearInterval(intervalID);
     },[index]
     );
