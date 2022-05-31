@@ -1,20 +1,26 @@
 @media only screen and (max-width:450px) {
         
-    .pages_header{
-        font-size: smaller;
+    .title_and_image{
+        width: 100% !important;
+        align-items: center;
+
     }
-    
-    main img{
+
+    .title_and_image img{
         width: 50% !important;
-        text-align: center;
     }
 
     .movie_content{
         flex-direction: column !important;
         align-items: center;
+        position: relative;
     }
 
-    .movie_sinopsi{
+    .movie_sinopsi, .movie_data{
         width: 80% !important;
+    }
+
+    .movie_data{
+        padding-bottom: 10vh;
     }
 }

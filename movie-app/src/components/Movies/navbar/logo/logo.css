@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
+
+.logo{
+    background: none;
+}
+
+.logo{
+    font-size: x-large;
+    /* font-family: 'Monoton', Arial, Helvetica, sans-serif; */
+    font-family: 'Fredericka the Great', Arial, Helvetica, sans-serif;
+    color:rgb(1, 139, 116);
+    margin-left: 2rem;
+    cursor: pointer;
+    width: 10rem;
+}
+
+.logo_movie{
+    color: rgb(139, 10, 1);
+}
+
+.back_home a{
+    background: none;
+    display: contents;
+}

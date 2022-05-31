@@ -1,29 +1,24 @@
-.pages_buttons{
-    background: none;
-    display: flex;
-    align-content: center;
-}
-
-.pages_buttons button {
-  color: var(--white);
+.back_home a{
   background: none;
-  background-color: var(--pink_red);
-  border: none;
-  border-radius: 1rem;
-  padding: 1rem;
-  margin: 1rem;
+  display: contents;
+  text-decoration: none !important;
 }
 
-.pages_buttons button:hover {
-  background-color: var(--dark_pink_red);
+.back_button:hover {
+  background-color: rgb(1, 139, 116);
   cursor: pointer;
 }
 
-.pages_buttons button:active {
+.back_button:active {
   background-color: var(--light_pink_red);
 }
 
-.pages_buttons button i {
+.back_button i {
   font-size: medium;
   background: none;
+  color: rgba(255, 255, 255, 0.568);
+}
+
+.back_button:hover i{
+  color: white;
 }

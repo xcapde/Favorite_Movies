@@ -187,36 +187,6 @@ export function MovieList() {
     // };
 
         return (<section className="the_list">
-
-                    <header className="desktop_navigation">
-                            <div className="logo">RE<span className="logo_movie">M<i class="fa-solid fa-circle-play"></i>VIE</span></div>
-                            <div className="searcher">
-                                <input type="text" placeholder="Search..." />
-                                <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                            </div>
-
-                            <div className="nav">
-                                <a>Explore</a>
-                                <a>Contact</a>
-                                <a>Login</a>
-                            </div>
-                    </header>
-
-                    <div className="mobile_app_bar">
-                        <div className="logo">RE<span className="logo_movie">M<i class="fa-solid fa-circle-play"></i>VIE</span></div>
-                        <div className="searcher">
-                            <input type="text" placeholder="Search..." />
-                            <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                        </div>
-                    </div>
-
-                    <div className="mobile_nav_bar">
-                        <div className="nav">
-                            <a>Explore</a>
-                            <a>Contact</a>
-                            <a>Login</a>
-                        </div>
-                    </div>
                     
                     {/* <div className="the_list"> */}
                         { formIsActive?

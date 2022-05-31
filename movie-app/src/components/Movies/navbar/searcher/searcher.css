@@ -1,0 +1,36 @@
+
+.searcher{
+    background: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.searcher input{
+    width: 100%;
+    height: 2rem;
+    position: relative;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.192);
+    padding-left: 1rem;
+    border-radius: 0.2rem;
+}
+
+.searcher input:hover, .searcher input:active, .searcher input:focus{
+    background-color: rgba(255, 255, 255, 0.897);
+    padding-left: 1rem;
+}
+
+.searcher button{
+    background: none;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    right: 2%;
+}
+
+.searcher button i{
+    background:none;
+}

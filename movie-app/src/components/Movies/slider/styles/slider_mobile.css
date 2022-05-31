@@ -18,5 +18,10 @@
     .slider_favorite_button i{
         font-size: larger;
     }
+
+    .slider h1{
+        font-size: large;
+        color: aqua;
+    }
 }
         

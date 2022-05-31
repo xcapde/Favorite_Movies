@@ -1,0 +1,25 @@
+.nav{
+    width: 33%;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 2rem;
+}
+
+.nav a{
+    font-size: small;
+    color: rgba(255, 255, 255, 0.616);
+    padding: 0.4rem 0.7rem;
+    cursor: pointer;
+}
+
+.nav a:hover{
+    background-color: var(--green_blue);
+    /* color: var(--almost_dark); */
+    color: white;
+    border-radius: 0.2rem;
+}
+
+.nav a:active{
+    background-color: var(--light_green_blue);
+
+}

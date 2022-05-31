@@ -18,7 +18,7 @@
 .slider_info{
     z-index: 2;
     /* background-color:rgba(19, 19, 19, 0.575); */
-    background: linear-gradient(to top, rgba(255,255,255,0),rgba(1, 139, 116, 0.267), rgb(1, 139, 116));
+    background: linear-gradient(to top, rgba(255,255,255,0),rgba(1, 139, 116, 0.267), rgb(0, 63, 53));
     position: absolute;
     height: 10%;
     width: 100%;
@@ -100,7 +100,7 @@
 .slider_movie_info{
     z-index: 2;
     /* background-color:#13131393; */
-    background: linear-gradient(to bottom, rgba(255,255,255,0),rgba(1, 139, 116, 0.267), rgb(1, 139, 116));
+    background: linear-gradient(to bottom, rgba(255,255,255,0),rgba(1, 139, 116, 0.267), rgb(0, 63, 53));
     position: absolute;
     height: 10%;
     width: 100%;
@@ -130,4 +130,34 @@
     text-overflow: ellipsis;
     color: white;
     text-align: center;
+}
+
+.dots{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: 7%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.dot{
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: rgb(255, 255, 255);
+    z-index: 4;
+    border-radius: 50%;
+    margin: 0.5rem 0.2rem;
+    cursor: pointer;
+}
+
+.dot:hover{
+    background-color: rgb(255, 115, 0);
+}
+
+.active_dot{
+    background-color: rgb(1, 139, 116);
+    width: 0.7rem;
+    height: 0.7rem;
 }
