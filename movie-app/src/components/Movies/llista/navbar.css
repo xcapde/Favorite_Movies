@@ -25,7 +25,8 @@
     color:rgb(1, 139, 116);
     margin-left: 2rem;
     cursor: pointer;
-    width: 25%;
+    width: 20rem;
+    text-align: center;
 }
 
 .logo_movie{
@@ -33,7 +34,7 @@
 }
 
 .searcher{
-    width: 35%;
+    width: 100%;
     display: flex;
     justify-content: center;
     position: relative;
@@ -68,9 +69,10 @@
 }
 
 .nav{
-    width: 40%;
+    width: 33%;
     display: flex;
     justify-content: space-around;
+    margin-right: 2rem;
 }
 
 .nav a{

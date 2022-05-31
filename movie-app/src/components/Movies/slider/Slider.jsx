@@ -60,7 +60,7 @@ export function Slider (props) {
                                 <button className="right_arrow"><i className="fa-solid fa-arrow-right"></i></button>
                             </div>
 
-                            <img key={key} src={movie.imgURL} alt="movie cover"/>
+                            <img key={key} src={movie.imgURL} alt="movie cover"/>                            
                         </div>
                         <div className="slider_movie_info">
                             <div className="slider_card_text">
