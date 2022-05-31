@@ -50,7 +50,7 @@ export function Slider (props) {
 
                     <div className="favData">
                         <div className='slider_info'>
-                            <h1>FAVORITE MOVIES <span className='slide_number'>{`${index+1}/${props.favList.length}`}</span></h1>
+                            <h1>FAVORITES <span className='slide_number'>{`${index+1}/${props.favList.length}`}</span></h1>
                         </div>
                         <div className='slider_img'>
                             <div onClick={prevSlide} className='left_img_zone'>
