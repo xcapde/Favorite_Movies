@@ -1,3 +1,7 @@
+@import url(modal_buttons.css);
+@import url(modal_types.css);
+@import url(modal_mobile.css)
+;
 .hide_modal{
     display: none;
 }
@@ -12,41 +16,6 @@
     justify-content: center;
     background: none;
     /* background-color: rgba(0, 0, 0, 0.726); */
-}
-
-.modal_info_box, .favModal, .redModal, .greenModal{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 2.5%;
-    flex-direction: column;
-    width: 40%;
-    min-height: 4rem;
-    border-radius: 0.5rem;
-    background-color: rgb(217, 219, 202);
-    color: rgb(29, 29, 29);
-    animation: modalInit 2s 1;
-    animation-direction: linear;
-    animation-delay: 1s;
-    position: relative;
-}
-
-.favModal{
-    background-color: rgb(196, 153, 12);
-    color: white;
-    justify-content: center;
-}
-
-.redModal{
-    background-color: rgb(236, 39, 32);
-    color: white;
-    justify-content: center;
-}
-
-.greenModal{
-    background-color: rgb(76, 175, 85);
-    color: white;
-    justify-content: center;
 }
 
 @keyframes modalInit{
@@ -70,7 +39,7 @@
     /* color: white; */
     font-size: medium;
     margin-left: 5%;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .close_info_modal{
@@ -91,79 +60,4 @@
 .close_info_modal:active{
     /* color: rgb(252, 69, 45); */
     color: rgba(0, 0, 0, 0.938);
-}
-
-.modal_buttons{
-    display: flex;
-    width: 100%;
-    background:none;
-    bottom: 0;
-}
-
-.hidden{
-    display: none;
-}
-
-.modal_buttons i{
-    background:none;
-}
-
-.cancel_button, .ok_button{
-    background: none;
-    border: none;
-    font-size: large;
-    color: rgba(0, 0, 0, 0.562);
-    background-color: rgba(0, 0, 0, 0.308);
-    cursor: pointer;
-    width: 100%;
-    padding: 0;
-}
-
-.cancel_button{
-    border-bottom-left-radius: 0.5rem;
-}
-
-.ok_button{
-    border-bottom-right-radius: 0.5rem;
-}
-
-.cancel_button:hover{
-    background-color: rgb(231, 69, 58);
-    color: white;
-}
-
-.ok_button:hover{
-    background-color: rgb(1, 139, 116);
-    color: white;
-}
-
-.cancel_button:active{
-    background-color: rgb(179, 25, 14);
-}
-
-.ok_button:active{
-    background-color: rgb(1, 87, 72);
-}
-
-@media only screen and (max-width:450px) { 
-    .modal_info_box{
-        width: 90%;
-        margin-top: 5%;
-        animation: modalInit 1s 1;
-        animation-delay: 2s;
-    }
-
-    .favModal,.redModal, .greenModal{
-        width: 90%;
-    }
-
-    .modal_info_message{
-        font-size: 0.7rem;
-        font-weight: 500;
-    }
-
-    .modal_buttons{
-        position: absolute;
-        bottom: 0;
-    }
 }

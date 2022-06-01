@@ -7,17 +7,17 @@ export function ModalInfo(props) {
 
     const closeModal=()=>{
         setModalIsActive(!modalIsActive)
-        // props.stopModal();
+        props.stopModal();
     }
 
     return(
             <div className={modalIsActive?'modal_info_context':'hide_modal'}>
-                <div className={modalType==='favModal'?'favModal':modalType==='redModal'?'redModal':modalType==='greenModal'?'greenModal':'modal_info_box'}>
+                <div className={modalType==='yellowModal'?'yellowModal':modalType==='redModal'?'redModal':modalType==='greenModal'?'greenModal':modalType==='askModal'?'askModal':'defaultModal'}>
                     <div className="modal_content">
                         <h1 className='modal_info_message'>{modalMassage}</h1>
-                        <button onClick={()=>closeModal()} className={modalType==='optionsModal'?'close_info_modal':'close_info_modal hidden'}><i className="fa-solid fa-xmark"></i></button>
+                        <button onClick={()=>closeModal()} className={modalType==='askModal'?'close_info_modal hidden':'close_info_modal'}><i className="fa-solid fa-xmark"></i></button>
                     </div>
-                    <div className={modalType==='optionsModal'?'modal_buttons':'modal_buttons hidden'}>
+                    <div className={modalType==='askModal'?'modal_buttons':'modal_buttons hidden'}>
                         <button className='cancel_button'><i className="fa-solid fa-xmark"></i></button>
                         <button className='ok_button'><i className="fa-solid fa-check"></i></button>
                     </div>

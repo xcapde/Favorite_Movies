@@ -1,0 +1,23 @@
+
+@media only screen and (max-width:450px) { 
+    .modal_info_box{
+        width: 90%;
+        margin-top: 5%;
+        animation: modalInit 1s 1;
+        animation-delay: 2s;
+    }
+
+    .yellowModal,.redModal,.greenModal,.defaultModal,.askModal{
+        width: 90%;
+    }
+
+    .modal_info_message{
+        font-size: 0.4rem;
+        font-weight: 400;
+    }
+
+    .modal_buttons{
+        position: absolute;
+        bottom: 0;
+    }
+}

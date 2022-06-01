@@ -21,7 +21,6 @@ export function MovieList() {
     const [modalMassage, setModalMassage] = useState();
     const [modalType, setModalType] = useState();
 
-
     // S'EXECUTA AL RENDERITZAR L'APP
     useEffect(() => {
         getData();
@@ -128,13 +127,13 @@ export function MovieList() {
 
     const deleteMovie = (id) => {
 
-        // let deleteConfirmation = window.confirm(`❌ Remove from the list?`);
-        // if(!deleteConfirmation) return; 
+        let deleteConfirmation = window.confirm(`❌ Remove from the list?`);
+        if(!deleteConfirmation) return; 
         // CLÀUSULA DE SALVAGUARDA
 
-        runModal();
-        setModalMassage(`❌ Remove from the list?`)
-        setModalType('optionsModal')
+        // runModal();
+        // setModalType('askModal')
+        // setModalMassage(`❌ Remove from the list?`)
 
         //parseInt(id) per passar el string de la id a número però no cal..
         movieServices.deleteAMovie(parseInt(id)).then(res => {
@@ -177,14 +176,14 @@ export function MovieList() {
             // let massage = `✅ ${data.title} added to favorites!`
             runModal();
             setModalMassage(`✅ ${data.title} added to favorites!`)
-            setModalType('favModal')
+            setModalType('yellowModal')
 
         } else { 
             let favIndex = favList.findIndex(movie => movie.id === data.id)
             favList.splice(favIndex,1);
             runModal();
             setModalMassage(`❌ ${data.title} removed from favorites!`)
-            setModalType('favModal')
+            setModalType('yellowModal')
         };
         
         showPreviousFavList();
@@ -200,7 +199,12 @@ export function MovieList() {
 
     const runModal=()=>{
         setModalIsActive(true)
-        setTimeout(stopModal, 2000);
+        const timeOut = setTimeout(stopModal, 2000);
+        console.log(timeOut)
+        
+        // if(modalType !=='askModal'){
+        // clearTimeout(timeOut);
+        // }
     }
 
     const stopModal=()=>{

@@ -1,0 +1,45 @@
+.modal_info_box, .yellowModal, .redModal, .greenModal, .defaultModal, .askModal{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2.5%;
+    flex-direction: column;
+    width: 40%;
+    min-height: 4rem;
+    border-radius: 0.5rem;
+    background-color: rgb(217, 219, 202);
+    color: rgb(29, 29, 29);
+    animation: modalInit 2s 1;
+    animation-direction: linear;
+    animation-delay: 1s;
+    position: relative;
+}
+
+.askModal{
+    animation: none;
+}
+
+.defaultModal{
+    background-color: rgb(217, 219, 202);
+    color: rgb(29, 29, 29);
+    justify-content: center;
+}
+
+.yellowModal{
+    background-color: rgb(235, 196, 67);
+    color: white;
+    justify-content: center;
+}
+
+.redModal{
+    background-color: rgb(255, 94, 88);
+    color: white;
+    justify-content: center;
+}
+
+.greenModal{
+    background-color: rgb(88, 182, 75);
+    color: white;
+    /* color: rgba(43, 43, 43, 0.76); */
+    justify-content: center;
+}

@@ -1,0 +1,60 @@
+
+.modal_buttons{
+    display: flex;
+    width: 100%;
+    background:none;
+    bottom: 0;
+}
+
+.hidden{
+    display: none;
+}
+
+.modal_buttons i{
+    background:none;
+}
+
+.cancel_button, .ok_button{
+    background: none;
+    border: none;
+    font-size: large;
+    color: rgba(0, 0, 0, 0.562);
+    background-color: rgba(0, 0, 0, 0.308);
+    cursor: pointer;
+    width: 100%;
+    padding: 0;
+}
+
+/* .ok_button{
+    background-color:rgb(1, 139, 116);
+    border-top-left-radius: 0.5rem;
+} */
+
+.cancel_button{
+    border-bottom-left-radius: 0.5rem;
+}
+
+.ok_button{
+    border-bottom-right-radius: 0.5rem;
+}
+
+.cancel_button:hover{
+    /* background-color: rgb(231, 69, 58); */
+    background-color: rgba(0, 0, 0, 0.507);
+    color: white;
+}
+
+.ok_button:hover{
+    background-color: rgb(1, 139, 116);
+    color: white;
+}
+
+.cancel_button:active{
+    /* background-color: rgb(179, 25, 14); */
+    background-color: rgba(0, 0, 0, 0.603);
+
+}
+
+.ok_button:active{
+    background-color: rgb(7, 110, 93);
+}

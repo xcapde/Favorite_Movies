@@ -35,12 +35,14 @@ export function Form (props) {
             // alert(`ℹ️ Title is required!`);
             props.runModal();
             props.setModalMassage(`ℹ️ Title is required!`)
+            props.setModalType('defaultModal')
             return;
         }
         if((editIsActive === true)&&(newMovie === movieToEdit)){
             // alert(`ℹ️ ${newMovie.title} details have not changed`)
             props.runModal();
-            props.setModalMassage(`ℹ️ ${newMovie.title} details have not changed`) 
+            props.setModalMassage(`ℹ️ ${newMovie.title} details have not changed`)
+            props.setModalType('defaultModal') 
         }
         if ((editIsActive === true)&&(newMovie !== movieToEdit)){
             updateMovie();
@@ -72,9 +74,9 @@ export function Form (props) {
                 {/* close_form creat pel formulari modal */}
                 <form onSubmit={handleSubmit} className="input_form">
                         
-                        <input onChange ={onInputChange} value={newMovie.title} type="text" name="title" className="title_input" placeholder="Title"/>
-                        <input onChange ={onInputChange} value={newMovie.year} type="text" name='year' className="year_input" placeholder="Year"/>
-                        <input onChange ={onInputChange} value={newMovie.imgURL} type="text" name='imgURL' className="imgURL_input" placeholder="Image URL"/>
+                        <input autoFocus onChange ={onInputChange} value={newMovie.title} type="text" name="title" className="title_input" placeholder="Title"/>
+                        <input onChange ={onInputChange} value={newMovie.year} type="number" name='year' className="year_input" placeholder="Year"/>
+                        <input onChange ={onInputChange} value={newMovie.imgURL} type="url" name='imgURL' className="imgURL_input" placeholder="Image URL"/>
                         <input onChange ={onInputChange} value={newMovie.genres} type="text" name='genres' className="genres_input" placeholder="Genres"/>
                         
                         {editIsActive?
