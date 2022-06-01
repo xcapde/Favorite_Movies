@@ -1,6 +1,5 @@
 .lds-ellipsis {
     display: inline-block;
-    z-index: 2;
     position: fixed;
     width: 4rem;
     height: 4rem;

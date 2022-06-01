@@ -4,7 +4,6 @@ import { Card } from "../card/Card";
 import { Form } from "../form/Form";
 import { Slider } from "../slider/Slider";
 import { ModalInfo } from "../modal/ModalInfo";
-import { ModalOptions } from "../modal/ModalOptions";
 import { Spinner4 } from "../spinner/Spinner4";
 import '../llista/main.css';
 import '../llista/mobile.css';
@@ -17,7 +16,11 @@ export function MovieList() {
     const [movieToEdit, setMovieToEdit] = useState({});
     const [indexToEdit] = useState('');
     const [favList, setFavList] = useState([]);
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
+    const [modalIsActive, setModalIsActive] = useState(false);
+    const [modalMassage, setModalMassage] = useState();
+    const [modalType, setModalType] = useState();
+
 
     // S'EXECUTA AL RENDERITZAR L'APP
     useEffect(() => {
@@ -104,7 +107,11 @@ export function MovieList() {
         movieServices.postMovie(newMovieData).then(res => {
              setCreateIsActive(false);
              getData();
-            alert(`✅${res.title} added!`)
+            // alert(`✅ ${res.title} added!`)
+            runModal();
+            setModalMassage(`✅${res.title} added!`)
+            setModalType('greenModal')
+
         });
 
         // OPCIÓ 2 UUID - SENSE API SERVER
@@ -128,7 +135,10 @@ export function MovieList() {
         //parseInt(id) per passar el string de la id a número però no cal..
         movieServices.deleteAMovie(parseInt(id)).then(res => {
             if(res) getData();
-            alert(`❌${res.title} removed`)
+            // alert(`❌${res.title} removed`)
+            runModal();
+            setModalMassage(`❌ ${res.title} removed`)
+            setModalType('redModal')
         });
         // OPCIÓ SENSE SERVER API
         // let movieToDelete =  state.movies.filter(movie => movie.id === id);
@@ -160,11 +170,17 @@ export function MovieList() {
 
         if(data.movieIsFav === true){
             favList.push(data);
-            alert(`✅${data.title} added to favorites!`)
+            // let massage = `✅ ${data.title} added to favorites!`
+            runModal();
+            setModalMassage(`✅ ${data.title} added to favorites!`)
+            setModalType('favModal')
+
         } else { 
             let favIndex = favList.findIndex(movie => movie.id === data.id)
             favList.splice(favIndex,1);
-            alert(`❌${data.title} removed from favorites!`)
+            runModal();
+            setModalMassage(`❌ ${data.title} removed from favorites!`)
+            setModalType('favModal')
         };
         
         showPreviousFavList();
@@ -177,6 +193,17 @@ export function MovieList() {
         })
 
     };
+
+    const runModal=()=>{
+        setModalIsActive(true)
+        console.log('runModal')
+        setTimeout(stopModal, 2000);
+    }
+
+    const stopModal=()=>{
+        setModalIsActive(false)
+        console.log('stopModal!')
+    }
 
     // switchList = () => {
     //      setState({favoriteListIsActive:! state.favoriteListIsActive});
@@ -194,26 +221,29 @@ export function MovieList() {
 
         return (<section className="the_list">
 
-                        <ModalInfo/>
-                        <ModalOptions/>
-                        {loading===true?<Spinner4/>:null}
+                        {modalIsActive?
+                        <ModalInfo modalIsActive={modalIsActive} stopModal={stopModal} 
+                        modalMassage={modalMassage} modalType={modalType}/>
+                        :null}
+                        {loading?<Spinner4/>:null}
                     
                         { formIsActive?
                             <Form addMovie={addMovie} movieToEdit={movieToEdit} 
                             editIsActive={editIsActive} movies={movies} showForm={showForm} 
                             indexToEdit={indexToEdit} createIsActive={createIsActive} 
-                            createMovie={createMovie} key={movieToEdit.id} updateOneMovie={updateOneMovie}/>
+                            createMovie={createMovie} key={movieToEdit.id} updateOneMovie={updateOneMovie}
+                            runModal={runModal} stopModal={stopModal} setModalMassage={setModalMassage} setModalType={setModalType}/>
                             :''
                         }
 
                         <div className="movies_list">
                             <>{favList.length === 0?
                                 null :
-                                <Slider favList={favList}/>}
+                            <Slider favList={favList}/>}
                             </>   
                             
                             {movies.map((movie,key) => (
-                                <Card key={key} movie={movie} deleteMovie={deleteMovie} editMovie={editMovie} markFavorite={markFavorite}/>
+                            <Card key={key} movie={movie} deleteMovie={deleteMovie} editMovie={editMovie} markFavorite={markFavorite}/>
                             )).reverse()}   
                         </div>
                         

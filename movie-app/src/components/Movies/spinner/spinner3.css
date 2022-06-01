@@ -1,5 +1,4 @@
 .spinner {
-    z-index: 2;
     border: 0.5rem solid rgba(0, 0, 0, 0.1);
     /* border-left-color: rgb(208, 255, 0); */
     border-left-color: rgb(1, 139, 116);

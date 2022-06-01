@@ -32,15 +32,23 @@ export function Form (props) {
             props.addMovie(newMovie);
         }
         if ((editIsActive === false)&&(newMovie.title.length === 0)){
-            alert(`ℹ️ Title is required!`);
+            // alert(`ℹ️ Title is required!`);
+            props.runModal();
+            props.setModalMassage(`ℹ️ Title is required!`)
             return;
         }
         if((editIsActive === true)&&(newMovie === movieToEdit)){
-            alert(`ℹ️ ${newMovie.title} details have not changed`) 
+            // alert(`ℹ️ ${newMovie.title} details have not changed`)
+            props.runModal();
+            props.setModalMassage(`ℹ️ ${newMovie.title} details have not changed`) 
         }
         if ((editIsActive === true)&&(newMovie !== movieToEdit)){
             updateMovie();
-            alert(`✅ ${movieToEdit.title} has been updated!`) 
+            // alert(`✅ ${movieToEdit.title} has been updated!`)
+            props.runModal();
+            props.setModalMassage(`✅ ${movieToEdit.title} has been updated!`)
+            props.setModalType('greenModal')
+ 
         }
 
         resetFormInputs();

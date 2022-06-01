@@ -1,7 +1,6 @@
 
   .lds-default {
     display: inline-block;
-    z-index: 2;
     position: fixed;
     width: 5rem;
     height: 5rem;
