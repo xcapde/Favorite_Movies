@@ -1,0 +1,24 @@
+.spinner {
+    z-index: 2;
+    border: 0.5rem solid rgba(0, 0, 0, 0.1);
+    /* border-left-color: rgb(208, 255, 0); */
+    border-left-color: rgb(1, 139, 116);
+    border-radius: 50%;
+    position: fixed;
+    width: 3rem;
+    height: 3rem;
+    background: none;
+    top: 50%;
+  
+    animation: spin 1s ease infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }

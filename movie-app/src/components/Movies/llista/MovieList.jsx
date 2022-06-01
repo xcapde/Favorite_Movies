@@ -5,9 +5,9 @@ import { Form } from "../form/Form";
 import { Slider } from "../slider/Slider";
 import { ModalInfo } from "../modal/ModalInfo";
 import { ModalOptions } from "../modal/ModalOptions";
+import { Spinner4 } from "../spinner/Spinner4";
 import '../llista/main.css';
 import '../llista/mobile.css';
-
 
 export function MovieList() {
     const [formIsActive, setFormIsActive] = useState(false);
@@ -17,6 +17,7 @@ export function MovieList() {
     const [movieToEdit, setMovieToEdit] = useState({});
     const [indexToEdit] = useState('');
     const [favList, setFavList] = useState([]);
+    const [loading, setLoading] = useState(false)
 
     // S'EXECUTA AL RENDERITZAR L'APP
     useEffect(() => {
@@ -36,8 +37,10 @@ export function MovieList() {
     );
 
     const getData = () => {
+        setLoading(true)
         movieServices.getAllMovies().then(res => {
              setMovies(res);
+             setLoading(false)
         })
     };
 
@@ -193,6 +196,7 @@ export function MovieList() {
 
                         <ModalInfo/>
                         <ModalOptions/>
+                        {loading===true?<Spinner4/>:null}
                     
                         { formIsActive?
                             <Form addMovie={addMovie} movieToEdit={movieToEdit} 
