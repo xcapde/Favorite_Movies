@@ -128,9 +128,13 @@ export function MovieList() {
 
     const deleteMovie = (id) => {
 
-        let deleteConfirmation = window.confirm(`❌ Remove from the list?`);
-        if(!deleteConfirmation) return; 
+        // let deleteConfirmation = window.confirm(`❌ Remove from the list?`);
+        // if(!deleteConfirmation) return; 
         // CLÀUSULA DE SALVAGUARDA
+
+        runModal();
+        setModalMassage(`❌ Remove from the list?`)
+        setModalType('optionsModal')
 
         //parseInt(id) per passar el string de la id a número però no cal..
         movieServices.deleteAMovie(parseInt(id)).then(res => {
@@ -196,13 +200,11 @@ export function MovieList() {
 
     const runModal=()=>{
         setModalIsActive(true)
-        console.log('runModal')
         setTimeout(stopModal, 2000);
     }
 
     const stopModal=()=>{
         setModalIsActive(false)
-        console.log('stopModal!')
     }
 
     // switchList = () => {

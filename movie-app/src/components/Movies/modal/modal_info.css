@@ -25,7 +25,7 @@
     border-radius: 0.5rem;
     background-color: rgb(217, 219, 202);
     color: rgb(29, 29, 29);
-    /* animation: modalInit 2s 1; */
+    animation: modalInit 2s 1;
     animation-direction: linear;
     animation-delay: 1s;
     position: relative;
@@ -95,9 +95,9 @@
 
 .modal_buttons{
     display: flex;
-    display: none;
     width: 100%;
     background:none;
+    bottom: 0;
 }
 
 .hidden{
@@ -116,6 +116,7 @@
     background-color: rgba(0, 0, 0, 0.308);
     cursor: pointer;
     width: 100%;
+    padding: 0;
 }
 
 .cancel_button{
@@ -159,5 +160,10 @@
     .modal_info_message{
         font-size: 0.7rem;
         font-weight: 500;
+    }
+
+    .modal_buttons{
+        position: absolute;
+        bottom: 0;
     }
 }
