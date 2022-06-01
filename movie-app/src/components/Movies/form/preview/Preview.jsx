@@ -1,4 +1,5 @@
-import '../preview/preview.css';
+// import '../preview/preview.css';
+import'../preview/previewModal.css';
 
 export function Preview (props){
 

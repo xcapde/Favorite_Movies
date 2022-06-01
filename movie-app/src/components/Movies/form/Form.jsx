@@ -1,4 +1,5 @@
-import '../form/movieForm.css';
+// import '../form/movieForm.css'; ( + canviar class formBackground per .form_and_preview i eliminar el div)
+import '../form/modalForm/formModal.css';
 import { Preview } from "./preview/Preview";
 import { useState } from 'react';
 
@@ -54,9 +55,13 @@ export function Form (props) {
         //... per mantenir tota la info dels altres camps del formulari.
     };
 
-    return (<section className="form_and_preview">
+    return (<section className="formBackground">
+        <div className='form_and_preview'>
 
-                <button onClick={resetFormInputs} className="resetForm_button">&times;</button>                
+                {/* <button onClick={resetFormInputs} className="resetForm_button">&times;</button> >> canviat per form modal*/}
+                <button onClick={resetFormInputs} className="clear_button">Clear</button>
+                <button onClick={props.showForm} className="close_form"><i className="fa-solid fa-xmark"></i></button>
+                {/* close_form creat pel formulari modal */}
                 <form onSubmit={handleSubmit} className="input_form">
                         
                         <input onChange ={onInputChange} value={newMovie.title} type="text" name="title" className="title_input" placeholder="Title"/>
@@ -72,6 +77,6 @@ export function Form (props) {
                     <div className="previewZone">
                         <Preview newMovie={newMovie} />
                     </div>
-                
+                </div>
             </section>) 
 }

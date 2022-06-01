@@ -1,0 +1,163 @@
+@import url(..//modalForm/mobileFormModal.css);
+
+:root {
+    --white:rgb(255,255,255);
+    --almost_white:rgb(231, 231, 231);
+    --light_green_blue:rgb(27, 185, 159);
+    --green_blue:rgb(1, 139, 116);
+    --dark_green_blue:rgb(1, 110, 92);
+    --semi_dark:rgb(43, 43, 43);
+    --almost_dark:rgb(27, 27, 26);
+    --transp_dark:rgba(22, 22, 22, 0.705);
+    --red: rgb(255, 82, 51);
+    --dark_red:rgb(219, 50, 20);
+    --orange: darkorange;
+    --darker_orange:rgb(255, 115, 0);
+    --semi_orange:.0rem .0rem .2rem rgba(255, 140, 0, 0.644);
+    --pastel_blue:rgb(97, 191, 235);
+}
+
+/* section */
+
+.formBackground{
+    z-index: 1;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.521);
+    display: flex;
+    justify-content: center;
+}
+
+.form_and_preview{
+    z-index: 3;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background-color:var(--green_blue);
+    position: fixed;
+    width: 50%;
+    height: 80%;
+    top: 10%;
+    border-radius: 1rem;
+    filter:drop-shadow(.2rem .2rem .5rem var(--almost_dark));
+    flex-direction: column;   
+}
+
+.input_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    width: 90%;
+    height: 50%;
+    background:none;
+}
+
+.input_form input{
+    background-color: var(--almost_white);
+    border-style: solid;
+    border-radius: 0.2rem;
+    height: 15%;
+    border-width: 0.05rem;
+    border-color: rgb(1, 139, 116);
+    color: var(--almost_dark);
+    padding: 0 5%;
+}
+
+.input_form input:hover, .input_form input:focus{
+    background-color: rgba(255, 255, 255, 0.719);
+    color: rgb(1, 139, 116);
+}
+
+i{
+    background: none;
+}
+
+.create_button, .update_button, .clear_button .close_form{
+    background-color: var(--semi_dark);
+    color: var(--almost_white);
+    border: none;
+    padding: 0.2rem 0.5rem;
+    width: 100%;
+    position: relative;
+    border-radius: 0.2rem;
+    height: 15%;}
+
+.clear_button, .close_form{
+    z-index: 1;
+    width: 50%;
+    position: absolute;
+    font-size: medium;
+    background: none;
+    border: none;
+    color:rgba(255, 255, 255, 0.493);
+    padding-top: 2%;
+    height: 3rem;
+}
+
+.clear_button{
+    top: 0;
+    left: 0;
+    border-top-left-radius: 1rem;
+}
+
+.close_form{
+    top: 0;
+    right: 0;
+    border-top-right-radius: 1rem;
+}
+
+.clear_button:hover, .close_form:hover{
+    background-color: var(--light_green_blue);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.clear_button:active, .close_form:active{
+    background-color: var(--dark_green_blue);
+    color: var(--white);
+}
+
+/* .close_form:hover{
+    background-color: var(--red);
+    color: var(--white);
+    cursor: pointer;
+} */
+
+/* .close_form:active{
+    background-color: var(--dark_red);
+    color: var(--white);
+} */
+
+.create_button{
+    background-color: rgba(58, 104, 105, 0.712);
+}
+
+.create_button, .update_button{
+    border-style: solid;
+    border-width: 0.05rem;
+    border-color: rgb(1, 139, 116);
+}
+
+.create_button:hover{
+    background-color: var(--dark_green_blue);
+    cursor: pointer;
+}
+
+.create_button:active{
+    background-color: var(--green_blue);
+}
+
+.update_button{
+    background-color: rgba(134, 202, 55, 0.712);
+}
+
+.update_button:hover{
+    background-color: var(--dark_green);
+    cursor: pointer;
+}
+
+.update_button:active{
+    background-color: var(--light_green);
+}

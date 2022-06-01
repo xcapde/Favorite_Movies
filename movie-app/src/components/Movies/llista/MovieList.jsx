@@ -217,7 +217,7 @@ export function MovieList() {
                             )).reverse()}   
                         </div>
                         
-                        {createIsActive?
+                        {createIsActive && formIsActive?
                             <button onClick = {createMovie} type="button" name="stopCreate" className="button_open_form_opened"><i className="fa-solid fa-xmark"></i></button>
                             : <button onClick = {createMovie} type="button" name="startCreate" className="button_open_form_closed"><i className="fa-solid fa-plus"></i></button>
                         }

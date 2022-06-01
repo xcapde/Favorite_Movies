@@ -14,14 +14,13 @@ export function Slider (props) {
     
     useEffect(()=>{
         setFavList(props.favList)
-        },[props.favList,]
+        },[props.favList]
     );
 
     useEffect(()=>{
-        let interval = 4000;
-        let intervalID = setInterval(()=>nextSlide(), interval);
+        let intervalID = setInterval(()=>nextSlide(), 4000);
         return() => clearInterval(intervalID);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
     },[index]
     );
 
@@ -82,7 +81,7 @@ export function Slider (props) {
                                 <button className="right_arrow"><i className="fa-solid fa-angle-right"></i></button>
                             </div>
                             <Link to={`/movie_detail/${movie.id}`}>
-                            <img src={movie.imgURL} alt="movie cover"/>
+                            <img src={movie.imgURL} alt="movie cover" className={key === index ? "active_img" : "inactive_img"}/>
                             </Link>                           
                         </div>
                         <div className="slider_movie_info">

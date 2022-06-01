@@ -75,6 +75,7 @@ body{
 
 .button_open_form_opened{
     background-color: var(--red);
+    z-index: 3;
 }
 
 .button_open_form_opened:hover{

@@ -1,0 +1,11 @@
+@media only screen and (max-width:450px) {
+    .form_and_preview{
+        width: 90% !important; 
+    } 
+}
+
+@media only screen and (min-width:500px) and (max-width:850px) {
+    .form_and_preview{
+        width: 60% !important; 
+    } 
+}
