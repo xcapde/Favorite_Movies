@@ -15,7 +15,6 @@ export default function RouterSample(){
             <Routes>
                 <Route path="/" element={< Home />} />
                 <Route path="/movie_detail/:id" element={< MovieDetails/>} />
-                <Route path="/movie_detail/:id/subpage" element={< SubPage />} />
             </Routes>
         </BrowserRouter>
     );
