@@ -21,7 +21,7 @@ export function Slider (props) {
         let intervalID = setInterval(()=>nextSlide(), 4000);
         return() => clearInterval(intervalID);
     // eslint-disable-next-line
-    },[index]
+    },[index, props.favList]
     );
 
     // exemple amb setTimeOut -->
@@ -62,7 +62,7 @@ export function Slider (props) {
         <div className='slider_card'>
 
                 <div className='dots'>{props.favList.map((movie, key) => 
-                <div key={key} className={key === index ? "dot active_dot" : "dot"} onClick={()=>showSlide(key)}></div>)}</div>
+                <div className={key === index ? "dot active_dot" : "dot"} onClick={()=>showSlide(key)}></div>)}</div>
 
             {props.favList ? props.favList.map((movie, key) =>
 
@@ -80,7 +80,7 @@ export function Slider (props) {
                                 <button className="right_arrow"><i className="fa-solid fa-angle-right"></i></button>
                             </div>
                             <Link to={`/movie_detail/${movie.id}`}>
-                            <img src={movie.imgURL} alt="movie cover" className={key === index ? "active_img" : "inactive_img"}/>
+                            <img key={key} src={movie.imgURL} alt="movie cover" className={key === index ? "active_img" : "inactive_img"}/>
                             </Link>                           
                         </div>
                         <div className="slider_movie_info">

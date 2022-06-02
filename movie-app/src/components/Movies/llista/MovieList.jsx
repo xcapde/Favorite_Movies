@@ -24,7 +24,7 @@ export function MovieList() {
 
     useEffect(() => {
         getData();
-        showPreviousFavList();
+        getFavMovies();
     },[]
     );
 
@@ -139,48 +139,34 @@ export function MovieList() {
         setFormIsActive(!formIsActive);
     };
 
-    const markFavorite = (movie) => {
-        // Declarem variable perquè no es pot modificar un atribut.
-        let data = movie;
-
-        if(data.movieIsFav === false) data.movieIsFav = true 
-        else data.movieIsFav = false;
-        
-        movieServices.putMovie(data.id,data).then( res => {
-            if(res) getData();
-        });
-
-        addToSlide(data);
-    };
-
-    const addToSlide = (movie) => {
-        let data = movie;
-
-        if(data.movieIsFav === true){
-            favList.push(data);
-
-            runModal();
-            setModalMassage(`✅ ${data.title} added to favorites!`)
-            setModalType('yellowModal')
-
-        } else { 
-            let favIndex = favList.findIndex(movie => movie.id === data.id)
-            favList.splice(favIndex,1);
-            
-            runModal();
-            setModalMassage(`❌ ${data.title} removed from favorites!`)
-            setModalType('yellowModal')
-        };
-        
-        showPreviousFavList();
-    };
-
-    const showPreviousFavList = () => {
+    const getFavMovies = () => {
 
         movieServices.getFavMovies().then(res => {
             setFavList(res);
         })
 
+    };
+
+    const markFavorite = (movie) => {
+        // Declarem variable perquè no es pot modificar un atribut.
+        let data = movie;
+
+        runModal();
+        setModalType('yellowModal')
+
+        if(data.movieIsFav === false){data.movieIsFav = true 
+        setModalMassage(`✅ ${data.title} added to favorites!`)}
+
+        else data.movieIsFav = false;
+
+        movieServices.putMovie(data.id,data).then( res => {
+        setModalMassage(`❌ ${data.title} removed from favorites!`)
+
+            if(res) {
+                getData();
+                getFavMovies();
+            }
+        });
     };
 
     const runModal=()=>{
