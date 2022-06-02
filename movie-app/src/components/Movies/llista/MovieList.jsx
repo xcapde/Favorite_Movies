@@ -20,21 +20,11 @@ export function MovieList() {
     const [modalIsActive, setModalIsActive] = useState(false);
     const [modalMassage, setModalMassage] = useState();
     const [modalType, setModalType] = useState();
+    const [modalID, setModalID] = useState();
 
-    // S'EXECUTA AL RENDERITZAR L'APP
     useEffect(() => {
         getData();
         showPreviousFavList();
-        // movieServices.getAllMovies EQUIVAL A LA PROMESA D'AXIOS (movies) A JS, QUE NO ESTÀ RESOLTA ENCARA,
-        // SEGUIM POSANT UN ".THEN" PER QUAN COMPLEIXI LA PROMESA,
-        // QUAN HAGI RESOLT -> CANVIÏ L'ESTAT AMB UN  setState
-
-        // COMENTAT PERQUÈ HO FAREM DES DEL SERVIDOR --> SERVICES --> movieServices.js
-        //  setState({
-        //     movies:movieServices.getAllMovies()
-        // });
-        
-        //En el useEfectt cal segon paràmetre indicat el que està esperant.. per això l'array buit 
     },[]
     );
 
@@ -95,8 +85,6 @@ export function MovieList() {
     const updateOneMovie = (id, updatedMovieData) => {
         movieServices.putMovie(id, updatedMovieData).then((res) => {
             // movieServices.putMovie(parseInt(id), data).then(res => { --> per passar la ID d'String a Número, no cal.
-            // es pot posar data, movie, updatedMovie.. és indiferent.
-            // console.log(res)
             // si ens torna una resposta (if(res)) llavors ens torna totes les pelis, no cal però ok.
             if(res)  getData();
         });
@@ -106,7 +94,7 @@ export function MovieList() {
         movieServices.postMovie(newMovieData).then(res => {
              setCreateIsActive(false);
              getData();
-            // alert(`✅ ${res.title} added!`)
+
             runModal();
             setModalMassage(`✅${res.title} added!`)
             setModalType('greenModal')
@@ -126,23 +114,20 @@ export function MovieList() {
     };
 
     const deleteMovie = (id) => {
+        stopModal();
 
-        let deleteConfirmation = window.confirm(`❌ Remove from the list?`);
-        if(!deleteConfirmation) return; 
+        // let deleteConfirmation = window.confirm(`Remove from the list?`);
+        // if(!deleteConfirmation) return; 
         // CLÀUSULA DE SALVAGUARDA
-
-        // runModal();
-        // setModalType('askModal')
-        // setModalMassage(`❌ Remove from the list?`)
 
         //parseInt(id) per passar el string de la id a número però no cal..
         movieServices.deleteAMovie(parseInt(id)).then(res => {
             if(res) getData();
-            // alert(`❌${res.title} removed`)
             runModal();
             setModalMassage(`❌ ${res.title} removed`)
             setModalType('redModal')
         });
+
         // OPCIÓ SENSE SERVER API
         // let movieToDelete =  state.movies.filter(movie => movie.id === id);
         // let selectedMovies =  state.movies.filter(movie => movie.id !== id);
@@ -173,7 +158,7 @@ export function MovieList() {
 
         if(data.movieIsFav === true){
             favList.push(data);
-            // let massage = `✅ ${data.title} added to favorites!`
+
             runModal();
             setModalMassage(`✅ ${data.title} added to favorites!`)
             setModalType('yellowModal')
@@ -181,6 +166,7 @@ export function MovieList() {
         } else { 
             let favIndex = favList.findIndex(movie => movie.id === data.id)
             favList.splice(favIndex,1);
+            
             runModal();
             setModalMassage(`❌ ${data.title} removed from favorites!`)
             setModalType('yellowModal')
@@ -199,57 +185,53 @@ export function MovieList() {
 
     const runModal=()=>{
         setModalIsActive(true)
-        const timeOut = setTimeout(stopModal, 2000);
-        console.log(timeOut)
-        
+        setTimeout(stopModal, 2000);
+
+        // const timeOut = setTimeout(stopModal, 2000);
         // if(modalType !=='askModal'){
-        // clearTimeout(timeOut);
-        // }
+        // clearTimeout(timeOut);}
+    }
+
+    const runAskModal=(id)=>{
+        setModalIsActive(true)
+        setModalID(id)
+        setModalType('askModal')
+        setModalMassage(`❌ Remove from the list?`)
     }
 
     const stopModal=()=>{
         setModalIsActive(false)
     }
 
-    // switchList = () => {
-    //      setState({favoriteListIsActive:! state.favoriteListIsActive});
-        
-    //     let favList =  state.movies.filter(movie => movie.id<50);
-    //     console.log(favList)
-    //     let allMovies= state.movies;
-    
-    //     if( state.favoriteListIsActive===true){
-    //      setState({movies:favList});
-    //     }else{
-    //      setState({movies:allMovies})
-    //     }
-    // };
-
         return (<section className="the_list">
 
                         {modalIsActive?
-                        <ModalInfo modalIsActive={modalIsActive} stopModal={stopModal} 
-                        modalMassage={modalMassage} modalType={modalType}/>
-                        :null}
-                        {loading?<Spinner4/>:null}
+                            <ModalInfo modalIsActive={modalIsActive} stopModal={stopModal} 
+                            modalMassage={modalMassage} modalType={modalType} deleteMovie={deleteMovie} modalID={modalID}/>
+                            : null}
+
+                        {loading?
+                            <Spinner4/>
+                            : null}
                     
                         { formIsActive?
                             <Form addMovie={addMovie} movieToEdit={movieToEdit} 
                             editIsActive={editIsActive} movies={movies} showForm={showForm} 
                             indexToEdit={indexToEdit} createIsActive={createIsActive} 
                             createMovie={createMovie} key={movieToEdit.id} updateOneMovie={updateOneMovie}
-                            runModal={runModal} stopModal={stopModal} setModalMassage={setModalMassage} setModalType={setModalType}/>
+                            runModal={runModal} stopModal={stopModal} setModalMassage={setModalMassage} 
+                            deleteMovie={deleteMovie} setModalType={setModalType}/>
                             :''
                         }
 
                         <div className="movies_list">
                             <>{favList.length === 0?
                                 null :
-                            <Slider favList={favList}/>}
+                                <Slider favList={favList}/>}
                             </>   
                             
                             {movies.map((movie,key) => (
-                            <Card key={key} movie={movie} deleteMovie={deleteMovie} editMovie={editMovie} markFavorite={markFavorite}/>
+                                <Card key={key} movie={movie} deleteMovie={deleteMovie} editMovie={editMovie} markFavorite={markFavorite} runAskModal={runAskModal} />
                             )).reverse()}   
                         </div>
                         
@@ -257,8 +239,6 @@ export function MovieList() {
                             <button onClick = {createMovie} type="button" name="stopCreate" className="button_open_form_opened"><i className="fa-solid fa-xmark"></i></button>
                             : <button onClick = {createMovie} type="button" name="startCreate" className="button_open_form_closed"><i className="fa-solid fa-plus"></i></button>
                         }
-
-                        {/* <button onClick={()=>  switchList()} type="button" name="changeList" className={ state.favoriteListIsActive? "button_switchList fav_actived":"button_switchList"}><i className="fa-solid fa-star"></i></button> */}
 
                 </section>)
 }
