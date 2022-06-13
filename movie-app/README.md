@@ -29,6 +29,7 @@ I expect to improve the app with new features soon:
 - Activate the rest of sections.
 - Activate the skeleton feature.
 - Fix some bug.
+- Fix deploy.
 
 ##  👁️‍🗨️ SCREENSHOTS
 
