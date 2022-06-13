@@ -62,13 +62,13 @@ export function Slider (props) {
         <div className='slider_card'>
 
                 <div className='dots'>{props.favList.map((movie, key) => 
-                <div className={key === index ? "dot active_dot" : "dot"} onClick={()=>showSlide(key)}></div>)}</div>
+                <div key={key} className={key === index ? "dot active_dot" : "dot"} onClick={()=>showSlide(key)}></div>)}</div>
 
             {props.favList ? props.favList.map((movie, key) =>
 
                 <>{key === index ? 
 
-                    <div className="favData">
+                    <div className="favData" key={key}>
                         <div className='slider_info'>
                             {/* <h1>FAVORITES <span className='slide_number'>{`${index+1}/${props.favList.length}`}</span></h1>                     */}
                         </div>
@@ -80,11 +80,11 @@ export function Slider (props) {
                                 <button className="right_arrow"><i className="fa-solid fa-angle-right"></i></button>
                             </div>
                             <Link to={`/movie_detail/${movie.id}`}>
-                            <img key={key} src={movie.imgURL} alt="movie cover" className={key === index ? "active_img" : "inactive_img"}/>
+                            <img src={movie.imgURL} alt="movie cover" className={key === index ? "active_img" : "inactive_img"}/>
                             </Link>                           
                         </div>
-                        <div className="slider_movie_info">
-                            <div className="slider_card_text">
+                        <div className="slider_movie_info" key={key}>
+                            <div className="slider_card_text" key={key}>
                                 <h1>{movie.title}</h1>
                             </div>
                         </div>

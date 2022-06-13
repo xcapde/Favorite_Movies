@@ -115,11 +115,6 @@ export function MovieList() {
 
     const deleteMovie = (id) => {
         stopModal();
-
-        // let deleteConfirmation = window.confirm(`Remove from the list?`);
-        // if(!deleteConfirmation) return; 
-        // CLÀUSULA DE SALVAGUARDA
-
         //parseInt(id) per passar el string de la id a número però no cal..
         movieServices.deleteAMovie(parseInt(id)).then(res => {
             if(res) getData();
@@ -127,6 +122,11 @@ export function MovieList() {
             setModalMassage(`❌ ${res.title} removed`)
             setModalType('redModal')
         });
+
+
+        // let deleteConfirmation = window.confirm(`Remove from the list?`);
+        // if(!deleteConfirmation) return; 
+        // CLÀUSULA DE SALVAGUARDA
 
         // OPCIÓ SENSE SERVER API
         // let movieToDelete =  state.movies.filter(movie => movie.id === id);
