@@ -2,6 +2,7 @@
 
 ## 📜 BRIEFING
 This is an application that allows you to create a movies list using an API and has some features to interact with such as adding, updating and deleting movies as well as mark them as favorites and display favorites in a slider.
+I used the mockAPI server and the Postman API platform for data processing.
 
 ## 💻 TECHNOLOGIES
 - HTML 5
