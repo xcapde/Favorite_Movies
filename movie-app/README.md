@@ -32,7 +32,7 @@ I expect to improve the app with new features soon:
 ##  👁️‍🗨️ SCREENSHOTS
 
 ###### PC
-![Home](/movie-app/src/Images/Home%20PC.pngg "Home Desktop")
+![Home](/movie-app/src/Images/Home%20PC.png "Home Desktop")
 ![Details](/movie-app/src/Images/details%20PC.png "Details")
 ![Adding](/movie-app/src/Images/add%20PC.png "Adding")
 ![Updating](/movie-app/src/Images/Edit%20PC.png "Updating")
