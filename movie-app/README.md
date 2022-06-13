@@ -32,7 +32,7 @@ I expect to improve the app with new features soon:
 ##  👁️‍🗨️ SCREENSHOTS
 
 ###### PC
-![Home](/movie-app/src/Images/Home%20PC.png "Home")
+![Home](/movie-app/src/Images/Home%20PC.pngg "Home Desktop")
 ![Details](/movie-app/src/Images/details%20PC.png "Details")
 ![Adding](/movie-app/src/Images/add%20PC.png "Adding")
 ![Updating](/movie-app/src/Images/Edit%20PC.png "Updating")
@@ -40,7 +40,7 @@ I expect to improve the app with new features soon:
 ![Info modal](/movie-app/src/Images/modal%20PC.png "Info modal")
 ###### Mobile
 
-![Home](/movie-app/src/Images/Home%20Mobile.png "Home")
+![Home](/movie-app/src/Images/Home%20Mobile.png "Home Mobile")
 ![Details](/movie-app/src/Images/details%20Mobile.png "Details")
 ![Adding](/movie-app/src/Images/add%20Mobile.png "Adding")
 ![Updating](/movie-app/src/Images/edit%20Mobile.png "Updating")
